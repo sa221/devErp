@@ -43,8 +43,8 @@ namespace DevERP.Account
                 userInfo.LoginId = Convert.ToInt32(reader["loginId"].ToString());
                 userInfo.UserName = reader["userName"].ToString();
                 userInfo.Password = reader["password"].ToString();
-                userInfo.FName = reader["fName"].ToString();
-                userInfo.LName = reader["lName"].ToString();
+                userInfo.FirstName = reader["fName"].ToString();
+                userInfo.LastName = reader["lName"].ToString();
                 userInfo.Image = reader["image"].ToString();
                 userInfo.Email = reader["email"].ToString();
                 userInfo.Phone = reader["phone"].ToString();
