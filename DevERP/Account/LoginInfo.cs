@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
-
-namespace AbcoItAccountingApplication.Model.Login
+﻿namespace DevERP.Account
 {
-    public class Login
+    public class LoginInfo
     {
         public int LoginId { get; set; }
         public string UserName { get; set; }

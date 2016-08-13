@@ -3,13 +3,13 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace AbcoItAccountingApplication.DAL.Login
+namespace DevERP.Account
 
 {
     public class LoginGatway
     {
         readonly string _connectionString = ConfigurationManager.ConnectionStrings["connection"].ConnectionString;
-        public int CheckLogin(Model.Login.Login login)
+        public int CheckLogin(LoginInfo login)
         {
             SqlConnection connection = new SqlConnection(_connectionString);
             string query = "select loginId from Login_tbl where userName='" + login.UserName + "' and password= '" + login.Password + "' and status = 'v'";

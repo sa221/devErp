@@ -1,14 +1,11 @@
-﻿using AbcoItAccountingApplication.DAL.Login;
-using AbcoItAccountingApplication.Model.Register;
-
-namespace AbcoItAccountingApplication.BLL.Login
+﻿namespace DevERP.Account
 {
     public class LoginManager
     {
         private readonly LoginGatway _loginGatway= new LoginGatway();
         private UserInfo _userInfo;
         private int loginId = 0;
-        public string CheckLogin(Model.Login.Login login)
+        public string CheckLogin(LoginInfo login)
         {
             string message = "";
             loginId = _loginGatway.CheckLogin(login);
