@@ -12,7 +12,7 @@
                 </div>
                 <div class="panel-body">
                     <div runat="server" ID="successMessage"></div>
-                    <div class="form-group">
+                    <div class="form-group required">
                         <label class="col-sm-12 control-label">Your Name</label>
                         <div class="col-sm-12">
                             <div class="input-group">
