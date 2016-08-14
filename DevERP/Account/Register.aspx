@@ -11,61 +11,68 @@
                     </div>
                 </div>
                 <div class="panel-body">
+                    <div runat="server" ID="successMessage"></div>
                     <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">Your Name</label>
-                        <div class="cols-sm-10">
+                        <label class="col-sm-12 control-label">Your Name</label>
+                        <div class="col-sm-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
+                                <input type="text" runat="server" class="form-control" name="nameTextBox" id="nameTextBox" placeholder="Enter your Name" />
                             </div>
                         </div>
+                        <div class="col-sm-12 min-height" runat="server" ID="nameTextBoxError"></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class="cols-sm-2 control-label">Your Email</label>
-                        <div class="cols-sm-10">
+                        <label class="col-sm-12 control-label">Your Email</label>
+                        <div class="col-sm-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                                <input type="text" runat="server" class="form-control" name="emailTextBox" id="emailTextBox" placeholder="Enter your Email" />
                             </div>
                         </div>
+                        <div class="col-sm-12 min-height" runat="server" ID="emailTextBoxError"></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label">Username</label>
-                        <div class="cols-sm-10">
+                        <label class="col-sm-12 control-label">Username</label>
+                        <div class="col-sm-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" />
+                                <input type="text" runat="server" class="form-control" name="usernameTextBox" id="usernameTextBox" placeholder="Enter your Username" />
                             </div>
                         </div>
+                             <div class="col-sm-12 min-height" runat="server" ID="usernameTextBoxError"></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Password</label>
-                        <div class="cols-sm-10">
+                        <label class="col-sm-12 control-label">Password</label>
+                        <div class="col-sm-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                <input type="password" runat="server" class="form-control" name="passwordTextBox" id="passwordTextBox" placeholder="Enter your Password" />
                             </div>
                         </div>
+                        <div class="col-sm-12 min-height" runat="server" ID="passwordTextBoxError"></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-                        <div class="cols-sm-10">
+                        <label class="col-sm-12 control-label">Confirm Password</label>
+                        <div class="col-sm-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
+                                <input type="password" runat="server" class="form-control" name="confirmPasswordTextBox" id="confirmPasswordTextBox" placeholder="Confirm your Password" />
                             </div>
                         </div>
+                        <div class="col-sm-12 min-height" runat="server" ID="confirmPasswordTextBoxError"></div>
                     </div>
 
-                    <div class="form-group ">
-                        <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    <div class="col-sm-12 form-group ">
+                        <asp:Button runat="server" CssClass="btn btn-primary btn-lg btn-block login-button" Text="Register" OnClick="OnClick"/>
                     </div>
-                    <div class="login-register">
-                        <a href="index.php">Login</a>
+                    <div class="col-sm-12 login-registe">
+                        <a runat="server" href="~/Account/Login.aspx">Login</a>
+                        <label> if already have an account</label>
                     </div>
                 </div>
             </div>

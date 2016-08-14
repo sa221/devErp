@@ -8,3 +8,6 @@
 .MyDropDownMenu a:hover {
     color: #000 !important;
 }
+.min-height {
+    min-height: 10px;
+}

@@ -30,6 +30,7 @@
             </div>
         </div>
         <div class="container body-content">
+            <div class="col-sm-12" style="min-height: 20px" ></div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
