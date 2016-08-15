@@ -13,10 +13,14 @@
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent">
+    </asp:ContentPlaceHolder>
 </head>
-<body>
-    <form runat="server">
-        
+<body style="background-image: url(../Image/bg.jpg)">
+    <form runat="server" id="MyForm">
+        <asp:ScriptManager runat="server">
+            
+        </asp:ScriptManager>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -27,10 +31,16 @@
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">Dev ERP</a>
                 </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a runat="server" href="~/Account/Register.aspx">Register</a></li>
+                        <li><a runat="server" href="~/Account/Login.aspx">Log In</a> </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="container body-content">
-            <div class="col-sm-12" style="min-height: 20px" ></div>
+            <div class="col-sm-12" style="min-height: 20px"></div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

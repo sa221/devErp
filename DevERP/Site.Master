@@ -13,11 +13,13 @@
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent">
+        
+    </asp:ContentPlaceHolder>
 </head>
-<body>
-    <form runat="server">
-        <%--<asp:ScriptManager runat="server">
+<body style="background-image: url(../Image/bg.jpg)">
+    <form runat="server" ID="myForm">
+        <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
@@ -35,8 +37,8 @@
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />--%>
                 <%--<asp:ScriptReference Name="WebFormsBundle" />--%>
                 <%--Site Scripts--%>
-            <%--</Scripts>
-        </asp:ScriptManager>--%>
+            </Scripts>
+        </asp:ScriptManager>
 
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -56,7 +58,11 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a class="dropdown-toggle" data-toggle="dropdown" runat="server" href="#">User</a>
+                            
+                            <a ID="userName" class="dropdown-toggle" data-toggle="dropdown" runat="server" href="#">
+                                <asp:Image ID="userImage" CssClass="img-circle" AlternateText="Image" runat="server" />
+                                User
+                            </a>
                             <ul class="dropdown-menu MyDropDownMenu">
                                 <li><a runat="server" href="~/UI/ChangeName.aspx">Update Name</a></li>
                                 <li><a runat="server" href="~/UI/ChangePassword.aspx">Update Password</a></li>

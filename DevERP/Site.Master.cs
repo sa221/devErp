@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DevERP.Account;
 
 namespace DevERP
 {
@@ -65,7 +66,12 @@ namespace DevERP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["userInfo"]!=null)
+            {
+                UserInfo userInfo = (UserInfo) Session["userInfo"];
+                userName.InnerText = userInfo.Name;
+                userImage.ImageUrl = userInfo.Image;
+            }
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

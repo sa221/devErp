@@ -14,7 +14,7 @@
 .form-group.required .control-label:after { 
     color: #d00;
     content: "*";
+    font-size: 15px;
     position: absolute;
-    margin-left: 8px;
-    top:7px;
+    margin-left: 2px;
 }
