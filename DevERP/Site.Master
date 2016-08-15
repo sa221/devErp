@@ -14,11 +14,10 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent">
-        
     </asp:ContentPlaceHolder>
 </head>
 <body style="background-image: url(../Image/bg.jpg)">
-    <form runat="server" ID="myForm">
+    <form runat="server" id="myForm">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -58,16 +57,15 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            
-                            <a ID="userName" class="dropdown-toggle" data-toggle="dropdown" runat="server" href="#">
-                                <asp:Image ID="userImage" CssClass="img-circle" AlternateText="Image" runat="server" />
-                                User
+
+
+                            <a id="userName" class="dropdown-toggle" data-toggle="dropdown" runat="server" href="#">
+                                <img id="userImage" class="img-circle" alternatetext="Image" runat="server" style="height: 30px; width: 30px;" />
+                                <%=Name%><span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu MyDropDownMenu">
-                                <li><a runat="server" href="~/UI/ChangeName.aspx">Update Name</a></li>
-                                <li><a runat="server" href="~/UI/ChangePassword.aspx">Update Password</a></li>
-                                <li><a runat="server" href="~/UI/ChangePicture.aspx">Update Picture</a></li>
-                                <li><a runat="server" href="~/Account/Login.aspx">Sign Out</a></li>
+                                <li><a runat="server" href="~/UI/Profile.aspx">Profile Setting</a></li>
+                                <li><a runat="server" href="~/Account/Login.aspx">Log Out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -75,9 +73,11 @@
             </div>
         </div>
         <div class="container body-content">
-            <div class="col-sm-12" style="min-height: 20px" ></div>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+            <div class="col-sm-12" style="min-height: 20px"></div>
+            <div style="min-height: 600px">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>

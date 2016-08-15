@@ -122,10 +122,14 @@
                     </div>
                     <div class="form-group required">
                         <asp:UpdatePanel ID="UP1" runat="server">
-                            <ContentTemplate>
-                                <asp:Image ID="imgCaptcha" runat="server" />
-                                <asp:Button ID="btnRefresh" runat="server" Text="Refresh" OnClick="btnRefresh_OnClick" formnovalidate="true"/>
-                            </ContentTemplate>
+                            <contenttemplate>
+                                <div class="col-sm-6">
+                                    <asp:Image ID="imgCaptcha" runat="server"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <asp:Button CssClass="form-control" ID="btnRefresh" runat="server" Text="Refresh" OnClick="btnRefresh_OnClick" formnovalidate="true"/>
+                                </div>
+                            </contenttemplate>
                         </asp:UpdatePanel>
                     </div>
                     <div class="col-sm-12 form-group required">
