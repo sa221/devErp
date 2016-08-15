@@ -19,7 +19,6 @@
 <body style="background-image: url(../Image/bg.jpg)">
     <form runat="server" id="MyForm">
         <asp:ScriptManager runat="server">
-            
         </asp:ScriptManager>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -41,8 +40,10 @@
         </div>
         <div class="container body-content">
             <div class="col-sm-12" style="min-height: 20px"></div>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+            <div style="min-height: 600px">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> DevFolder</p>

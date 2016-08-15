@@ -43,9 +43,10 @@ namespace DevERP.Account
             try
             {
                 Reader = Command.ExecuteReader();
-                UserInfo userInfo = new UserInfo();
+                UserInfo userInfo = null;
                 while (Reader.Read())
                 {
+                    userInfo = new UserInfo();
                     userInfo.UserInfoId = Convert.ToInt32(Reader["userinfoId"].ToString());
                     userInfo.LoginId = Convert.ToInt32(Reader["loginId"].ToString());
                     userInfo.UserName = Reader["userName"] != DBNull.Value ? Reader["userName"].ToString() : string.Empty;

@@ -11,7 +11,7 @@ namespace DevERP.UI
 {
 
 
-    public partial class ChangePassword
+    public partial class Profile
     {
     }
 }

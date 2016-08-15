@@ -69,11 +69,12 @@ namespace DevERP
             if (Session["userInfo"]!=null)
             {
                 UserInfo userInfo = (UserInfo) Session["userInfo"];
-                userName.InnerText = userInfo.Name;
-                userImage.ImageUrl = userInfo.Image;
+                userImage.Src = "Image/" + userInfo.Image;
+                Name = userInfo.Name;
             }
         }
 
+        public string Name="User";
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut();

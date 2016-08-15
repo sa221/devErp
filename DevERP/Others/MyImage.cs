@@ -1,12 +1,18 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace NipaRMGManagement.Others
+namespace DevERP.Others
 {
     public class MyImage
     {
+        public static string ImagePath()
+        {
+            //return AppDomain.CurrentDomain.BaseDirectory+"Image\\";
+            return @"Image\";
+        }
         public bool IsImageType(string ext)
         {
             switch (ext.ToLower())

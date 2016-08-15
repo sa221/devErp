@@ -46,7 +46,7 @@ namespace DevERP {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image userImage;
+        protected global::System.Web.UI.HtmlControls.HtmlImage userImage;
         
         /// <summary>
         /// MainContent control.
