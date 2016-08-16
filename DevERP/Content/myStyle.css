@@ -18,3 +18,7 @@
     position: absolute;
     margin-left: 2px;
 }
+ul
+{
+    list-style-type: none;
+}
