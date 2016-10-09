@@ -1,4 +1,4 @@
-﻿using NipaRMGManagement.Others;
+﻿using DevERP.Others;
 
 namespace DevERP.Account
 {

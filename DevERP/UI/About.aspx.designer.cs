@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DevERP
+namespace DevERP.UI
 {
 
 

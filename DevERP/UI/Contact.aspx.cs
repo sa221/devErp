@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.UI;
 
-namespace DevERP
+namespace DevERP.UI
 {
     public partial class Contact : Page
     {

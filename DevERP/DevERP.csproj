@@ -157,6 +157,7 @@
     <Content Include="UI\About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="UI\BankSetup.aspx" />
     <Content Include="UI\Contact.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="packages.config" />
@@ -255,6 +256,13 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="UI\BankSetup.aspx.cs">
+      <DependentUpon>BankSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\BankSetup.aspx.designer.cs">
+      <DependentUpon>BankSetup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

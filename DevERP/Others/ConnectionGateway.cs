@@ -49,9 +49,5 @@ namespace DevERP.Others
                 Connection.Close();
             }
         }
-
-        
-        
-
     }
 }

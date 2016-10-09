@@ -5,11 +5,11 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
-using System.Web.Providers.Entities;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 
-namespace NipaRMGManagement.Others
+namespace DevERP.Others
 {
     public class Provider
     {
@@ -57,6 +57,11 @@ namespace NipaRMGManagement.Others
                 if (textBox != null)
                 {
                     textBox.Value = "";
+                }
+                DropDownList dropDownList = control as DropDownList;
+                if (dropDownList!= null)
+                {
+                    dropDownList.SelectedIndex = -1;
                 }
             }
         }
@@ -144,9 +149,9 @@ namespace NipaRMGManagement.Others
                 try
                 {
                     result = webClient.DownloadString(url);
-                    result = result.Substring(result.IndexOf("<span title=\"") + "<span title=\"".Length);
-                    result = result.Substring(result.IndexOf(">") + 1);
-                    result = result.Substring(0, result.IndexOf("</span>"));
+                    result = result.Substring(result.IndexOf("<span title=\"", StringComparison.Ordinal) + "<span title=\"".Length);
+                    result = result.Substring(result.IndexOf(">", StringComparison.Ordinal) + 1);
+                    result = result.Substring(0, result.IndexOf("</span>", StringComparison.Ordinal));
                 }
                 catch (Exception)
                 {
