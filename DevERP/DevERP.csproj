@@ -188,7 +188,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="UI\ItemSetup.aspx" />
+    <Content Include="UI\PartySetup.aspx" />
     <Content Include="UI\Profile.aspx" />
+    <Content Include="UI\SubItemSetup.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -244,8 +247,17 @@
     </Compile>
     <Compile Include="Account\UserInfo.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="BLL\PartyManager.cs" />
+    <Compile Include="BLL\SubItemManager.cs" />
+    <Compile Include="BLL\ItemManager.cs" />
     <Compile Include="BLL\BankManager.cs" />
+    <Compile Include="DAL\PartyGatway.cs" />
+    <Compile Include="DAL\SubItemGatway.cs" />
+    <Compile Include="DAL\ItemGatway.cs" />
     <Compile Include="DAL\BankGatway.cs" />
+    <Compile Include="Models\Party.cs" />
+    <Compile Include="Models\SubItem.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Bank.cs" />
     <Compile Include="Others\ConnectionGateway.cs" />
     <Compile Include="Others\MyImage.cs" />
@@ -299,12 +311,33 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UI\ItemSetup.aspx.cs">
+      <DependentUpon>ItemSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\ItemSetup.aspx.designer.cs">
+      <DependentUpon>ItemSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PartySetup.aspx.cs">
+      <DependentUpon>PartySetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PartySetup.aspx.designer.cs">
+      <DependentUpon>PartySetup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubItemSetup.aspx.cs">
+      <DependentUpon>SubItemSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\SubItemSetup.aspx.designer.cs">
+      <DependentUpon>SubItemSetup.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

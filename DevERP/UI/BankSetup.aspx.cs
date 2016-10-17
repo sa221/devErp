@@ -9,7 +9,7 @@ namespace DevERP.UI
 {
     public partial class BankSetup : System.Web.UI.Page
     {
-        BankManager bankManager = new BankManager();
+        readonly BankManager _bankManager = new BankManager();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -21,13 +21,13 @@ namespace DevERP.UI
 
         private void BindBank()
         {
-            List<Bank> banks = bankManager.GetAllBank();
+            List<Bank> banks = _bankManager.GetAllBank();
             BankGridView.DataSource = banks;
             BankGridView.DataBind();
         }
         protected void SaveBank_OnClick(object sender, EventArgs e)
         {
-            if (bankManager.InsertBank(bankName.Value))
+            if (_bankManager.InsertBank(bankName.Value))
             {
                 BindBank();
                 successMessage.InnerHtml = Provider.GetSuccessMassage("Successfully Inserted");
@@ -49,7 +49,7 @@ namespace DevERP.UI
             Bank bank = new Bank();
             bank.BankId = Convert.ToInt32(((Label)BankGridView.Rows[e.RowIndex].FindControl("id")).Text);
             bank.BankName = ((TextBox)BankGridView.Rows[e.RowIndex].FindControl("bankNameTextBox")).Text;
-            if (bankManager.UpdateBank(bank))
+            if (_bankManager.UpdateBank(bank))
             {
                 successMessage.InnerHtml = Provider.GetSuccessMassage("Successfully Updated");
             }
@@ -73,7 +73,7 @@ namespace DevERP.UI
         {
             LinkButton lnkRemove = (LinkButton)sender;
             int bankId = Convert.ToInt32(lnkRemove.CommandArgument);
-            if (bankManager.DeleteBank(bankId))
+            if (_bankManager.DeleteBank(bankId))
             {
                 BindBank();
                 successMessage.InnerHtml = Provider.GetSuccessMassage("Successfully Deleted");

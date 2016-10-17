@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace DevERP.Models
+﻿namespace DevERP.Models
 {
     public class Bank
     {
