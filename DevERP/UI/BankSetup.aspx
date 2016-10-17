@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BankSetup.aspx.cs" Inherits="DevERP.UI.BankSetup" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BankSetup.aspx.cs" MaintainScrollPositionOnPostback="true" Inherits="DevERP.UI.BankSetup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -26,55 +26,68 @@
                             </div>
                             <div class="col-sm-2 control-label"></div>
                         </div>
-                    </div>
-                    <div class="form-group col-sm-12">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-2">
-                            <asp:Button CssClass="btn btn-default btn-block" type="submit" ID="SaveBank" Text="Add" runat="server" OnClick="SaveBank_OnClick" />
+                        <div class="form-group col-sm-6">
+                            <div class="col-sm-4">
+                                <asp:Button CssClass="btn btn-default btn-block" type="submit" ID="SaveBank" Text="Add" runat="server" OnClick="SaveBank_OnClick" />
+                            </div>
+                            <div class="col-sm-8"></div>
                         </div>
-                        <div class="col-sm-8"></div>
                     </div>
-                    <style>
-                #MainContent_BankGridView td, #MainContent_BankGridView th {
-                    padding: 10px 0;
-                }
-            </style>
-            <div class="">
-                <asp:GridView ID="BankGridView" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" Width="100%" AutoGenerateEditButton="True" OnRowEditing="BankGridView_OnRowEditing">
-                    <Columns>
-                        <asp:TemplateField HeaderText="#SL NO">
-                            <ItemTemplate>
-                                <%#Container.DataItemIndex+1 %>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Bank ID">
-                            <ItemTemplate>
-                                <asp:Label ID="id" runat="server" Text='<%# Eval("bankId") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Bank Name">
-                            <ItemTemplate>
-                                <asp:Label ID="bankName" runat="server" Text='<%# Eval("bankName") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                    <AlternatingRowStyle BackColor="White" />
-                    <EditRowStyle BackColor="#7C6F57" />
-                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#E3EAEB" />
-                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                    <SortedAscendingHeaderStyle BackColor="#246B61" />
-                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                    <SortedDescendingHeaderStyle BackColor="#15524A" />
 
-                </asp:GridView>
+                    <style>
+                        #MainContent_BankGridView td, #MainContent_BankGridView th {
+                            padding: 10px 0;
+                        }
+                    </style>
+                    <div class="">
+                        <asp:GridView ID="BankGridView" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" Width="100%" OnRowEditing="BankGridView_OnRowEditing" OnRowUpdating="BankGridView_OnRowUpdating" OnRowCancelingEdit="BankGridView_OnRowCancelingEdit">
+                            <Columns>
+                                <asp:TemplateField HeaderText="#SL NO">
+                                    <ItemTemplate>
+                                        <%#Container.DataItemIndex+1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Bank ID" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="id" runat="server" Text='<%# Eval("BankId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Bank Name">
+                                    <ItemTemplate>
+                                        <asp:Label ID="bankName" runat="server" Text='<%# Eval("BankName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="bankNameTextBox" runat="server" Text='<%# Eval("BankName") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="lnkRemove" runat="server" CommandArgument = '<%# Eval("BankId")%>' OnClientClick="return confirm('Do you want to delete?')" Text="Delete" OnClick="lnkRemove_OnClick"></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:CommandField ShowEditButton="True" />
+                            </Columns>
+                            <AlternatingRowStyle BackColor="White" />
+                            <EditRowStyle BackColor="#7C6F57" />
+                            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#E3EAEB" />
+                            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                            <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                            <SortedAscendingHeaderStyle BackColor="#246B61" />
+                            <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                            <SortedDescendingHeaderStyle BackColor="#15524A" />
+
+                        </asp:GridView>
+                    </div>
+                </div>
+                <!-- Panel body-->
             </div>
-                </div><!-- Panel body-->
-            </div><!-- Main panel-->
-        </div><!-- col-sm-12-->
-    </div><!-- Container-->
-    
+            <!-- Main panel-->
+        </div>
+        <!-- col-sm-12-->
+    </div>
+    <!-- Container-->
+
 </asp:Content>

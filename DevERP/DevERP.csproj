@@ -244,6 +244,9 @@
     </Compile>
     <Compile Include="Account\UserInfo.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="BLL\BankManager.cs" />
+    <Compile Include="DAL\BankGatway.cs" />
+    <Compile Include="Models\Bank.cs" />
     <Compile Include="Others\ConnectionGateway.cs" />
     <Compile Include="Others\MyImage.cs" />
     <Compile Include="Others\Provider.cs" />
@@ -313,9 +316,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="BLL\" />
-    <Folder Include="DAL\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
