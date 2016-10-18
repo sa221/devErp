@@ -53,14 +53,7 @@ namespace DevERP.UI
             party.PartyName = ((TextBox)PartyGridView.Rows[e.RowIndex].FindControl("partyNameTextBox")).Text;
             party.PartyMobile = ((TextBox)PartyGridView.Rows[e.RowIndex].FindControl("partyMobileTextBox")).Text;
             party.PartyAddress = ((TextBox)PartyGridView.Rows[e.RowIndex].FindControl("partyAddressTextBox")).Text;
-            if (partyManager.UpdateParty(party))
-            {
-                successMessage.InnerHtml = Provider.GetSuccessMassage("Successfully Updated");
-            }
-            else
-            {
-                successMessage.InnerHtml = Provider.GetErrorMassage("Update failed");
-            }
+            successMessage.InnerHtml = partyManager.UpdateParty(party) ? Provider.GetSuccessMassage("Successfully Updated") : Provider.GetErrorMassage("Update failed");
 
             PartyGridView.EditIndex = -1;
             BindParty();
