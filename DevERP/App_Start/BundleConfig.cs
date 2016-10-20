@@ -28,10 +28,11 @@ namespace DevERP
             // Use the Development version of Modernizr to develop with and learn from. Then, when you’re
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need
             bundles.Add(new ScriptBundle("~/bundles/MyScript").Include(
-                            "~/Scripts/jquery.validate.min.js",
-                            "~/Scripts/jquery-3.1.0.min.js",
-                            "~/Scripts/bootstrap.min.js"
-                             ));
+                "~/Scripts/jquery-3.1.0.js",
+                "~/Scripts/jquery.validate.js",
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/bootstrap-datepicker.js"
+                ));
 
             ScriptManager.ScriptResourceMapping.AddDefinition(
                 "respond",
