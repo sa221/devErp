@@ -6,10 +6,10 @@ namespace DevERP.UI
 {
     public partial class Transaction : System.Web.UI.Page
     {
-        ItemManager itemManager = new ItemManager();
-        SubItemManager subItemManager = new SubItemManager();
-        PartyManager partyManager = new PartyManager();
-        BankManager bankManager = new BankManager();
+        readonly ItemManager _itemManager = new ItemManager();
+        readonly SubItemManager _subItemManager = new SubItemManager();
+        readonly PartyManager _partyManager = new PartyManager();
+        readonly BankManager _bankManager = new BankManager();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -29,7 +29,7 @@ namespace DevERP.UI
         
         private void BindItem()
         {
-            itemNameDropDown.DataSource = itemManager.GetAllItem();
+            itemNameDropDown.DataSource = _itemManager.GetAllItem();
             itemNameDropDown.DataTextField = "ItemName";
             itemNameDropDown.DataValueField = "ItemId";
             itemNameDropDown.DataBind();
@@ -37,7 +37,7 @@ namespace DevERP.UI
         }
         private void BindSubItem(int itemId)
         {
-            subItemNameDropDown.DataSource = subItemManager.GetAllSubItem(itemId);
+            subItemNameDropDown.DataSource = _subItemManager.GetAllSubItem(itemId);
             subItemNameDropDown.DataTextField = "SubItemName";
             subItemNameDropDown.DataValueField = "SubItemId";
             subItemNameDropDown.DataBind();
@@ -59,7 +59,7 @@ namespace DevERP.UI
         }
         private void BindParty()
         {
-            partyDropDown.DataSource = partyManager.GetAllParty();
+            partyDropDown.DataSource = _partyManager.GetAllParty();
             partyDropDown.DataTextField = "PartyName";
             partyDropDown.DataValueField = "PartyId";
             partyDropDown.DataBind();
@@ -67,7 +67,7 @@ namespace DevERP.UI
         }
         private void BindBank()
         {
-            bankDropDown.DataSource = bankManager.GetAllBank();
+            bankDropDown.DataSource = _bankManager.GetAllBank();
             bankDropDown.DataTextField = "BankName";
             bankDropDown.DataValueField = "BankId";
             bankDropDown.DataBind();

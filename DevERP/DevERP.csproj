@@ -341,6 +341,7 @@
     <Compile Include="DAL\ItemGatway.cs" />
     <Compile Include="DAL\BankGatway.cs" />
     <Compile Include="Models\Party.cs" />
+    <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Models\SubItem.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Bank.cs" />
