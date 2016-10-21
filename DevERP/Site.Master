@@ -33,13 +33,21 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/UI/About.aspx">About</a></li>
-                        <li><a runat="server" href="~/UI/Contact.aspx">Contact</a></li>
+                        <li><a runat="server" href="~/UI/Transaction.aspx">Transaction</a></li>
+                        <li>
+                            <a id="setupMenu" class="dropdown-toggle" data-toggle="dropdown" runat="server" href="#">
+                                Setup<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu MyDropDownMenu">
+                                <li><a runat="server" href="~/UI/ItemSetup.aspx">Item Setup</a></li>
+                                <li><a runat="server" href="~/UI/SubItemSetup.aspx">Sub Item Setup</a></li>
+                                <li><a runat="server" href="~/UI/PartySetup.aspx">Party Setup</a></li>
+                                <li><a runat="server" href="~/UI/BankSetup.aspx">Bank Setup</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-
-
                             <a id="userName" class="dropdown-toggle" data-toggle="dropdown" runat="server" href="#">
                                 <img id="userImage" class="img-circle" alternatetext="Image" runat="server" style="height: 30px; width: 30px;" />
                                 <%=Name%><span class="caret"></span>

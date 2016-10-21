@@ -14,12 +14,20 @@ namespace DevERP.UI
         {
             if (!IsPostBack)
             {
-                LoadItem();
-                LoadParty();
+                LoadAllDropdown();
             }
         }
 
-        private void LoadItem()
+        private void LoadAllDropdown()
+        {
+            BindItem();
+            LoadSubitem();
+            BindParty();
+            LoadBank();
+
+        }
+        
+        private void BindItem()
         {
             itemNameDropDown.DataSource = itemManager.GetAllItem();
             itemNameDropDown.DataTextField = "ItemName";
@@ -27,15 +35,29 @@ namespace DevERP.UI
             itemNameDropDown.DataBind();
             itemNameDropDown.Items.Insert(0, new ListItem("Select", "0"));
         }
-        private void LoadSubItem()
+        private void BindSubItem(int itemId)
         {
-            int itemId = Convert.ToInt32(itemNameDropDown.SelectedValue);
             subItemNameDropDown.DataSource = subItemManager.GetAllSubItem(itemId);
             subItemNameDropDown.DataTextField = "SubItemName";
             subItemNameDropDown.DataValueField = "SubItemId";
             subItemNameDropDown.DataBind();
+            subItemNameDropDown.Items.Insert(0, new ListItem("Select", "0"));
         }
-        private void LoadParty()
+
+        private void LoadSubitem()
+        {
+            int itemId = Convert.ToInt32(itemNameDropDown.SelectedValue);
+            if (itemId>0)
+            {
+                BindSubItem(itemId);
+            }
+            else
+            {
+                subItemNameDropDown.Items.Clear();
+                subItemNameDropDown.Items.Insert(0, new ListItem("Select", "0"));
+            }
+        }
+        private void BindParty()
         {
             partyDropDown.DataSource = partyManager.GetAllParty();
             partyDropDown.DataTextField = "PartyName";
@@ -43,7 +65,7 @@ namespace DevERP.UI
             partyDropDown.DataBind();
             partyDropDown.Items.Insert(0, new ListItem("Select", "0"));
         }
-        private void LoadBank()
+        private void BindBank()
         {
             bankDropDown.DataSource = bankManager.GetAllBank();
             bankDropDown.DataTextField = "BankName";
@@ -51,22 +73,27 @@ namespace DevERP.UI
             bankDropDown.DataBind();
             bankDropDown.Items.Insert(0, new ListItem("Select", "0"));
         }
-        protected void itemNameDropDown_OnSelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadSubItem();
-        }
 
-        protected void TypeDropDown_OnTextChanged(object sender, EventArgs e)
+        private void LoadBank()
         {
             if (TypeDropDown.SelectedValue.Equals("cheque"))
             {
-                LoadBank();
+                BindBank();
             }
             else
             {
                 bankDropDown.Items.Clear();
                 bankDropDown.Items.Insert(0, new ListItem("Select", "0"));
             }
+        }
+        protected void itemNameDropDown_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSubitem();
+        }
+
+        protected void TypeDropDown_OnTextChanged(object sender, EventArgs e)
+        {
+            LoadBank();
         }
 
         protected void SaveTransaction_OnClick(object sender, EventArgs e)
