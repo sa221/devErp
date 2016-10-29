@@ -18,6 +18,7 @@ namespace DevERP.UI
             if (!IsPostBack)
             {
                 LoadAllDropdown();
+                BindTransactionGrid();
             }
         }
 
@@ -33,6 +34,7 @@ namespace DevERP.UI
         private void BindTransactionGrid()
         {
             transactionGridView.DataSource = _transactionManager.GetAllTransaction();
+            transactionGridView.DataBind();
 
         }
         private void BindItem()

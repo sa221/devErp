@@ -184,9 +184,9 @@
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Party Id" Visible="False">
+                                <asp:TemplateField HeaderText="Transaction Id" Visible="False">
                                     <ItemTemplate>
-                                        <asp:Label ID="id" runat="server" Text='<%# Eval("PartyId") %>'></asp:Label>
+                                        <asp:Label ID="id" runat="server" Text='<%# Eval("transactionId") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Party Name">

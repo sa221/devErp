@@ -38,7 +38,7 @@ namespace DevERP.DAL
         }
         public bool UpdateTransaction(Transaction transaction)
         {
-            Query = "Update Transaction set transactionDate=@transactionDate,itemId=@itemId,subItemId=@subItemId,amount=@amount,partyId=@partyId," +
+            Query = "Update Transactions set transactionDate=@transactionDate,itemId=@itemId,subItemId=@subItemId,amount=@amount,partyId=@partyId," +
                     "transactionType=@transactionType,bankId=@bankId,remarks=@remarks where transactionId = @transactionId";
             PrepareCommand(CommandType.Text);
             Command.Parameters.AddWithValue("@transactionId", transaction.TransactionId);
@@ -66,7 +66,7 @@ namespace DevERP.DAL
         }
         public bool DeleteTransaction(int transactionId)
         {
-            Query = "delete from Transaction where transactionId = @transactionId";
+            Query = "delete from Transactions where transactionId = @transactionId";
             PrepareCommand(CommandType.Text);
             Command.Parameters.AddWithValue("@transactionId", transactionId);
             Connection.Open();
@@ -85,7 +85,7 @@ namespace DevERP.DAL
         }
         public List<Transaction> GetAllTransaction()
         {
-            Query = "Select * from SubItem where itemId= @itemId";
+            Query = "Select * from transactions";
             PrepareCommand(CommandType.Text);
             List<Transaction> transactions = new List<Transaction>();
             Connection.Open();
@@ -99,7 +99,7 @@ namespace DevERP.DAL
                     transaction.TransactionDate = Convert.ToDateTime(Reader["transactionDate"].ToString());
                     transaction.ItemId = Convert.ToInt32(Reader["ItemId"].ToString());
                     transaction.SubItemId = Convert.ToInt32(Reader["subItemId"].ToString());
-                    transaction.Amount = Convert.ToInt32(Reader["amount"].ToString());
+                    transaction.Amount = Convert.ToDecimal(Reader["amount"].ToString());
                     transaction.TransactionCatagory = Reader["transactionCatagory"].ToString();
                     transaction.PartyId = Convert.ToInt32(Reader["partyId"].ToString());
                     transaction.TransactionType = Reader["transactionType"].ToString();
