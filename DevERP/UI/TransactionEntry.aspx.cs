@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
 using System.Web.UI.WebControls;
 using DevERP.BLL;
 using DevERP.Models;
@@ -13,6 +15,7 @@ namespace DevERP.UI
         readonly PartyManager _partyManager = new PartyManager();
         readonly BankManager _bankManager = new BankManager();
         readonly TransactionManager _transactionManager = new TransactionManager();
+         
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,6 +23,7 @@ namespace DevERP.UI
                 LoadAllDropdown();
                 BindTransactionGrid();
             }
+            SaveTransaction.Text = "Save";
         }
 
         private void LoadAllDropdown()
@@ -33,8 +37,8 @@ namespace DevERP.UI
 
         private void BindTransactionGrid()
         {
-            transactionGridView.DataSource = _transactionManager.GetAllTransaction();
-            transactionGridView.DataBind();
+            TransactionGridView.DataSource = _transactionManager.GetAllTransaction();
+            TransactionGridView.DataBind();
 
         }
         private void BindItem()
@@ -135,19 +139,38 @@ namespace DevERP.UI
             return transactionModel;
 
         }
-        protected void TransactionGridView_OnRowEditing(object sender, GridViewEditEventArgs e)
-        {
-
-        }
-
         protected void lnkEdit_OnClick(object sender, EventArgs e)
         {
-
+            LinkButton lnkRemove = (LinkButton)sender;
+            int transactionId = Convert.ToInt32(lnkRemove.CommandArgument);
+            transactionHidden.Value = transactionId.ToString();
+            Transaction transaction = _transactionManager.GetAllTransaction().FirstOrDefault(x => x.TransactionId.Equals(transactionId));
+            if (transaction != null)
+            {
+                transactionDate.Value = transaction.TransactionDate.ToString("MM/dd/yyyy");
+                itemNameDropDown.SelectedValue = transaction.ItemId.ToString();
+                LoadSubitem();
+                subItemNameDropDown.SelectedValue = transaction.SubItemId.ToString();
+                amount.Value = transaction.Amount.ToString(CultureInfo.CurrentCulture);
+                CatagoryDropDown.SelectedValue = transaction.TransactionCatagory;
+                partyDropDown.SelectedValue = transaction.PartyId.ToString();
+                TypeDropDown.SelectedValue = transaction.TransactionType;
+                LoadBank();
+                bankDropDown.SelectedValue = transaction.BankId.ToString();
+                remarks.Value = transaction.Remarks;
+                SaveTransaction.Text = "Update";
+            }
+            else
+            {
+                successMessage.InnerHtml = Provider.GetErrorMassage("Something is Error");
+            }
         }
 
         protected void lnkRemove_OnClick(object sender, EventArgs e)
         {
 
         }
+
+        
     }
 }

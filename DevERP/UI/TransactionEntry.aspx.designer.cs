@@ -22,6 +22,15 @@ namespace DevERP.UI {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl successMessage;
         
         /// <summary>
+        /// transactionHidden control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField transactionHidden;
+        
+        /// <summary>
         /// transactionDate control.
         /// </summary>
         /// <remarks>
@@ -112,12 +121,12 @@ namespace DevERP.UI {
         protected global::System.Web.UI.WebControls.Button SaveTransaction;
         
         /// <summary>
-        /// transactionGridView control.
+        /// TransactionGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView transactionGridView;
+        protected global::System.Web.UI.WebControls.GridView TransactionGridView;
     }
 }

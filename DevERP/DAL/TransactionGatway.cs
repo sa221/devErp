@@ -85,7 +85,7 @@ namespace DevERP.DAL
         }
         public List<Transaction> GetAllTransaction()
         {
-            Query = "Select * from transactions";
+            Query = "select * from GetAllTransaction";
             PrepareCommand(CommandType.Text);
             List<Transaction> transactions = new List<Transaction>();
             Connection.Open();
@@ -95,17 +95,51 @@ namespace DevERP.DAL
                 while (Reader.Read())
                 {
                     Transaction transaction = new Transaction();
-                    transaction.TransactionId = Convert.ToInt32(Reader["transactionId"].ToString());
-                    transaction.TransactionDate = Convert.ToDateTime(Reader["transactionDate"].ToString());
-                    transaction.ItemId = Convert.ToInt32(Reader["ItemId"].ToString());
-                    transaction.SubItemId = Convert.ToInt32(Reader["subItemId"].ToString());
-                    transaction.Amount = Convert.ToDecimal(Reader["amount"].ToString());
-                    transaction.TransactionCatagory = Reader["transactionCatagory"].ToString();
-                    transaction.PartyId = Convert.ToInt32(Reader["partyId"].ToString());
-                    transaction.TransactionType = Reader["transactionType"].ToString();
-                    transaction.BankId = Convert.ToInt32(Reader["bankId"].ToString());
-                    transaction.Remarks = Reader["remarks"].ToString();
-                    transaction.LastModify = Convert.ToDateTime(Reader["lastModify"].ToString());
+                    transaction.TransactionId = Reader["transactionId"] != DBNull.Value
+                        ? Convert.ToInt32(Reader["transactionId"].ToString())
+                        : 0;
+                    transaction.TransactionDate = Reader["transactionDate"] != DBNull.Value
+                        ? Convert.ToDateTime(Reader["transactionDate"].ToString())
+                        : DateTime.MaxValue;
+                    transaction.ItemId = Reader["itemId"] != DBNull.Value
+                        ? Convert.ToInt32(Reader["itemId"].ToString())
+                        : 0;
+                    transaction.ItemName = Reader["itemName"] != DBNull.Value
+                        ? Reader["itemName"].ToString()
+                        : string.Empty;
+                    transaction.SubItemId = Reader["subItemId"] != DBNull.Value
+                        ? Convert.ToInt32(Reader["subItemId"].ToString())
+                        : 0;
+                    transaction.SubItemName = Reader["subItemName"] != DBNull.Value
+                        ? Reader["subItemName"].ToString()
+                        : string.Empty;
+                    transaction.Amount = Reader["amount"] != DBNull.Value
+                        ? Convert.ToDecimal(Reader["amount"].ToString())
+                        : 0;
+                    transaction.TransactionCatagory = Reader["transactionCatagory"] != DBNull.Value
+                        ? Reader["transactionCatagory"].ToString()
+                        : string.Empty;
+                    transaction.PartyId = Reader["partyId"] != DBNull.Value
+                        ? Convert.ToInt32(Reader["partyId"].ToString())
+                        : 0;
+                    transaction.PartyName = Reader["partyName"] != DBNull.Value
+                        ? Reader["partyName"].ToString()
+                        : string.Empty;
+                    transaction.TransactionType = Reader["transactionType"] != DBNull.Value
+                        ? Reader["transactionType"].ToString()
+                        : string.Empty;
+                    transaction.BankId = Reader["bankId"] != DBNull.Value
+                        ? Convert.ToInt32(Reader["bankId"].ToString())
+                        : 0;
+                    transaction.BankName = Reader["bankName"] != DBNull.Value
+                        ? Reader["bankName"].ToString()
+                        : string.Empty;
+                    transaction.Remarks = Reader["remarks"] != DBNull.Value
+                        ? Reader["remarks"].ToString()
+                        : string.Empty;
+                    transaction.LastModify = Reader["lastModify"] != DBNull.Value
+                        ? Convert.ToDateTime(Reader["lastModify"].ToString())
+                        : DateTime.MaxValue;
                     transactions.Add(transaction);
                 }
             }

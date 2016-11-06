@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TransactionEntry.aspx.cs" Inherits="DevERP.UI.TransactionEntry" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="TransactionEntry.aspx.cs" Inherits="DevERP.UI.TransactionEntry" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style>
         .error {
@@ -97,6 +98,9 @@
                     <div class="form-group col-sm-12">
                         <div class="col-sm-12 control-label" runat="server" id="successMessage"></div>
                     </div>
+                     <div class="form-group col-sm-12">
+                        <asp:HiddenField runat="server" ID="transactionHidden"/>
+                    </div>
                     <div class="col-sm-12">
                         <div class="form-group col-sm-4">
                             <label class="col-sm-4 control-label">Transacton Date<b class="text-danger">*</b></label>
@@ -177,7 +181,7 @@
                         }
                     </style>
                     <div class="">
-                        <asp:GridView ID="transactionGridView" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" Width="100%" OnRowEditing="TransactionGridView_OnRowEditing">
+                        <asp:GridView ID="TransactionGridView" runat="server" HorizontalAlignmnet="Center" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" Width="100%" >
                             <Columns>
                                 <asp:TemplateField HeaderText="#SL NO">
                                     <ItemTemplate>
@@ -186,33 +190,76 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Transaction Id" Visible="False">
                                     <ItemTemplate>
-                                        <asp:Label ID="id" runat="server" Text='<%# Eval("transactionId") %>'></asp:Label>
+                                        <asp:Label ID="id" runat="server" Text='<%# Eval("TransactionId") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Party Name">
+                                <asp:TemplateField HeaderText="Transaction Date">
+                                    <ItemTemplate>
+                                        <asp:Label ID="transactionDate" runat="server" Text='<%# Convert.ToDateTime(Eval("TransactionDate")).ToShortDateString() %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Item">
+                                    <ItemTemplate>
+                                        <asp:Label ID="itemId" runat="server" Text='<%# Eval("ItemId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="itemName" runat="server" Text='<%# Eval("ItemName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Sub-Item">
+                                    <ItemTemplate>
+                                        <asp:Label ID="subItemId" runat="server" Text='<%# Eval("SubItemId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="subItemName" runat="server" Text='<%# Eval("SubItemName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Amount">
+                                    <ItemTemplate>
+                                        <asp:Label ID="amount" runat="server" Text='<%# Eval("Amount") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Transaction Catagory">
+                                    <ItemTemplate>
+                                        <asp:Label ID="transactionCatagory" runat="server" Text='<%# Eval("TransactionCatagory") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Party">
+                                    <ItemTemplate>
+                                        <asp:Label ID="partyId" runat="server" Text='<%# Eval("PartyId") %>'></asp:Label>
+                                    </ItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="partyName" runat="server" Text='<%# Eval("PartyName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Party Mobile">
+                                <asp:TemplateField HeaderText="Transaction Type">
                                     <ItemTemplate>
-                                        <asp:Label ID="partyMobile" runat="server" Text='<%# Eval("PartyMobile") %>'></asp:Label>
+                                        <asp:Label ID="transactionType" runat="server" Text='<%# Eval("TransactionType") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Party Address">
+                                <asp:TemplateField HeaderText="Bank">
                                     <ItemTemplate>
-                                        <asp:Label ID="partyAddress" runat="server" Text='<%# Eval("PartyAddress") %>'></asp:Label>
+                                        <asp:Label ID="bankId" runat="server" Text='<%# Eval("BankId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="bankName" runat="server" Text='<%# Eval("BankName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Remarks">
+                                    <ItemTemplate>
+                                        <asp:Label ID="remarks" runat="server" Text='<%# Eval("Remarks") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lnkEdit" runat="server" CommandArgument='<%# Eval("PartyId")%>' Text="Edit" OnClick="lnkEdit_OnClick"></asp:LinkButton>
-                                    </ItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="lnkRemove" runat="server" CommandArgument='<%# Eval("PartyId")%>' OnClientClick="return confirm('Do you want to delete?')" Text="Delete" OnClick="lnkRemove_OnClick"></asp:LinkButton>
+                                        <asp:LinkButton ID="lnkEdit" runat="server" CommandArgument='<%# Eval("TransactionId")%>' Text="Edit" OnClick="lnkEdit_OnClick"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ShowEditButton="True" />
+                                <asp:TemplateField HeaderText="Item">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="lnkRemove" runat="server" CommandArgument='<%# Eval("TransactionId")%>' OnClientClick="return confirm('Do you want to delete?')" Text="Delete" OnClick="lnkRemove_OnClick"></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                             <AlternatingRowStyle BackColor="White" />
                             <EditRowStyle BackColor="#7C6F57" />
