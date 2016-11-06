@@ -23,7 +23,6 @@ namespace DevERP.UI
                 LoadAllDropdown();
                 BindTransactionGrid();
             }
-            SaveTransaction.Text = "Save";
         }
 
         private void LoadAllDropdown()
@@ -113,21 +112,36 @@ namespace DevERP.UI
         protected void SaveTransaction_OnClick(object sender, EventArgs e)
         {
             Transaction transaction = GetTransactionModel();
-            if (_transactionManager.InsertTransaction(transaction))
+            if (transaction.TransactionId>0)
             {
-                successMessage.InnerHtml = Provider.GetSuccessMassage("Sucsessfully Insert");
+                successMessage.InnerHtml = _transactionManager.UpdateTransaction(transaction)
+                    ? Provider.GetSuccessMassage("Sucsessfully Update")
+                    : Provider.GetErrorMassage("Update failed");
             }
             else
             {
-                successMessage.InnerHtml = Provider.GetErrorMassage("Insert failed");
+                successMessage.InnerHtml = _transactionManager.SaveTransaction(transaction)
+                    ? Provider.GetSuccessMassage("Sucsessfully Insert")
+                    : Provider.GetErrorMassage("Insert failed");
             }
+            BindTransactionGrid();
+            ChangeButtonText();
+        }
 
+        private void ChangeButtonText()
+        {
+            SaveTransaction.Text = "Save";
+            transactionHidden.Value = string.Empty;
         }
 
         private Transaction GetTransactionModel()
         {
             Transaction transactionModel = new Transaction();
-            transactionModel.TransactionDate = Provider.DateTimeConverter(transactionDate.Value);
+            if (!string.IsNullOrEmpty(transactionHidden.Value))
+            {
+                transactionModel.TransactionId = Convert.ToInt32(transactionHidden.Value);
+            }
+            transactionModel.TransactionDate = Provider.StringToDateTime(transactionDate.Value);
             transactionModel.ItemId = Convert.ToInt32(itemNameDropDown.SelectedValue);
             transactionModel.SubItemId = Convert.ToInt32(subItemNameDropDown.SelectedValue);
             transactionModel.Amount = Convert.ToDecimal(amount.Value);
@@ -147,7 +161,7 @@ namespace DevERP.UI
             Transaction transaction = _transactionManager.GetAllTransaction().FirstOrDefault(x => x.TransactionId.Equals(transactionId));
             if (transaction != null)
             {
-                transactionDate.Value = transaction.TransactionDate.ToString("MM/dd/yyyy");
+                transactionDate.Value = Provider.DateTimeToSting(transaction.TransactionDate);
                 itemNameDropDown.SelectedValue = transaction.ItemId.ToString();
                 LoadSubitem();
                 subItemNameDropDown.SelectedValue = transaction.SubItemId.ToString();
@@ -168,7 +182,10 @@ namespace DevERP.UI
 
         protected void lnkRemove_OnClick(object sender, EventArgs e)
         {
-
+            LinkButton lnkRemove = (LinkButton)sender;
+            int transactionId = Convert.ToInt32(lnkRemove.CommandArgument);
+            successMessage.InnerHtml = _transactionManager.DeleteTransaction(transactionId) ? Provider.GetSuccessMassage("Sucsessfully Deleted") : Provider.GetErrorMassage("delete failed");
+            BindTransactionGrid();
         }
 
         

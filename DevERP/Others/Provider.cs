@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
@@ -13,26 +14,6 @@ namespace DevERP.Others
 {
     public class Provider
     {
-        public static int MedicalSupport = 250;
-        public static int ConvanceSupport = 200;
-        public static int FoodSupport = 650;
-
-        private static readonly int Others = MedicalSupport + ConvanceSupport + FoodSupport;
-        public static int GetBasicSalary(int gross)
-        {
-            return (int) Math.Round(((gross - Others)/1.4), 0);
-        }
-
-        public static int GetHouseRent(int gross)
-        {
-            return (gross - Others) - GetBasicSalary(gross);
-        }
-
-        public static double GetOverTimeRate(int gross)
-        {
-            return  Math.Round((double)GetBasicSalary(gross)/104,2);
-        }
-
 
         private static Control[] FlattenHierachy(Control root)
         {
@@ -59,23 +40,27 @@ namespace DevERP.Others
                     textBox.Value = "";
                 }
                 DropDownList dropDownList = control as DropDownList;
-                if (dropDownList!= null)
+                if (dropDownList != null)
                 {
                     dropDownList.SelectedIndex = -1;
                 }
             }
         }
 
-        public static DateTime DateTimeConverter(string date)
+        public static DateTime StringToDateTime(string date)
         {
             try
             {
-                return DateTime.ParseExact(date, "MM/dd/yyyy", null);
+                return DateTime.Parse(date, new CultureInfo("en-US"));
             }
             catch (Exception)
             {
                 return DateTime.MaxValue;
             }
+        }
+        public static string DateTimeToSting(DateTime date)
+        {
+            return date.ToString("dd/MM/yyyy");
         }
 
         public enum Status
@@ -89,7 +74,7 @@ namespace DevERP.Others
 
         public static string GetSuccessMassage(string msg)
         {
-            return "<b><p style=color:green>"+msg+"</p></b>";
+            return "<b><p style=color:green>" + msg + "</p></b>";
         }
         public static string GetErrorMassage(string msg)
         {
@@ -193,6 +178,6 @@ namespace DevERP.Others
                 s.Append(combination[random.Next(combination.Length)]);
             return s.ToString();
         }
-        
+
     }
 }

@@ -38,18 +38,19 @@ namespace DevERP.DAL
         }
         public bool UpdateTransaction(Transaction transaction)
         {
-            Query = "Update Transactions set transactionDate=@transactionDate,itemId=@itemId,subItemId=@subItemId,amount=@amount,partyId=@partyId," +
-                    "transactionType=@transactionType,bankId=@bankId,remarks=@remarks where transactionId = @transactionId";
+            Query = "Update Transactions set transactionDate=@transactionDate,itemId=@itemId,subItemId=@subItemId,amount=@amount,transactionCatagory=@transactionCatagory," +
+                    "partyId=@partyId,transactionType=@transactionType,bankId=@bankId,remarks=@remarks where transactionId = @transactionId";
             PrepareCommand(CommandType.Text);
             Command.Parameters.AddWithValue("@transactionId", transaction.TransactionId);
             Command.Parameters.AddWithValue("@transactionDate", transaction.TransactionDate);
-            Command.Parameters.AddWithValue("@itemId", transaction.TransactionDate);
-            Command.Parameters.AddWithValue("@subItemId", transaction.TransactionDate);
-            Command.Parameters.AddWithValue("@amount", transaction.TransactionDate);
-            Command.Parameters.AddWithValue("@partyId", transaction.TransactionDate);
-            Command.Parameters.AddWithValue("@transactionType", transaction.TransactionDate);
-            Command.Parameters.AddWithValue("@bankId", transaction.TransactionDate);
-            Command.Parameters.AddWithValue("@remarks", transaction.TransactionDate);
+            Command.Parameters.AddWithValue("@itemId", transaction.ItemId);
+            Command.Parameters.AddWithValue("@subItemId", transaction.SubItemId);
+            Command.Parameters.AddWithValue("@amount", transaction.Amount);
+            Command.Parameters.AddWithValue("@transactionCatagory", transaction.TransactionCatagory);
+            Command.Parameters.AddWithValue("@partyId", transaction.PartyId);
+            Command.Parameters.AddWithValue("@transactionType", transaction.TransactionType);
+            Command.Parameters.AddWithValue("@bankId", transaction.BankId);
+            Command.Parameters.AddWithValue("@remarks", transaction.Remarks);
             Connection.Open();
             try
             {

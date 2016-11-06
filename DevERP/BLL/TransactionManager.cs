@@ -8,7 +8,7 @@ namespace DevERP.BLL
     {
         readonly TransactionGatway _transactionGatway = new TransactionGatway();
 
-        public bool InsertTransaction(Transaction transaction)
+        public bool SaveTransaction(Transaction transaction)
         {
             return _transactionGatway.InsertTransaction(transaction);
         }

@@ -11,7 +11,8 @@
         $(document).ready(function () {
             $("#MainContent_transactionDate").datepicker({
                 autoclose: true,
-                todayHighlight: true
+                todayHighlight: true,
+                format: "dd/mm/yyyy"
             });
             $("#myForm").validate({
                 rules: {
