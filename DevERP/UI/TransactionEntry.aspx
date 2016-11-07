@@ -89,7 +89,7 @@
             <div class="row main panel panel-info">
                 <div class="panel-heading">
                     <div class="panel-title">
-                        <h1 class="title">Transactions</h1>
+                        <h1 class="title">Transaction Entry</h1>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -104,9 +104,9 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group col-sm-4">
-                            <label class="col-sm-4 control-label">Transacton Date<b class="text-danger">*</b></label>
+                            <label class="col-sm-4 control-label">Transaction Date<b class="text-danger">*</b></label>
                             <div class="col-sm-8">
-                                <input runat="server" class="form-control" type="text" id="transactionDate" name="transactionDate" placeholder="Ex MM/DD/YYYY" />
+                                <input runat="server" class="form-control" type="text" id="transactionDate" name="transactionDate" placeholder="Ex DD/MM/YYYY" />
                             </div>
                         </div>
                         <div class="form-group col-sm-4">

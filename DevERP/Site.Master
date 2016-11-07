@@ -33,7 +33,15 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/UI/TransactionEntry.aspx">Transaction</a></li>
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" runat="server" href="#">
+                                Transaction<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu MyDropDownMenu">
+                                <li><a runat="server" href="~/UI/TransactionEntry.aspx">Transaction Entry</a></li>
+                                <li><a runat="server" href="~/UI/TransactionVIew.aspx">Transaction View</a></li>
+                            </ul>
+                        </li>
                         <li>
                             <a id="setupMenu" class="dropdown-toggle" data-toggle="dropdown" runat="server" href="#">
                                 Setup<span class="caret"></span>
