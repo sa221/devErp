@@ -33,7 +33,7 @@ namespace DevERP.UI
             TransactionViewModel transactionView = new TransactionViewModel();
             if (string.IsNullOrEmpty(fromDate.Value))
             {
-                transactionView.FromDate = DateTime.MinValue;
+                transactionView.FromDate = Provider.GetMinDate();
             }
             else
             {

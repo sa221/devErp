@@ -9,14 +9,16 @@ namespace DevERP.DAL
     public class ChequePassGatway : ConnectionGateway
     {
         
-        public List<Transaction> GetAllChequeTransactions()
+        public List<Transaction> GetAllChequeTransactions(ChequePassModel chequePassModel)
         {
             Query = "select t.transactionId,t.transactionDate,t.itemId,i.itemName,t.subItemId,s.subItemName,t.amount,t.transactionCatagory," +
                     "t.partyId,p.partyName,t.transactionType,t.bankId,b.bankName,t.remarks,t.chequeStatus,t.lastModify " +
                     "from Transactions as t left outer join Item as i on t.itemId=i.itemId left outer join SubItem as s " +
                     "on t.subItemId=s.subItemId left outer join Bank as b on t.bankId=b.bankId left outer join Party as p " +
-                    "on t.partyId=p.partyId where transactionType='cheque' ";
+                    "on t.partyId=p.partyId where transactionType='cheque' and t.transactionDate between @fromDate and @toDate";
             PrepareCommand(CommandType.Text);
+            Command.Parameters.AddWithValue("@fromDate", chequePassModel.FromDate);
+            Command.Parameters.AddWithValue("@toDate", chequePassModel.ToDate);
             List<Transaction> transactions = new List<Transaction>();
             Connection.Open();
             try
@@ -87,5 +89,27 @@ namespace DevERP.DAL
             }
             return transactions;
         }
+        public bool UpdateChequeStatus(int transactionId, string chequeStatus)
+        {
+            Query = "Update Transactions set chequeStatus=@chequeStatus where transactionId = @transactionId";
+            PrepareCommand(CommandType.Text);
+            Command.Parameters.AddWithValue("@transactionId", transactionId);
+            Command.Parameters.AddWithValue("@chequeStatus", chequeStatus);
+            
+            Connection.Open();
+            try
+            {
+                return Command.ExecuteNonQuery() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                CloseAllConnection();
+            }
+        }
+        
     }
 }

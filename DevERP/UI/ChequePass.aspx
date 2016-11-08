@@ -138,15 +138,15 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Status">
                                     <ItemTemplate>
-                                        <asp:Label ID="status" runat="server" Text='<%#  Eval("ChequeStatus") %>'></asp:Label>
+                                        <asp:Label ID="status" runat="server" Text='<%# Eval("ChequeStatus") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="">
+                                <asp:TemplateField HeaderText="Pass">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="PassButton" runat="server" CommandArgument='<%# Eval("TransactionId")%>' Text="Pass" OnClick="PassButton_OnClick"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Item">
+                                <asp:TemplateField HeaderText="Cancel">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="CancelButton" runat="server" CommandArgument='<%# Eval("TransactionId")%>' OnClientClick="return confirm('Are You Sure?')" Text="Cancel" OnClick="CancelButton_OnClick"></asp:LinkButton>
                                     </ItemTemplate>

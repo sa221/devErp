@@ -63,6 +63,14 @@ namespace DevERP.Others
             return date.ToString("dd/MM/yyyy");
         }
 
+        public static DateTime GetMinDate()
+        {
+            return new DateTime(2000,01,01);
+        }
+        public static DateTime GetMaxDate()
+        {
+            return new DateTime(2100, 12, 31);
+        }
         public enum Status
         {
             Success,
@@ -70,6 +78,12 @@ namespace DevERP.Others
             ExistUser,
             ExistEmail,
             Others
+        }
+        public enum ChequeStatus
+        {
+            Pending,
+            Pass,
+            Cancel
         }
 
         public static string GetSuccessMassage(string msg)
