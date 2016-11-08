@@ -18,6 +18,7 @@ namespace DevERP.Models
         public int BankId { get; set; }
         public string BankName { get; set; }
         public string Remarks { get; set; }
+        public string ChequeStatus { get; set; }
         public DateTime LastModify { get; set; }
     }
 }

@@ -243,6 +243,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="UI\BankSetup.aspx" />
+    <Content Include="UI\ChequePass.aspx" />
     <Content Include="UI\Contact.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="packages.config" />
@@ -335,18 +336,21 @@
     <Compile Include="Account\UserInfo.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="BLL\PartyManager.cs" />
+    <Compile Include="BLL\ChequePassManager.cs" />
     <Compile Include="BLL\TransactionViewManager.cs" />
     <Compile Include="BLL\TransactionManager.cs" />
     <Compile Include="BLL\SubItemManager.cs" />
     <Compile Include="BLL\ItemManager.cs" />
     <Compile Include="BLL\BankManager.cs" />
     <Compile Include="DAL\PartyGatway.cs" />
+    <Compile Include="DAL\ChequePassGatway.cs" />
     <Compile Include="DAL\TransactionVIewGatway.cs" />
     <Compile Include="DAL\TransactionGatway.cs" />
     <Compile Include="DAL\SubItemGatway.cs" />
     <Compile Include="DAL\ItemGatway.cs" />
     <Compile Include="DAL\BankGatway.cs" />
     <Compile Include="Models\Party.cs" />
+    <Compile Include="Models\ChequePassModel.cs" />
     <Compile Include="Models\TransactionViewModel.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\SubItem.cs" />
@@ -370,6 +374,13 @@
     </Compile>
     <Compile Include="UI\BankSetup.aspx.designer.cs">
       <DependentUpon>BankSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ChequePass.aspx.cs">
+      <DependentUpon>ChequePass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\ChequePass.aspx.designer.cs">
+      <DependentUpon>ChequePass.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
