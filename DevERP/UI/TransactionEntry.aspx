@@ -135,7 +135,6 @@
                                 <asp:DropDownList runat="server" class="form-control" ID="CatagoryDropDown" name="CatagoryDropDown">
                                     <asp:ListItem Value="expence">Expence</asp:ListItem>
                                     <asp:ListItem Value="income">Income</asp:ListItem>
-                                    <asp:ListItem Value="asset">Asset</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -251,7 +250,8 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Remarks">
                                     <ItemTemplate>
-                                        <asp:Label ID="remarks" runat="server" Text='<%# Eval("Remarks") %>'></asp:Label>
+                                        <%--<asp:Label ID="remarks" runat="server" Text='<%# Eval("Remarks") %>'></asp:Label>--%>
+                                        <asp:TextBox ID="remarks" runat="server" Text='<%# Eval("Remarks") %>' TextMode="MultiLine" Rows="1"></asp:TextBox>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">

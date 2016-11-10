@@ -50,18 +50,23 @@
                                 <input runat="server" class="form-control" type="text" id="toDate" name="toDate" placeholder="DD/MM/YYYY" />
                             </div>
                         </div>
-                        <div class="form-group col-sm-3">
+                        <div class="form-group col-sm-2">
+                            <label class="col-sm-12 control-label">Party</label>
+                            <div class="col-sm-12">
+                                <asp:DropDownList runat="server" class="form-control" ID="partyDropDown" name="partyDropDown"></asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-2">
                             <label class="col-sm-12 control-label">Catagory</label>
                             <div class="col-sm-12">
                                 <asp:DropDownList runat="server" class="form-control" ID="CatagoryDropDown" name="CatagoryDropDown">
                                     <asp:ListItem Value="all">All</asp:ListItem>
                                     <asp:ListItem Value="expence">Expence</asp:ListItem>
                                     <asp:ListItem Value="income">Income</asp:ListItem>
-                                    <asp:ListItem Value="asset">Asset</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="form-group col-sm-3">
+                        <div class="form-group col-sm-2">
                             <label class="col-sm-12 control-label">Type</label>
                             <div class="col-sm-12">
                                 <asp:DropDownList runat="server" class="form-control" ID="TypeDropDown" name="TypeDropDown">
@@ -150,8 +155,10 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Remarks">
+                                    <ItemStyle Width="10%"></ItemStyle>
                                     <ItemTemplate>
-                                        <asp:Label ID="remarks" runat="server" Text='<%# Eval("Remarks") %>'></asp:Label>
+                                        <%--<asp:Label ID="remarks" runat="server" Text='<%# Eval("Remarks") %>'></asp:Label>--%>
+                                        <asp:TextBox ID="remarks" runat="server" Text='<%# Eval("Remarks") %>' TextMode="MultiLine" Rows="1"></asp:TextBox>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>

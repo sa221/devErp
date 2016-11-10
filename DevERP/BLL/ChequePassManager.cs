@@ -18,5 +18,10 @@ namespace DevERP.BLL
         {
             return _chequePassGatway.UpdateChequeStatus(transactionId, chequeStatus);
         }
+
+        public decimal GetBalance(ChequePassModel chequePassModel, out bool isSuccss)
+        {
+            return _chequePassGatway.GetBalance(chequePassModel, out isSuccss);
+        }
     }
 }

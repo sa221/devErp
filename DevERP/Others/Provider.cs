@@ -60,7 +60,7 @@ namespace DevERP.Others
         }
         public static string DateTimeToSting(DateTime date)
         {
-            return date.ToString("dd/MM/yyyy");
+            return date.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture);
         }
 
         public static DateTime GetMinDate()

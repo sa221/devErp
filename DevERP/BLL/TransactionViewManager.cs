@@ -12,42 +12,46 @@ namespace DevERP.BLL
 
         public List<Transaction> GetAllTransaction(TransactionViewModel transactionView, out Boolean isSuccess, out decimal balance)
         {
+            string preQuery = "where t.transactionDate between '" + transactionView.FromDate + "' and '" + transactionView.ToDate + "' ";
+            string partyQuery = "and t.partyId= " + transactionView.PartyId+" ";
+            string catagoryQuery = "and t.transactionCatagory='" + transactionView.TransactionCatagory + "' ";
+            string typeQuery = "and t.transactionType='" + transactionView.TransactionType + "' ";
             string query = "";
-            if (transactionView.FromDate.Equals(DateTime.MaxValue) && transactionView.TransactionCatagory.Equals("all")&& transactionView.TransactionType.Equals("all"))
+            if (transactionView.PartyId.Equals(0) && transactionView.TransactionCatagory.Equals("all")&& transactionView.TransactionType.Equals("all"))
             {
                 query = "";
             }
-            else if (!transactionView.FromDate.Equals(DateTime.MaxValue) && transactionView.TransactionCatagory.Equals("all") && transactionView.TransactionType.Equals("all"))
+            else if (!transactionView.PartyId.Equals(0) && transactionView.TransactionCatagory.Equals("all") && transactionView.TransactionType.Equals("all"))
             {
-                query = "where t.transactionDate between '"+transactionView.FromDate+"' and '"+transactionView.ToDate+"'";
+                query = partyQuery;
             }
-            else if (transactionView.FromDate.Equals(DateTime.MaxValue) && !transactionView.TransactionCatagory.Equals("all") && transactionView.TransactionType.Equals("all"))
+            else if (transactionView.PartyId.Equals(0) && !transactionView.TransactionCatagory.Equals("all") && transactionView.TransactionType.Equals("all"))
             {
-                query = "where t.transactionCatagory='"+transactionView.TransactionCatagory+"'";
+                query = catagoryQuery;
             }
-            else if (transactionView.FromDate.Equals(DateTime.MaxValue) && transactionView.TransactionCatagory.Equals("all") && !transactionView.TransactionType.Equals("all"))
+            else if (transactionView.PartyId.Equals(0) && transactionView.TransactionCatagory.Equals("all") && !transactionView.TransactionType.Equals("all"))
             {
-                query = "where t.transactionType='"+transactionView.TransactionType+"'";
+                query = typeQuery;
             }
-            else if (!transactionView.FromDate.Equals(DateTime.MaxValue) && !transactionView.TransactionCatagory.Equals("all") && transactionView.TransactionType.Equals("all"))
+            else if (!transactionView.PartyId.Equals(0) && !transactionView.TransactionCatagory.Equals("all") && transactionView.TransactionType.Equals("all"))
             {
-                query = "where t.transactionDate between '" + transactionView.FromDate + "' and '" + transactionView.ToDate + "' and t.transactionCatagory='" + transactionView.TransactionCatagory + "'";
+                query = partyQuery + catagoryQuery;
             }
-            else if (!transactionView.FromDate.Equals(DateTime.MaxValue) && transactionView.TransactionCatagory.Equals("all") && !transactionView.TransactionType.Equals("all"))
+            else if (!transactionView.PartyId.Equals(0) && transactionView.TransactionCatagory.Equals("all") && !transactionView.TransactionType.Equals("all"))
             {
-                query = "where transactionDate between '" + transactionView.FromDate + "' and '" + transactionView.ToDate + "' and t.transactionType='" + transactionView.TransactionType + "'";
+                query = partyQuery + typeQuery;
             }
-            else if (transactionView.FromDate.Equals(DateTime.MaxValue) && !transactionView.TransactionCatagory.Equals("all") && !transactionView.TransactionType.Equals("all"))
+            else if (transactionView.PartyId.Equals(0) && !transactionView.TransactionCatagory.Equals("all") && !transactionView.TransactionType.Equals("all"))
             {
-                query = "where t.transactionCatagory='" + transactionView.TransactionCatagory + "' and t.transactionType='" + transactionView.TransactionType + "'";
+                query = catagoryQuery + typeQuery;
             }
-            else if (!transactionView.FromDate.Equals(DateTime.MaxValue) && !transactionView.TransactionCatagory.Equals("all") && !transactionView.TransactionType.Equals("all"))
+            else if (!transactionView.PartyId.Equals(0) && !transactionView.TransactionCatagory.Equals("all") && !transactionView.TransactionType.Equals("all"))
             {
-                query = "where t.transactionDate between '" + transactionView.FromDate + "' and '" + transactionView.ToDate + "' and t.transactionCatagory='" + transactionView.TransactionCatagory + "' and t.transactionType='" + transactionView.TransactionType + "'";
+                query = partyQuery + catagoryQuery + typeQuery;
             }
 
-            balance = _transactionViewGatway.GetBalance(query, out isSuccess);
-            return _transactionViewGatway.GetAllTransaction(query);
+            balance = _transactionViewGatway.GetBalance(preQuery+query, out isSuccess);
+            return _transactionViewGatway.GetAllTransaction(preQuery+query);
         }
     }
 }

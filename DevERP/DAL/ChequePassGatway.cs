@@ -110,6 +110,36 @@ namespace DevERP.DAL
                 CloseAllConnection();
             }
         }
-        
+
+        public decimal GetBalance(ChequePassModel chequePassModel, out bool isSuccss)
+        {
+            Query = "select IsNull(SUM(amount),0) as balance from transactions where transactionDate between @fromDate and @toDate and transactionType='cheque' and chequeStatus=@chequeStatus";
+            PrepareCommand(CommandType.Text);
+            Command.Parameters.AddWithValue("@fromDate", chequePassModel.FromDate);
+            Command.Parameters.AddWithValue("@toDate", chequePassModel.ToDate);
+            Command.Parameters.AddWithValue("@chequeStatus", chequePassModel.ChequeStatus);
+            isSuccss = true;
+            Connection.Open();
+            try
+            {
+                Reader = Command.ExecuteReader();
+                if (Reader.Read())
+                {
+                    return (decimal) Reader["balance"];
+                }
+                isSuccss = false;
+                return 0;
+            }
+            catch (Exception)
+            {
+                isSuccss = false;
+                return 0;
+            }
+            finally
+            {
+                CloseAllConnection();
+
+            }
+        }
     }
 }

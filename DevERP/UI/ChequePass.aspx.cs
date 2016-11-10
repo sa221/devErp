@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Web.UI.WebControls;
 using DevERP.BLL;
 using DevERP.Models;
@@ -56,8 +57,17 @@ namespace DevERP.UI
                 List<Transaction> transactions = _chequePassManager.GetAllChequeTransactions(chequePassModel).FindAll(x => x.ChequeStatus.Equals(chequePassModel.ChequeStatus));
                 BindOnlyGrid(transactions);
             }
+            BindBalance();
             ShowHideButton();
             ChangeStatusColor();
+        }
+
+        private void BindBalance()
+        {
+            ChequePassModel chequePassModel = GetChequePassModel();
+            bool isSuccess;
+            decimal balance = _chequePassManager.GetBalance(chequePassModel, out isSuccess);
+            ((Label) TransactionGridView.FooterRow.FindControl("balance")).Text = isSuccess ? balance.ToString(CultureInfo.CurrentCulture) : "Error";
         }
         private ChequePassModel GetChequePassModel()
         {

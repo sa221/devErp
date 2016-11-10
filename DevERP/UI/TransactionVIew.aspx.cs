@@ -11,14 +11,23 @@ namespace DevERP.UI
     public partial class TransactionVIew : System.Web.UI.Page
     {
         private readonly TransactionViewManager _transactionViewManager = new TransactionViewManager();
+        private readonly PartyManager _partyManager = new PartyManager();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                BindParty();
                 BindGridView();
             }
         }
-
+        private void BindParty()
+        {
+            partyDropDown.DataSource = _partyManager.GetAllParty();
+            partyDropDown.DataTextField = "PartyName";
+            partyDropDown.DataValueField = "PartyId";
+            partyDropDown.DataBind();
+            partyDropDown.Items.Insert(0, new ListItem("All", "0"));
+        }
         //private List<Transaction> GetTransactions()
         //{
         //    List<Transaction> transactions;
@@ -79,7 +88,7 @@ namespace DevERP.UI
             {
                 transactionView.ToDate = Provider.StringToDateTime(toDate.Value);
             }
-
+            transactionView.PartyId = Convert.ToInt32(partyDropDown.SelectedValue);
             transactionView.TransactionCatagory = CatagoryDropDown.SelectedValue;
             transactionView.TransactionType = TypeDropDown.SelectedValue;
             return transactionView;

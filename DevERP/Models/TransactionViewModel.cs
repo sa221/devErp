@@ -6,6 +6,7 @@ namespace DevERP.Models
     {
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
+        public int PartyId { get; set; }
         public string TransactionCatagory { get; set; }
         public string TransactionType { get; set; }
     }
