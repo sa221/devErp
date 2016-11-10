@@ -25,7 +25,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="col-lg-12">
-            <div class="row main panel panel-info">
+            <div class="row main panel panel-primary">
                 <div class="panel-heading">
                     <div class="panel-title">
                         <h1 class="title">Cheque Pass</h1>
@@ -63,6 +63,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group col-sm-12">
+                        <div class="col-sm-2">
+                            <asp:Button CssClass="btn btn-default btn-block" type="submit" ID="SearchTransaction" Text="Search" runat="server" OnClick="SearchTransaction_OnClickTransaction_OnClick" />
+                        </div>
+                        <div class="col-sm-10"></div>
+                    </div>
+
 
 
                     <style>
@@ -72,7 +79,8 @@
                     </style>
                     <div class="">
 
-                        <asp:GridView ID="TransactionGridView" runat="server" HorizontalAlignmnet="Center" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" Width="100%">
+                        <asp:GridView ID="TransactionGridView" runat="server" HorizontalAlignmnet="Center" CellPadding="4" ForeColor="#333333"
+                            GridLines="None" AutoGenerateColumns="False" Width="100%" ShowFooter="true" AllowPaging="true" OnPageIndexChanging="TransactionGridView_OnPageIndexChanging" PageSize="5">
                             <Columns>
                                 <asp:TemplateField HeaderText="#SL NO">
                                     <ItemTemplate>
@@ -91,24 +99,24 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Item">
                                     <ItemTemplate>
-                                        <asp:Label ID="itemId" runat="server" Text='<%# Eval("ItemId") %>'></asp:Label>
-                                    </ItemTemplate>
-                                    <ItemTemplate>
                                         <asp:Label ID="itemName" runat="server" Text='<%# Eval("ItemName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Sub-Item">
                                     <ItemTemplate>
-                                        <asp:Label ID="subItemId" runat="server" Text='<%# Eval("SubItemId") %>'></asp:Label>
-                                    </ItemTemplate>
-                                    <ItemTemplate>
                                         <asp:Label ID="subItemName" runat="server" Text='<%# Eval("SubItemName") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <FooterTemplate>
+                                        <asp:Label ID="TotalLabel" runat="server" Text="Balance"></asp:Label>
+                                    </FooterTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Amount">
                                     <ItemTemplate>
                                         <asp:Label ID="amount" runat="server" Text='<%# Eval("Amount") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <FooterTemplate>
+                                        <asp:Label ID="balance" runat="server" Text="N/A"></asp:Label>
+                                    </FooterTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Transaction Catagory">
                                     <ItemTemplate>
@@ -116,9 +124,6 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Party">
-                                    <ItemTemplate>
-                                        <asp:Label ID="partyId" runat="server" Text='<%# Eval("PartyId") %>'></asp:Label>
-                                    </ItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="partyName" runat="server" Text='<%# Eval("PartyName") %>'></asp:Label>
                                     </ItemTemplate>
@@ -129,9 +134,6 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Bank">
-                                    <ItemTemplate>
-                                        <asp:Label ID="bankId" runat="server" Text='<%# Eval("BankId") %>'></asp:Label>
-                                    </ItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="bankName" runat="server" Text='<%# Eval("BankName") %>'></asp:Label>
                                     </ItemTemplate>
@@ -157,7 +159,7 @@
                             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                             <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                             <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                            <RowStyle BackColor="#E3EAEB" />
+                            <RowStyle BackColor="#E3EAEB" HorizontalAlign="Center" />
                             <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
                             <SortedAscendingCellStyle BackColor="#F8FAFA" />
                             <SortedAscendingHeaderStyle BackColor="#246B61" />

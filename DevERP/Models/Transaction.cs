@@ -1,7 +1,7 @@
 ﻿using System;
-
 namespace DevERP.Models
 {
+    [Serializable()]
     public class Transaction
     {
         public int TransactionId { get; set; }

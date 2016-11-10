@@ -106,6 +106,7 @@ namespace DevERP.UI
             foreach (GridViewRow gridViewRow in TransactionGridView.Rows)
             {
                 string status = ((Label)gridViewRow.FindControl("status")).Text;
+                
                 if (status.Equals("Pending"))
                 {
                     ((Label) gridViewRow.FindControl("status")).ForeColor = Color.BlueViolet;
@@ -117,8 +118,24 @@ namespace DevERP.UI
                 else if (status.Equals("Cancel"))
                 {
                     ((Label)gridViewRow.FindControl("status")).ForeColor = Color.Red;
-                } 
+                }
+
+                string catagory = ((Label)gridViewRow.FindControl("transactionCatagory")).Text;
+                ((Label)gridViewRow.FindControl("transactionCatagory")).ForeColor = catagory.Equals("expence") ? Color.Red : Color.Green;
             }
+        }
+
+        protected void TransactionGridView_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            TransactionGridView.PageIndex = e.NewPageIndex;
+            TransactionGridView.DataBind();
+            BindGridView();
+        }
+
+        protected void SearchTransaction_OnClickTransaction_OnClick(object sender, EventArgs e)
+        {
+            successMessage.InnerHtml = string.Empty;
+            BindGridView();
         }
     }
 }

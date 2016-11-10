@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="col-lg-12">
-            <div class="row main panel panel-info">
+            <div class="row main panel panel-primary">
                 <div class="panel-heading">
                     <div class="panel-title">
                         <h1 class="title">Account Setting</h1>

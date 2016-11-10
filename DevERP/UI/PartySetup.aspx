@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="col-lg-12">
-            <div class="row main panel panel-info">
+            <div class="row main panel panel-primary">
                 <div class="panel-heading">
                     <div class="panel-title">
                         <h1 class="title">Party Entry</h1>
@@ -57,6 +57,7 @@
                     </style>
                     <div class="">
                         <asp:GridView ID="PartyGridView" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" Width="100%" OnRowEditing="PartyGridView_OnRowEditing" OnRowUpdating="PartyGridView_OnRowUpdating" OnRowCancelingEdit="PartyGridView_OnRowCancelingEdit">
+                            <RowStyle HorizontalAlign="Center" />
                             <Columns>
                                 <asp:TemplateField HeaderText="#SL NO">
                                     <ItemTemplate>

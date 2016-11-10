@@ -138,6 +138,9 @@ namespace DevERP.DAL
                     transaction.Remarks = Reader["remarks"] != DBNull.Value
                         ? Reader["remarks"].ToString()
                         : string.Empty;
+                    transaction.ChequeStatus = Reader["chequeStatus"] != DBNull.Value
+                       ? Reader["chequeStatus"].ToString()
+                       : string.Empty;
                     transaction.LastModify = Reader["lastModify"] != DBNull.Value
                         ? Convert.ToDateTime(Reader["lastModify"].ToString())
                         : DateTime.MaxValue;
@@ -154,6 +157,33 @@ namespace DevERP.DAL
                 
             }
             return transactions;
+        }
+        public decimal GetBalance(out bool isSuccss)
+        {
+            Query = "select ((select SUM(amount) from (select * from GetPassTransaction) as a where a.transactionCatagory='income')-(select SUM(amount) from (select * from GetPassTransaction) as a where a.transactionCatagory='expence')) as balance";
+            PrepareCommand(CommandType.Text);
+            isSuccss = true;
+            Connection.Open();
+            try
+            {
+                Reader = Command.ExecuteReader();
+                if (Reader.Read())
+                {
+                    return (decimal) Reader["balance"];
+                }
+                isSuccss = false;
+                return 0;
+            }
+            catch (Exception)
+            {
+                isSuccss = false;
+                return 0;
+            }
+            finally
+            {
+                CloseAllConnection();
+
+            }
         }
     }
 }

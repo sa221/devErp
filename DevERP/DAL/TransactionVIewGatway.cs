@@ -11,7 +11,7 @@ namespace DevERP.DAL
         
         public List<Transaction> GetAllTransaction(string query)
         {
-            string preQuery="select t.transactionId,t.transactionDate,t.itemId,i.itemName,t.subItemId,s.subItemName,t.amount,t.transactionCatagory,t.partyId,p.partyName,t.transactionType,t.bankId,b.bankName,t.remarks,t.lastModify from Transactions as t left outer join Item as i on t.itemId=i.itemId left outer join SubItem as s on t.subItemId=s.subItemId left outer join Bank as b on t.bankId=b.bankId left outer join Party as p on t.partyId=p.partyId ";
+            string preQuery = "select t.transactionId,t.transactionDate,t.itemId,i.itemName,t.subItemId,s.subItemName,t.amount,t.transactionCatagory,t.partyId,p.partyName,t.transactionType,t.bankId,b.bankName,t.remarks,t.chequeStatus,t.lastModify from Transactions as t left outer join Item as i on t.itemId=i.itemId left outer join SubItem as s on t.subItemId=s.subItemId left outer join Bank as b on t.bankId=b.bankId left outer join Party as p on t.partyId=p.partyId ";
             Query = preQuery+query;
             PrepareCommand(CommandType.Text);
             List<Transaction> transactions = new List<Transaction>();
@@ -64,6 +64,9 @@ namespace DevERP.DAL
                     transaction.Remarks = Reader["remarks"] != DBNull.Value
                         ? Reader["remarks"].ToString()
                         : string.Empty;
+                    transaction.ChequeStatus = Reader["chequeStatus"] != DBNull.Value
+                       ? Reader["chequeStatus"].ToString()
+                       : string.Empty;
                     transaction.LastModify = Reader["lastModify"] != DBNull.Value
                         ? Convert.ToDateTime(Reader["lastModify"].ToString())
                         : DateTime.MaxValue;
@@ -80,6 +83,34 @@ namespace DevERP.DAL
                 
             }
             return transactions;
+        }
+        public decimal GetBalance(string query, out bool isSuccss)
+        {
+            Query = "select ((select ISNULL(SUM(amount),0) from (select * from GetPassTransaction) as t " + query + " and t.transactionCatagory='income' )-(select ISNULL(SUM(amount),0) from (select * from GetPassTransaction) as t " + query + " and t.transactionCatagory='expence')) as balance";
+            
+            PrepareCommand(CommandType.Text);
+            isSuccss = true;
+            Connection.Open();
+            try
+            {
+                Reader = Command.ExecuteReader();
+                if (Reader.Read())
+                {
+                    return (decimal)Reader["balance"];
+                }
+                isSuccss = false;
+                return 0;
+            }
+            catch (Exception)
+            {
+                isSuccss = false;
+                return 0;
+            }
+            finally
+            {
+                CloseAllConnection();
+
+            }
         }
     }
 }

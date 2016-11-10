@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Web.UI.WebControls;
@@ -21,7 +23,7 @@ namespace DevERP.UI
             if (!IsPostBack)
             {
                 LoadAllDropdown();
-                BindTransactionGrid();
+                BindGridView();
             }
         }
 
@@ -33,13 +35,30 @@ namespace DevERP.UI
             LoadBank();
 
         }
-
-        private void BindTransactionGrid()
+        
+        private void BindGridView()
         {
-            TransactionGridView.DataSource = _transactionManager.GetAllTransaction();
+            List<Transaction> transactions = _transactionManager.GetAllTransaction();
+            TransactionGridView.DataSource = transactions;
             TransactionGridView.DataBind();
-
+            BindBalance();
+            ChangeStatusColor();
         }
+
+        private void BindBalance()
+        {
+            bool isSuccess;
+            string balance = _transactionManager.GetBalance(out isSuccess).ToString(CultureInfo.CurrentCulture);
+            if (isSuccess)
+            {
+                ((Label) TransactionGridView.FooterRow.FindControl("balance")).Text = balance;
+            }
+            else
+            {
+                ((Label) TransactionGridView.FooterRow.FindControl("balance")).Text = "Error";
+            }
+        }
+
         private void BindItem()
         {
             itemNameDropDown.DataSource = _itemManager.GetAllItem();
@@ -124,7 +143,7 @@ namespace DevERP.UI
                     ? Provider.GetSuccessMassage("Sucsessfully Insert")
                     : Provider.GetErrorMassage("Insert failed");
             }
-            BindTransactionGrid();
+            BindGridView();
             ChangeButtonText();
         }
 
@@ -179,15 +198,48 @@ namespace DevERP.UI
                 successMessage.InnerHtml = Provider.GetErrorMassage("Something is Error");
             }
         }
-
+        private void ChangeStatusColor()
+        {
+            foreach (GridViewRow gridViewRow in TransactionGridView.Rows)
+            {
+                string status = ((Label)gridViewRow.FindControl("status")).Text;
+                if (status.Equals("Pending"))
+                {
+                    ((Label)gridViewRow.FindControl("status")).ForeColor = Color.BlueViolet;
+                }
+                else if (status.Equals("Pass"))
+                {
+                    ((Label)gridViewRow.FindControl("status")).ForeColor = Color.Green;
+                }
+                else if (status.Equals("Cancel"))
+                {
+                    ((Label)gridViewRow.FindControl("status")).ForeColor = Color.Red;
+                }
+                string catagory = ((Label)gridViewRow.FindControl("transactionCatagory")).Text;
+                ((Label)gridViewRow.FindControl("transactionCatagory")).ForeColor = catagory.Equals("expence") ? Color.Red : Color.Green;
+            }
+        }
         protected void lnkRemove_OnClick(object sender, EventArgs e)
         {
             LinkButton lnkRemove = (LinkButton)sender;
             int transactionId = Convert.ToInt32(lnkRemove.CommandArgument);
             successMessage.InnerHtml = _transactionManager.DeleteTransaction(transactionId) ? Provider.GetSuccessMassage("Sucsessfully Deleted") : Provider.GetErrorMassage("delete failed");
-            BindTransactionGrid();
+            BindGridView();
         }
 
-        
+
+        protected void TransactionGridView_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            TransactionGridView.PageIndex = e.NewPageIndex;
+            TransactionGridView.DataBind();
+            BindGridView();
+        }
+
+        protected void CancelTransaction_OnClick(object sender, EventArgs e)
+        {
+            Provider.ClearTextBoxes(this);
+            transactionHidden.Value = string.Empty;
+            SaveTransaction.Text = "Save";
+        }
     }
 }

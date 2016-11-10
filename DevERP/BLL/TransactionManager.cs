@@ -26,5 +26,10 @@ namespace DevERP.BLL
         {
             return _transactionGatway.GetAllTransaction();
         }
+
+        public decimal GetBalance(out bool isSuccss)
+        {
+            return _transactionGatway.GetBalance(out isSuccss);
+        }
     }
 }

@@ -24,7 +24,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="col-lg-12">
-            <div class="row main panel panel-info">
+            <div class="row main panel panel-primary">
                 <div class="panel-heading">
                     <div class="panel-title">
                         <h1 class="title">Transactions</h1>
@@ -85,7 +85,8 @@
                         }
                     </style>
                     <div class="">
-                        <asp:GridView ID="TransactionGridView" runat="server" HorizontalAlignmnet="Center" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" Width="100%" >
+                        <asp:GridView ID="TransactionGridView" runat="server" HorizontalAlignmnet="Center" CellPadding="4" ForeColor="#333333"
+                            GridLines="None" AutoGenerateColumns="False" Width="100%" ShowFooter="true" AllowPaging="true" OnPageIndexChanging="TransactionGridView_OnPageIndexChanging" PageSize="5">
                             <Columns>
                                 <asp:TemplateField HeaderText="#SL NO">
                                     <ItemTemplate>
@@ -111,11 +112,17 @@
                                     <ItemTemplate>
                                         <asp:Label ID="subItemName" runat="server" Text='<%# Eval("SubItemName") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <FooterTemplate>
+                                        <asp:Label ID="TotalLabel" runat="server" Text="Balance"></asp:Label>
+                                    </FooterTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Amount">
                                     <ItemTemplate>
                                         <asp:Label ID="amount" runat="server" Text='<%# Eval("Amount") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <FooterTemplate>
+                                        <asp:Label ID="balance" runat="server" Text="N/A"></asp:Label>
+                                    </FooterTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Transaction Catagory">
                                     <ItemTemplate>
@@ -137,6 +144,11 @@
                                         <asp:Label ID="bankName" runat="server" Text='<%# Eval("BankName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Status">
+                                    <ItemTemplate>
+                                        <asp:Label ID="status" runat="server" Text='<%# Eval("ChequeStatus") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Remarks">
                                     <ItemTemplate>
                                         <asp:Label ID="remarks" runat="server" Text='<%# Eval("Remarks") %>'></asp:Label>
@@ -148,7 +160,7 @@
                             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                             <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                             <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                            <RowStyle BackColor="#E3EAEB" />
+                            <RowStyle BackColor="#E3EAEB" HorizontalAlign="Center" />
                             <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
                             <SortedAscendingCellStyle BackColor="#F8FAFA" />
                             <SortedAscendingHeaderStyle BackColor="#246B61" />
