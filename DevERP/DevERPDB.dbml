@@ -1,37 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DevERP" Class="DevERPDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=DevERP;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Connection" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.UserInfo" Member="UserInfos">
-    <Type Name="UserInfo">
-      <Column Name="userInfoId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="image" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="designation" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="entryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="loginId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Transactions" Member="Transactions">
-    <Type Name="Transaction">
-      <Column Name="transactionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="transactionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="itemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="subItemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="transactionCatagory" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
-      <Column Name="partyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="transactionType" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="bankId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="remarks" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="chequeStatus" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
-      <Column Name="lastModify" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbl_ProductType" Member="tbl_ProductTypes">
-    <Type Name="tbl_ProductType">
-      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ProductType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.tbl_ProductName" Member="tbl_ProductNames">
+    <Type Name="tbl_ProductName">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProdectName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProductTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_ProductSize" Member="tbl_ProductSizes">
@@ -43,49 +16,10 @@
       <Column Name="FullProductName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tbl_ProductName" Member="tbl_ProductNames">
-    <Type Name="tbl_ProductName">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ProdectName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ProductTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.SubItem" Member="SubItems">
-    <Type Name="SubItem">
-      <Column Name="subItemId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="subItemName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="itemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Item_SubItem" Member="Item" ThisKey="itemId" OtherKey="itemId" Type="Item" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Party" Member="Parties">
-    <Type Name="Party">
-      <Column Name="partyId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="partyName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="partyMobile" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="partyAddress" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Login" Member="Logins">
-    <Type Name="Login">
-      <Column Name="loginId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="userName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="password" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="type" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Column Name="status" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Item" Member="Items">
-    <Type Name="Item">
-      <Column Name="itemId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="itemName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Item_SubItem" Member="SubItems" ThisKey="itemId" OtherKey="itemId" Type="SubItem" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Bank" Member="Banks">
-    <Type Name="Bank">
-      <Column Name="bankId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="bankName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.tbl_ProductType" Member="tbl_ProductTypes">
+    <Type Name="tbl_ProductType">
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

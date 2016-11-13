@@ -1,73 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.75" name="DevERPDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DevERPDB">
   <DataContextMoniker Name="/DevERPDBDataContext" />
   <nestedChildShapes>
-    <classShape Id="c0c951bb-ad77-4102-a1ed-ad62a60cb45a" absoluteBounds="0.75, 3.75, 2, 2.347801106770834">
-      <DataClassMoniker Name="/DevERPDBDataContext/UserInfo" />
-      <nestedChildShapes>
-        <elementListCompartment Id="1e7b3cbd-7007-4853-88b8-3339313aeac8" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="c735da9c-89cd-4c46-980a-33fd78281a07" absoluteBounds="3.75, 3.75, 2, 3.1170068359375005">
-      <DataClassMoniker Name="/DevERPDBDataContext/Transaction" />
-      <nestedChildShapes>
-        <elementListCompartment Id="665a0800-61dc-4612-8ee7-9a9a946edd76" absoluteBounds="3.765, 4.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a56732d7-7893-4796-ae53-aedb88104d6d" absoluteBounds="6.75, 0.75, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/DevERPDBDataContext/tbl_ProductType" />
-      <nestedChildShapes>
-        <elementListCompartment Id="8f12df77-84da-4167-9cb3-16eef1495835" absoluteBounds="6.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="70b1f458-9880-4d2f-8cc1-7e4719e63140" absoluteBounds="6.75, 2.75, 2, 1.7708968098958327">
-      <DataClassMoniker Name="/DevERPDBDataContext/tbl_ProductSize" />
-      <nestedChildShapes>
-        <elementListCompartment Id="baf781e4-484c-4580-8126-37e5e9310289" absoluteBounds="6.765, 3.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="7c6b250a-fa51-4609-8956-1a64029c0723" absoluteBounds="6.75, 5.75, 2, 1.3862939453125005">
+    <classShape Id="77ad8e02-8bd3-4c16-ae29-0d56f6f86710" absoluteBounds="0.75, 0.75, 2, 1.3862939453125">
       <DataClassMoniker Name="/DevERPDBDataContext/tbl_ProductName" />
       <nestedChildShapes>
-        <elementListCompartment Id="51be6cd4-6c81-481d-9d1b-c2890832aae6" absoluteBounds="6.765, 6.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="467fa2df-55e1-4862-834e-ce66c0bdff85" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="219fb4ed-f680-4f16-bde0-89c801693b9d" absoluteBounds="3.5, 0.875, 2, 1.3862939453124998">
-      <DataClassMoniker Name="/DevERPDBDataContext/SubItem" />
+    <classShape Id="626ca4fe-b263-4284-b9c7-c21b44c11669" absoluteBounds="3.75, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DevERPDBDataContext/tbl_ProductSize" />
       <nestedChildShapes>
-        <elementListCompartment Id="c90a9cb5-2d07-41a8-bea1-eed4d5974243" absoluteBounds="3.515, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="80fde8e8-f55c-4a77-8f4b-8ede017262f8" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c1741f03-1698-411e-b31b-a7fdab23d90b" absoluteBounds="0.75, 7.75, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/DevERPDBDataContext/Party" />
+    <classShape Id="776fca2e-d49e-4dfc-becb-24ab69164b64" absoluteBounds="0.75, 3.75, 2, 1.193992513020834">
+      <DataClassMoniker Name="/DevERPDBDataContext/tbl_ProductType" />
       <nestedChildShapes>
-        <elementListCompartment Id="50f961e5-bbe8-46e2-97c3-c2e9a2406ff7" absoluteBounds="0.765, 8.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b830747f-64f3-489c-8ae5-508a878ede28" absoluteBounds="0.765, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="5ea46481-b050-46d0-83e4-2556576a8c46" absoluteBounds="3.75, 8.75, 2, 1.7708968098958344">
-      <DataClassMoniker Name="/DevERPDBDataContext/Login" />
-      <nestedChildShapes>
-        <elementListCompartment Id="17899b0b-c73a-4f25-85fc-2efa6e64a312" absoluteBounds="3.765, 9.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="b1c0ac88-1454-44d7-8ce6-72fd849f7b2a" absoluteBounds="0.75, 1, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/DevERPDBDataContext/Item" />
-      <nestedChildShapes>
-        <elementListCompartment Id="68f96430-14e7-4999-ae5e-4467a4dc3924" absoluteBounds="0.765, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="fba29a10-e5a8-40ea-8546-040c112fc6a2" absoluteBounds="6.75, 8.75, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/DevERPDBDataContext/Bank" />
-      <nestedChildShapes>
-        <elementListCompartment Id="2d5b0421-3153-441c-a06d-5669c33e360b" absoluteBounds="6.765, 9.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.59699625651042); (3.5 : 1.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DevERPDBDataContext/Item/Item_SubItem" />
-      <nodes>
-        <classShapeMoniker Id="b1c0ac88-1454-44d7-8ce6-72fd849f7b2a" />
-        <classShapeMoniker Id="219fb4ed-f680-4f16-bde0-89c801693b9d" />
-      </nodes>
-    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

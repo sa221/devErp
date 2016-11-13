@@ -52,6 +52,7 @@
                                 <li><a runat="server" href="~/UI/SubItemSetup.aspx">Sub Item Setup</a></li>
                                 <li><a runat="server" href="~/UI/PartySetup.aspx">Party Setup</a></li>
                                 <li><a runat="server" href="~/UI/BankSetup.aspx">Bank Setup</a></li>
+                                <li><a runat="server" href="~/UI/ProductItemAndNameSetup.aspx">Product Type & Name Setup</a></li>
                             </ul>
                         </li>
                     </ul>

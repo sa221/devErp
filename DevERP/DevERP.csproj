@@ -87,6 +87,7 @@
     <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
@@ -155,7 +156,11 @@
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
-    <None Include="Properties\PublishProfiles\DevERP.pubxml" />
+    <Content Include="DevERPDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DevERPDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Image\0.jpg" />
     <Content Include="Image\bg.jpg" />
@@ -278,6 +283,7 @@
     <Content Include="Site.Master" />
     <Content Include="UI\ItemSetup.aspx" />
     <Content Include="UI\PartySetup.aspx" />
+    <Content Include="UI\ProductItemAndNameSetup.aspx" />
     <Content Include="UI\Profile.aspx" />
     <Content Include="UI\SubItemSetup.aspx" />
     <Content Include="UI\TransactionEntry.aspx" />
@@ -351,6 +357,11 @@
     <Compile Include="DAL\SubItemGatway.cs" />
     <Compile Include="DAL\ItemGatway.cs" />
     <Compile Include="DAL\BankGatway.cs" />
+    <Compile Include="DevERPDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DevERPDB.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Party.cs" />
     <Compile Include="Models\ChequePassModel.cs" />
     <Compile Include="Models\TransactionViewModel.cs" />
@@ -431,6 +442,13 @@
     <Compile Include="UI\PartySetup.aspx.designer.cs">
       <DependentUpon>PartySetup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\ProductItemAndNameSetup.aspx.cs">
+      <DependentUpon>ProductItemAndNameSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\ProductItemAndNameSetup.aspx.designer.cs">
+      <DependentUpon>ProductItemAndNameSetup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -472,6 +490,14 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DevERPDB.dbml.layout">
+      <DependentUpon>DevERPDB.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
