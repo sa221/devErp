@@ -26,6 +26,11 @@ namespace DevERP.UI
             itemNameDropDown.DataTextField = "ItemName";
             itemNameDropDown.DataValueField = "ItemId";
             itemNameDropDown.DataBind();
+            if (itemManager.GetAllItem().Count>0)
+            {
+                BindSubItem();
+            }
+            
         }
         private void BindSubItem()
         {
