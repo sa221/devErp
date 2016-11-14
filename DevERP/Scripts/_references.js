@@ -73,3 +73,4 @@
 /// <reference path="locales/bootstrap-datepicker.vi.js" />
 /// <reference path="locales/bootstrap-datepicker.zh-cn.js" />
 /// <reference path="locales/bootstrap-datepicker.zh-tw.js" />
+/// <reference path="scrollablegridviewplugin_asp.netajaxmin.js" />

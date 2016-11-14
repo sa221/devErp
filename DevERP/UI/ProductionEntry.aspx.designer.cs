@@ -10,186 +10,204 @@
 namespace DevERP.UI {
     
     
-    public partial class ProductItemAndNameSetup {
+    public partial class ProductionEntry {
         
         /// <summary>
-        /// productTypeTextBox control.
+        /// messageLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox productTypeTextBox;
+        protected global::System.Web.UI.WebControls.Label messageLabel;
         
         /// <summary>
-        /// productTypeSaveButton control.
+        /// maintenanceId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button productTypeSaveButton;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText maintenanceId;
         
         /// <summary>
-        /// failStatusLabel control.
+        /// dateTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl failStatusLabel;
+        protected global::System.Web.UI.WebControls.TextBox dateTextBox;
         
         /// <summary>
-        /// successStatusLabel control.
+        /// busNoDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl successStatusLabel;
+        protected global::System.Web.UI.WebControls.DropDownList busNoDropDownList;
         
         /// <summary>
-        /// productTypeGridview control.
+        /// historyButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView productTypeGridview;
+        protected global::System.Web.UI.WebControls.Button historyButton;
         
         /// <summary>
-        /// productTypeDropDownList control.
+        /// maintenanceHistoryGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList productTypeDropDownList;
+        protected global::System.Web.UI.WebControls.GridView maintenanceHistoryGridView;
         
         /// <summary>
-        /// productNameTextBox control.
+        /// departmentsDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox productNameTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList departmentsDropDownList;
         
         /// <summary>
-        /// productNameSaveButton control.
+        /// locationsDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button productNameSaveButton;
+        protected global::System.Web.UI.WebControls.DropDownList locationsDropDownList;
         
         /// <summary>
-        /// failStatusLabelProductName control.
+        /// otherLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl failStatusLabelProductName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText otherLocation;
         
         /// <summary>
-        /// successStatusLabelProductName control.
+        /// partsDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl successStatusLabelProductName;
+        protected global::System.Web.UI.WebControls.DropDownList partsDropDownList;
         
         /// <summary>
-        /// productNameGridView control.
+        /// qtyText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView productNameGridView;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText qtyText;
         
         /// <summary>
-        /// pProductTypeDropDownList control.
+        /// unitText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList pProductTypeDropDownList;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText unitText;
         
         /// <summary>
-        /// productNameDropDownList control.
+        /// lifeCycleText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList productNameDropDownList;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lifeCycleText;
         
         /// <summary>
-        /// sizeTextBox control.
+        /// purposeText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox sizeTextBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText purposeText;
         
         /// <summary>
-        /// rateTextBox control.
+        /// oldPartsCheckBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rateTextBox;
+        protected global::System.Web.UI.WebControls.CheckBox oldPartsCheckBox;
         
         /// <summary>
-        /// sizeRateSaveButton control.
+        /// oldPartsDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button sizeRateSaveButton;
+        protected global::System.Web.UI.WebControls.DropDownList oldPartsDropDownList;
         
         /// <summary>
-        /// Span1 control.
+        /// oldQtyText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Span1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText oldQtyText;
         
         /// <summary>
-        /// Span2 control.
+        /// oldUnitText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Span2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText oldUnitText;
         
         /// <summary>
-        /// up control.
+        /// oldLifeCycleText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel up;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText oldLifeCycleText;
         
         /// <summary>
-        /// productWithSizeRateGridView control.
+        /// oldPurposeText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView productWithSizeRateGridView;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText oldPurposeText;
+        
+        /// <summary>
+        /// receiveDateText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText receiveDateText;
+        
+        /// <summary>
+        /// reportButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button reportButton;
     }
 }

@@ -7,19 +7,35 @@
       <Column Name="ProductTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tbl_ProductType" Member="tbl_ProductTypes">
+    <Type Name="tbl_ProductType">
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.tbl_ProductSize" Member="tbl_ProductSizes">
     <Type Name="tbl_ProductSize">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ProductSize" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="ProductNameId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ProductTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FullProductName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tbl_ProductType" Member="tbl_ProductTypes">
-    <Type Name="tbl_ProductType">
-      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ProductType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.tbl_ProductionInfo" Member="tbl_ProductionInfos">
+    <Type Name="tbl_ProductionInfo">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EmpId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TotalRate" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="InputDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="InputBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="UpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
