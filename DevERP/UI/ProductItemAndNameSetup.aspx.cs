@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace DevERP.UI
 {
     public partial class ProductItemAndNameSetup : System.Web.UI.Page
     {
-        DevERPDBDataContext db=new DevERPDBDataContext();
+        readonly DevERPDBDataContext db=new DevERPDBDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (!IsPostBack)
             {
                 LoadTypeGrid();
                 LoadProductNameGrid();

@@ -41,8 +41,12 @@ namespace DevERP.UI
             List<Transaction> transactions = _transactionManager.GetAllTransaction();
             TransactionGridView.DataSource = transactions;
             TransactionGridView.DataBind();
-            BindBalance();
-            ChangeStatusColor();
+            if (transactions.Count>0)
+            {
+                BindBalance();
+                ChangeStatusColor();
+            }
+            
         }
 
         private void BindBalance()

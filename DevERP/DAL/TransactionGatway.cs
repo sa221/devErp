@@ -160,7 +160,7 @@ namespace DevERP.DAL
         }
         public decimal GetBalance(out bool isSuccss)
         {
-            Query = "select ((select SUM(amount) from (select * from GetPassTransaction) as a where a.transactionCatagory='income')-(select SUM(amount) from (select * from GetPassTransaction) as a where a.transactionCatagory='expence')) as balance";
+            Query = "select ((select IsNull(SUM(amount),0) from (select * from GetPassTransaction) as a where a.transactionCatagory='income')-(select IsNull(SUM(amount),0) from (select * from GetPassTransaction) as a where a.transactionCatagory='expence')) as balance";
             PrepareCommand(CommandType.Text);
             isSuccss = true;
             Connection.Open();
