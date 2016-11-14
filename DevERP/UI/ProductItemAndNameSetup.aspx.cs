@@ -12,8 +12,9 @@ namespace DevERP.UI
             {
                 LoadTypeGrid();
                 LoadProductNameGrid();
+                LoadProductTypeDdl();
             }
-            LoadProductTypeDdl();
+            
         }
         protected void productTypeSaveButton_Click(object sender, EventArgs e)
         {
