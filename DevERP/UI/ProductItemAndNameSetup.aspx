@@ -7,19 +7,19 @@
         <div class="form-horizontal" style="margin: 0 auto; margin-top: 50px; display: block; position: relative; left: 0%;">
             <%--<div class="col-lg-2"></div>--%>
             <div class="col-lg-12 ">
-                <div class="col-lg-6 form-group">
+                <div class="col-lg-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h1 style="font-size: 20px" class="panel-title text-center">Product Type Entry</h1>
                         </div>
                         <div class="panel-body">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 form-group">
                                 <div class="col-lg-4"><b>Product Type: </b></div>
                                 <div class="col-lg-8">
                                     <asp:TextBox ID="productTypeTextBox" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 form-group">
                                 <div class="col-lg-10"></div>
                                 <div class="col-lg-2">
                                     <div class="col-md-offset-0 col-md-9">
@@ -33,7 +33,7 @@
                                 <br />
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 form-group">
                                 <asp:GridView ID="productTypeGridview" runat="server" UseAccessibleHeader="true"
                                     CssClass="table table-hover table-striped table table-bordered" GridLines="None"
                                     AutoGenerateColumns="False">
@@ -63,20 +63,20 @@
                         </div>
 
                         <div class="panel-body">
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 form-group">
                                     <div class="col-lg-4"><b>Product Type: </b></div>
                                     <div class="col-lg-8">
                                         <asp:DropDownList ID="productTypeDropDownList" runat="server" CssClass="form-control"></asp:DropDownList>
 
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 form-group">
                                     <div class="col-lg-4"><b>Product Name: </b></div>
                                     <div class="col-lg-8">
                                         <asp:TextBox ID="productNameTextBox" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 form-group">
                                     <div class="col-lg-10"></div>
                                     <div class="col-lg-2">
                                         <div class="col-md-offset-0 col-md-9">
