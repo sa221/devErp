@@ -33,12 +33,15 @@ namespace DevERP
     partial void Inserttbl_ProductName(tbl_ProductName instance);
     partial void Updatetbl_ProductName(tbl_ProductName instance);
     partial void Deletetbl_ProductName(tbl_ProductName instance);
-    partial void Inserttbl_ProductSize(tbl_ProductSize instance);
-    partial void Updatetbl_ProductSize(tbl_ProductSize instance);
-    partial void Deletetbl_ProductSize(tbl_ProductSize instance);
     partial void Inserttbl_ProductType(tbl_ProductType instance);
     partial void Updatetbl_ProductType(tbl_ProductType instance);
     partial void Deletetbl_ProductType(tbl_ProductType instance);
+    partial void Inserttbl_ProductSize(tbl_ProductSize instance);
+    partial void Updatetbl_ProductSize(tbl_ProductSize instance);
+    partial void Deletetbl_ProductSize(tbl_ProductSize instance);
+    partial void Inserttbl_ProductionInfo(tbl_ProductionInfo instance);
+    partial void Updatetbl_ProductionInfo(tbl_ProductionInfo instance);
+    partial void Deletetbl_ProductionInfo(tbl_ProductionInfo instance);
     #endregion
 		
 		public DevERPDBDataContext() : 
@@ -79,6 +82,14 @@ namespace DevERP
 			}
 		}
 		
+		public System.Data.Linq.Table<tbl_ProductType> tbl_ProductTypes
+		{
+			get
+			{
+				return this.GetTable<tbl_ProductType>();
+			}
+		}
+		
 		public System.Data.Linq.Table<tbl_ProductSize> tbl_ProductSizes
 		{
 			get
@@ -87,11 +98,11 @@ namespace DevERP
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_ProductType> tbl_ProductTypes
+		public System.Data.Linq.Table<tbl_ProductionInfo> tbl_ProductionInfos
 		{
 			get
 			{
-				return this.GetTable<tbl_ProductType>();
+				return this.GetTable<tbl_ProductionInfo>();
 			}
 		}
 	}
@@ -206,6 +217,92 @@ namespace DevERP
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_ProductType")]
+	public partial class tbl_ProductType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ProductId;
+		
+		private string _ProductType;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnProductIdChanging(int value);
+    partial void OnProductIdChanged();
+    partial void OnProductTypeChanging(string value);
+    partial void OnProductTypeChanged();
+    #endregion
+		
+		public tbl_ProductType()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ProductId
+		{
+			get
+			{
+				return this._ProductId;
+			}
+			set
+			{
+				if ((this._ProductId != value))
+				{
+					this.OnProductIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProductId = value;
+					this.SendPropertyChanged("ProductId");
+					this.OnProductIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductType", DbType="VarChar(50)")]
+		public string ProductType
+		{
+			get
+			{
+				return this._ProductType;
+			}
+			set
+			{
+				if ((this._ProductType != value))
+				{
+					this.OnProductTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ProductType = value;
+					this.SendPropertyChanged("ProductType");
+					this.OnProductTypeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_ProductSize")]
 	public partial class tbl_ProductSize : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -215,6 +312,8 @@ namespace DevERP
 		private int _Id;
 		
 		private string _ProductSize;
+		
+		private System.Nullable<decimal> _Rate;
 		
 		private System.Nullable<int> _ProductNameId;
 		
@@ -230,6 +329,8 @@ namespace DevERP
     partial void OnIdChanged();
     partial void OnProductSizeChanging(string value);
     partial void OnProductSizeChanged();
+    partial void OnRateChanging(System.Nullable<decimal> value);
+    partial void OnRateChanged();
     partial void OnProductNameIdChanging(System.Nullable<int> value);
     partial void OnProductNameIdChanged();
     partial void OnProductTypeIdChanging(System.Nullable<int> value);
@@ -279,6 +380,26 @@ namespace DevERP
 					this._ProductSize = value;
 					this.SendPropertyChanged("ProductSize");
 					this.OnProductSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rate", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Rate
+		{
+			get
+			{
+				return this._Rate;
+			}
+			set
+			{
+				if ((this._Rate != value))
+				{
+					this.OnRateChanging(value);
+					this.SendPropertyChanging();
+					this._Rate = value;
+					this.SendPropertyChanged("Rate");
+					this.OnRateChanged();
 				}
 			}
 		}
@@ -364,33 +485,129 @@ namespace DevERP
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_ProductType")]
-	public partial class tbl_ProductType : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_ProductionInfo")]
+	public partial class tbl_ProductionInfo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ProductId;
+		private long _Id;
 		
-		private string _ProductType;
+		private System.Nullable<System.DateTime> _ProductionDate;
+		
+		private string _EmpId;
+		
+		private System.Nullable<int> _ProductId;
+		
+		private System.Nullable<double> _Quantity;
+		
+		private System.Nullable<decimal> _Rate;
+		
+		private System.Nullable<decimal> _TotalRate;
+		
+		private System.Nullable<System.DateTime> _InputDate;
+		
+		private string _InputBy;
+		
+		private System.Nullable<System.DateTime> _UpdateDate;
+		
+		private string _UpdateBy;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnProductIdChanging(int value);
+    partial void OnIdChanging(long value);
+    partial void OnIdChanged();
+    partial void OnProductionDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnProductionDateChanged();
+    partial void OnEmpIdChanging(string value);
+    partial void OnEmpIdChanged();
+    partial void OnProductIdChanging(System.Nullable<int> value);
     partial void OnProductIdChanged();
-    partial void OnProductTypeChanging(string value);
-    partial void OnProductTypeChanged();
+    partial void OnQuantityChanging(System.Nullable<double> value);
+    partial void OnQuantityChanged();
+    partial void OnRateChanging(System.Nullable<decimal> value);
+    partial void OnRateChanged();
+    partial void OnTotalRateChanging(System.Nullable<decimal> value);
+    partial void OnTotalRateChanged();
+    partial void OnInputDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnInputDateChanged();
+    partial void OnInputByChanging(string value);
+    partial void OnInputByChanged();
+    partial void OnUpdateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnUpdateDateChanged();
+    partial void OnUpdateByChanging(string value);
+    partial void OnUpdateByChanged();
     #endregion
 		
-		public tbl_ProductType()
+		public tbl_ProductionInfo()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ProductId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductionDate", DbType="Date")]
+		public System.Nullable<System.DateTime> ProductionDate
+		{
+			get
+			{
+				return this._ProductionDate;
+			}
+			set
+			{
+				if ((this._ProductionDate != value))
+				{
+					this.OnProductionDateChanging(value);
+					this.SendPropertyChanging();
+					this._ProductionDate = value;
+					this.SendPropertyChanged("ProductionDate");
+					this.OnProductionDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmpId", DbType="VarChar(50)")]
+		public string EmpId
+		{
+			get
+			{
+				return this._EmpId;
+			}
+			set
+			{
+				if ((this._EmpId != value))
+				{
+					this.OnEmpIdChanging(value);
+					this.SendPropertyChanging();
+					this._EmpId = value;
+					this.SendPropertyChanged("EmpId");
+					this.OnEmpIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", DbType="Int")]
+		public System.Nullable<int> ProductId
 		{
 			get
 			{
@@ -409,22 +626,142 @@ namespace DevERP
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductType", DbType="VarChar(50)")]
-		public string ProductType
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Float")]
+		public System.Nullable<double> Quantity
 		{
 			get
 			{
-				return this._ProductType;
+				return this._Quantity;
 			}
 			set
 			{
-				if ((this._ProductType != value))
+				if ((this._Quantity != value))
 				{
-					this.OnProductTypeChanging(value);
+					this.OnQuantityChanging(value);
 					this.SendPropertyChanging();
-					this._ProductType = value;
-					this.SendPropertyChanged("ProductType");
-					this.OnProductTypeChanged();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rate", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Rate
+		{
+			get
+			{
+				return this._Rate;
+			}
+			set
+			{
+				if ((this._Rate != value))
+				{
+					this.OnRateChanging(value);
+					this.SendPropertyChanging();
+					this._Rate = value;
+					this.SendPropertyChanged("Rate");
+					this.OnRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalRate", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> TotalRate
+		{
+			get
+			{
+				return this._TotalRate;
+			}
+			set
+			{
+				if ((this._TotalRate != value))
+				{
+					this.OnTotalRateChanging(value);
+					this.SendPropertyChanging();
+					this._TotalRate = value;
+					this.SendPropertyChanged("TotalRate");
+					this.OnTotalRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InputDate", DbType="Date")]
+		public System.Nullable<System.DateTime> InputDate
+		{
+			get
+			{
+				return this._InputDate;
+			}
+			set
+			{
+				if ((this._InputDate != value))
+				{
+					this.OnInputDateChanging(value);
+					this.SendPropertyChanging();
+					this._InputDate = value;
+					this.SendPropertyChanged("InputDate");
+					this.OnInputDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InputBy", DbType="VarChar(50)")]
+		public string InputBy
+		{
+			get
+			{
+				return this._InputBy;
+			}
+			set
+			{
+				if ((this._InputBy != value))
+				{
+					this.OnInputByChanging(value);
+					this.SendPropertyChanging();
+					this._InputBy = value;
+					this.SendPropertyChanged("InputBy");
+					this.OnInputByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="Date")]
+		public System.Nullable<System.DateTime> UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this.OnUpdateDateChanging(value);
+					this.SendPropertyChanging();
+					this._UpdateDate = value;
+					this.SendPropertyChanged("UpdateDate");
+					this.OnUpdateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateBy", DbType="VarChar(50)")]
+		public string UpdateBy
+		{
+			get
+			{
+				return this._UpdateBy;
+			}
+			set
+			{
+				if ((this._UpdateBy != value))
+				{
+					this.OnUpdateByChanging(value);
+					this.SendPropertyChanging();
+					this._UpdateBy = value;
+					this.SendPropertyChanged("UpdateBy");
+					this.OnUpdateByChanged();
 				}
 			}
 		}

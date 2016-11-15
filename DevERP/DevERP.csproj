@@ -246,6 +246,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ScrollableGridViewPlugin_ASP.NetAJAXmin.js" />
     <Content Include="UI\About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
@@ -283,6 +284,7 @@
     <Content Include="Site.Master" />
     <Content Include="UI\ItemSetup.aspx" />
     <Content Include="UI\PartySetup.aspx" />
+    <Content Include="UI\ProductionEntry.aspx" />
     <Content Include="UI\ProductItemAndNameSetup.aspx" />
     <Content Include="UI\Profile.aspx" />
     <Content Include="UI\SubItemSetup.aspx" />
@@ -441,6 +443,13 @@
     </Compile>
     <Compile Include="UI\PartySetup.aspx.designer.cs">
       <DependentUpon>PartySetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProductionEntry.aspx.cs">
+      <DependentUpon>ProductionEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\ProductionEntry.aspx.designer.cs">
+      <DependentUpon>ProductionEntry.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\ProductItemAndNameSetup.aspx.cs">
       <DependentUpon>ProductItemAndNameSetup.aspx</DependentUpon>
