@@ -38,4 +38,58 @@
       <Column Name="UpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tbl_EmployeeEntry" Member="tbl_EmployeeEntries">
+    <Type Name="tbl_EmployeeEntry">
+      <Column Name="EmpId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployeeId" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeIdBangla" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="DepartmentId" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DesignationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Grade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FirstNameBangla" Type="System.String" DbType="NChar(500)" CanBeNull="true" />
+      <Column Name="LastNameBangla" Type="System.String" DbType="NChar(500)" CanBeNull="true" />
+      <Column Name="ShortName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AdditionalId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FatherName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="MotherName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DateOfBirth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="PlaceOfBirth" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="BloodGroup" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Nationality" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NationalIdCardNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NationalIdCardNoBangla" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="Religion" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Hobbies" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaritialStatus" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MarriageDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="PresentAddress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ParmanentAddress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ParmanentAddressBangla" Type="System.String" DbType="NChar(1000)" CanBeNull="true" />
+      <Column Name="OfficialPhone" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="PersonalPhone" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="OfficialEmail" Type="System.String" DbType="VarChar(320)" CanBeNull="true" />
+      <Column Name="PersonalEmail" Type="System.String" DbType="VarChar(320)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AttendenceCardId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AttendenceCardIdBangla" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="FingerPrintId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeePicture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DigitalSignature" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="GrossSalary" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BasicSalary" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HouseRent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MedicalSupport" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConvanceSupport" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FoodSupport" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OverTimeRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="JoiningDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="JoiningDateBangla" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="LineId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CatagoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryOrDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
