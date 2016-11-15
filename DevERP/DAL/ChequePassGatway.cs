@@ -11,11 +11,11 @@ namespace DevERP.DAL
         
         public List<Transaction> GetAllChequeTransactions(ChequePassModel chequePassModel)
         {
-            Query = "select t.transactionId,t.transactionDate,t.itemId,i.itemName,t.subItemId,s.subItemName,t.amount,t.transactionCatagory," +
-                    "t.partyId,p.partyName,t.transactionType,t.bankId,b.bankName,t.remarks,t.chequeStatus,t.lastModify " +
+            Query = "select t.transactionId,t.transactionDate,t.itemId,i.itemName,t.subItemId,s.subItemName,t.amount,t.catagory," +
+                    "t.partyId,p.partyName,t.paymentType,t.bankId,b.bankName,t.remarks,t.chequeStatus,t.lastModify " +
                     "from Transactions as t left outer join Item as i on t.itemId=i.itemId left outer join SubItem as s " +
                     "on t.subItemId=s.subItemId left outer join Bank as b on t.bankId=b.bankId left outer join Party as p " +
-                    "on t.partyId=p.partyId where transactionType='cheque' and t.transactionDate between @fromDate and @toDate";
+                    "on t.partyId=p.partyId where paymentType='cheque' and t.transactionDate between @fromDate and @toDate";
             PrepareCommand(CommandType.Text);
             Command.Parameters.AddWithValue("@fromDate", chequePassModel.FromDate);
             Command.Parameters.AddWithValue("@toDate", chequePassModel.ToDate);
@@ -48,8 +48,8 @@ namespace DevERP.DAL
                     transaction.Amount = Reader["amount"] != DBNull.Value
                         ? Convert.ToDecimal(Reader["amount"].ToString())
                         : 0;
-                    transaction.TransactionCatagory = Reader["transactionCatagory"] != DBNull.Value
-                        ? Reader["transactionCatagory"].ToString()
+                    transaction.Catagory = Reader["catagory"] != DBNull.Value
+                        ? Reader["catagory"].ToString()
                         : string.Empty;
                     transaction.PartyId = Reader["partyId"] != DBNull.Value
                         ? Convert.ToInt32(Reader["partyId"].ToString())
@@ -57,8 +57,8 @@ namespace DevERP.DAL
                     transaction.PartyName = Reader["partyName"] != DBNull.Value
                         ? Reader["partyName"].ToString()
                         : string.Empty;
-                    transaction.TransactionType = Reader["transactionType"] != DBNull.Value
-                        ? Reader["transactionType"].ToString()
+                    transaction.PaymentType = Reader["paymentType"] != DBNull.Value
+                        ? Reader["paymentType"].ToString()
                         : string.Empty;
                     transaction.BankId = Reader["bankId"] != DBNull.Value
                         ? Convert.ToInt32(Reader["bankId"].ToString())
@@ -113,7 +113,7 @@ namespace DevERP.DAL
 
         public decimal GetBalance(ChequePassModel chequePassModel, out bool isSuccss)
         {
-            Query = "select IsNull(SUM(amount),0) as balance from transactions where transactionDate between @fromDate and @toDate and transactionType='cheque' and chequeStatus=@chequeStatus";
+            Query = "select IsNull(SUM(amount),0) as balance from transactions where transactionDate between @fromDate and @toDate and paymentType='cheque' and chequeStatus=@chequeStatus";
             PrepareCommand(CommandType.Text);
             Command.Parameters.AddWithValue("@fromDate", chequePassModel.FromDate);
             Command.Parameters.AddWithValue("@toDate", chequePassModel.ToDate);

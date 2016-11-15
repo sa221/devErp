@@ -168,9 +168,9 @@ namespace DevERP.UI
             transactionModel.ItemId = Convert.ToInt32(itemNameDropDown.SelectedValue);
             transactionModel.SubItemId = Convert.ToInt32(subItemNameDropDown.SelectedValue);
             transactionModel.Amount = Convert.ToDecimal(amount.Value);
-            transactionModel.TransactionCatagory = CatagoryDropDown.SelectedValue;
+            transactionModel.Catagory = CatagoryDropDown.SelectedValue;
             transactionModel.PartyId = Convert.ToInt32(partyDropDown.SelectedValue);
-            transactionModel.TransactionType = TypeDropDown.SelectedValue;
+            transactionModel.PaymentType = TypeDropDown.SelectedValue;
             transactionModel.BankId = Convert.ToInt32(bankDropDown.SelectedValue);
             transactionModel.Remarks = remarks.Value;
             return transactionModel;
@@ -189,9 +189,9 @@ namespace DevERP.UI
                 LoadSubitem();
                 subItemNameDropDown.SelectedValue = transaction.SubItemId.ToString();
                 amount.Value = transaction.Amount.ToString(CultureInfo.CurrentCulture);
-                CatagoryDropDown.SelectedValue = transaction.TransactionCatagory;
+                CatagoryDropDown.SelectedValue = transaction.Catagory;
                 partyDropDown.SelectedValue = transaction.PartyId.ToString();
-                TypeDropDown.SelectedValue = transaction.TransactionType;
+                TypeDropDown.SelectedValue = transaction.PaymentType;
                 LoadBank();
                 bankDropDown.SelectedValue = transaction.BankId.ToString();
                 remarks.Value = transaction.Remarks;

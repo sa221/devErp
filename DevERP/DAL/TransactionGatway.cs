@@ -10,16 +10,16 @@ namespace DevERP.DAL
     {
         public bool InsertTransaction(Transaction transaction)
         {
-            Query = "Insert into Transactions (transactionDate,itemId,subItemId,amount,transactionCatagory,partyId,transactionType,bankId,remarks)" +
-                    " values (@transactionDate,@itemId,@subItemId,@amount,@transactionCatagory,@partyId,@transactionType,@bankId,@remarks)";
+            Query = "Insert into Transactions (transactionDate,itemId,subItemId,amount,catagory,partyId,paymentType,bankId,remarks)" +
+                    " values (@transactionDate,@itemId,@subItemId,@amount,@catagory,@partyId,@paymentType,@bankId,@remarks)";
             PrepareCommand(CommandType.Text);
             Command.Parameters.AddWithValue("@transactionDate", transaction.TransactionDate);
             Command.Parameters.AddWithValue("@itemId", transaction.ItemId);
             Command.Parameters.AddWithValue("@subItemId", transaction.SubItemId);
             Command.Parameters.AddWithValue("@amount", transaction.Amount);
-            Command.Parameters.AddWithValue("@transactionCatagory", transaction.TransactionCatagory);
+            Command.Parameters.AddWithValue("@catagory", transaction.Catagory);
             Command.Parameters.AddWithValue("@partyId", transaction.PartyId);
-            Command.Parameters.AddWithValue("@transactionType", transaction.TransactionType);
+            Command.Parameters.AddWithValue("@paymentType", transaction.PaymentType);
             Command.Parameters.AddWithValue("@bankId", transaction.BankId);
             Command.Parameters.AddWithValue("@remarks", transaction.Remarks);
             Connection.Open();
@@ -38,17 +38,17 @@ namespace DevERP.DAL
         }
         public bool UpdateTransaction(Transaction transaction)
         {
-            Query = "Update Transactions set transactionDate=@transactionDate,itemId=@itemId,subItemId=@subItemId,amount=@amount,transactionCatagory=@transactionCatagory," +
-                    "partyId=@partyId,transactionType=@transactionType,bankId=@bankId,remarks=@remarks where transactionId = @transactionId";
+            Query = "Update Transactions set transactionDate=@transactionDate,itemId=@itemId,subItemId=@subItemId,amount=@amount,catagory=@catagory," +
+                    "partyId=@partyId,paymentType=@paymentType,bankId=@bankId,remarks=@remarks where transactionId = @transactionId";
             PrepareCommand(CommandType.Text);
             Command.Parameters.AddWithValue("@transactionId", transaction.TransactionId);
             Command.Parameters.AddWithValue("@transactionDate", transaction.TransactionDate);
             Command.Parameters.AddWithValue("@itemId", transaction.ItemId);
             Command.Parameters.AddWithValue("@subItemId", transaction.SubItemId);
             Command.Parameters.AddWithValue("@amount", transaction.Amount);
-            Command.Parameters.AddWithValue("@transactionCatagory", transaction.TransactionCatagory);
+            Command.Parameters.AddWithValue("@catagory", transaction.Catagory);
             Command.Parameters.AddWithValue("@partyId", transaction.PartyId);
-            Command.Parameters.AddWithValue("@transactionType", transaction.TransactionType);
+            Command.Parameters.AddWithValue("@paymentType", transaction.PaymentType);
             Command.Parameters.AddWithValue("@bankId", transaction.BankId);
             Command.Parameters.AddWithValue("@remarks", transaction.Remarks);
             Connection.Open();
@@ -117,8 +117,8 @@ namespace DevERP.DAL
                     transaction.Amount = Reader["amount"] != DBNull.Value
                         ? Convert.ToDecimal(Reader["amount"].ToString())
                         : 0;
-                    transaction.TransactionCatagory = Reader["transactionCatagory"] != DBNull.Value
-                        ? Reader["transactionCatagory"].ToString()
+                    transaction.Catagory = Reader["catagory"] != DBNull.Value
+                        ? Reader["catagory"].ToString()
                         : string.Empty;
                     transaction.PartyId = Reader["partyId"] != DBNull.Value
                         ? Convert.ToInt32(Reader["partyId"].ToString())
@@ -126,8 +126,8 @@ namespace DevERP.DAL
                     transaction.PartyName = Reader["partyName"] != DBNull.Value
                         ? Reader["partyName"].ToString()
                         : string.Empty;
-                    transaction.TransactionType = Reader["transactionType"] != DBNull.Value
-                        ? Reader["transactionType"].ToString()
+                    transaction.PaymentType = Reader["paymentType"] != DBNull.Value
+                        ? Reader["paymentType"].ToString()
                         : string.Empty;
                     transaction.BankId = Reader["bankId"] != DBNull.Value
                         ? Convert.ToInt32(Reader["bankId"].ToString())
@@ -160,7 +160,7 @@ namespace DevERP.DAL
         }
         public decimal GetBalance(out bool isSuccss)
         {
-            Query = "select ((select IsNull(SUM(amount),0) from (select * from GetPassTransaction) as a where a.transactionCatagory='income')-(select IsNull(SUM(amount),0) from (select * from GetPassTransaction) as a where a.transactionCatagory='expence')) as balance";
+            Query = "select ((select IsNull(SUM(amount),0) from (select * from GetPassTransaction) as a where a.catagory='income')-(select IsNull(SUM(amount),0) from (select * from GetPassTransaction) as a where a.catagory='expence')) as balance";
             PrepareCommand(CommandType.Text);
             isSuccss = true;
             Connection.Open();

@@ -120,7 +120,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Transaction Catagory">
                                     <ItemTemplate>
-                                        <asp:Label ID="transactionCatagory" runat="server" Text='<%# Eval("TransactionCatagory") %>'></asp:Label>
+                                        <asp:Label ID="transactionCatagory" runat="server" Text='<%# Eval("Catagory") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Party">
@@ -130,7 +130,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Transaction Type">
                                     <ItemTemplate>
-                                        <asp:Label ID="transactionType" runat="server" Text='<%# Eval("TransactionType") %>'></asp:Label>
+                                        <asp:Label ID="transactionType" runat="server" Text='<%# Eval("PaymentType") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Bank">

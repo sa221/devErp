@@ -11,10 +11,10 @@ namespace DevERP.Models
         public int SubItemId { get; set; }
         public string SubItemName { get; set; }
         public decimal Amount { get; set; }
-        public string TransactionCatagory { get; set; }
+        public string Catagory { get; set; }
         public int PartyId { get; set; }
         public string PartyName { get; set; }
-        public string TransactionType { get; set; }
+        public string PaymentType { get; set; }
         public int BankId { get; set; }
         public string BankName { get; set; }
         public string Remarks { get; set; }
