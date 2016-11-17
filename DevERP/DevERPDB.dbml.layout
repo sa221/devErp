@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DevERPDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 14.5" name="DevERPDB">
   <DataContextMoniker Name="/DevERPDBDataContext" />
   <nestedChildShapes>
     <classShape Id="77ad8e02-8bd3-4c16-ae29-0d56f6f86710" absoluteBounds="0.75, 0.75, 2, 1.3862939453125">
@@ -24,6 +24,12 @@
       <DataClassMoniker Name="/DevERPDBDataContext/tbl_ProductionInfo" />
       <nestedChildShapes>
         <elementListCompartment Id="94dcbab9-df46-4f2f-b03c-3fd339c7f209" absoluteBounds="6.765, 1.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1082d1a6-076e-46f6-8aad-456ae8c101fe" absoluteBounds="4, 3.875, 2, 10.424461263020833">
+      <DataClassMoniker Name="/DevERPDBDataContext/tbl_EmployeeEntry" />
+      <nestedChildShapes>
+        <elementListCompartment Id="05944349-c289-4dc2-a1d5-99275240f3de" absoluteBounds="4.015, 4.335, 1.9700000000000002, 9.8644612630208321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

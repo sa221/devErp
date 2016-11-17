@@ -22,192 +22,84 @@ namespace DevERP.UI {
         protected global::System.Web.UI.WebControls.Label messageLabel;
         
         /// <summary>
-        /// maintenanceId control.
+        /// empId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText maintenanceId;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText empId;
         
         /// <summary>
-        /// dateTextBox control.
+        /// searchEmpButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dateTextBox;
+        protected global::System.Web.UI.WebControls.Button searchEmpButton;
         
         /// <summary>
-        /// busNoDropDownList control.
+        /// productionDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList busNoDropDownList;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText productionDate;
         
         /// <summary>
-        /// historyButton control.
+        /// empName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button historyButton;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl empName;
         
         /// <summary>
-        /// maintenanceHistoryGridView control.
+        /// productDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView maintenanceHistoryGridView;
+        protected global::System.Web.UI.WebControls.DropDownList productDropDownList;
         
         /// <summary>
-        /// departmentsDropDownList control.
+        /// productRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList departmentsDropDownList;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText productRate;
         
         /// <summary>
-        /// locationsDropDownList control.
+        /// productQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList locationsDropDownList;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText productQuantity;
         
         /// <summary>
-        /// otherLocation control.
+        /// total control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText otherLocation;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText total;
         
         /// <summary>
-        /// partsDropDownList control.
+        /// productionGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList partsDropDownList;
-        
-        /// <summary>
-        /// qtyText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText qtyText;
-        
-        /// <summary>
-        /// unitText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText unitText;
-        
-        /// <summary>
-        /// lifeCycleText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText lifeCycleText;
-        
-        /// <summary>
-        /// purposeText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText purposeText;
-        
-        /// <summary>
-        /// oldPartsCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox oldPartsCheckBox;
-        
-        /// <summary>
-        /// oldPartsDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList oldPartsDropDownList;
-        
-        /// <summary>
-        /// oldQtyText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText oldQtyText;
-        
-        /// <summary>
-        /// oldUnitText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText oldUnitText;
-        
-        /// <summary>
-        /// oldLifeCycleText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText oldLifeCycleText;
-        
-        /// <summary>
-        /// oldPurposeText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText oldPurposeText;
-        
-        /// <summary>
-        /// receiveDateText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText receiveDateText;
-        
-        /// <summary>
-        /// reportButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button reportButton;
+        protected global::System.Web.UI.WebControls.GridView productionGridView;
     }
 }
