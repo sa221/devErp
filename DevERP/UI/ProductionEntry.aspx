@@ -12,22 +12,13 @@
         })
     </script>
     <script type="text/javascript">
-        //$(document).ready(function () {
-        //    $('productQuantity').focusout(function () {
-        //        var x = parseInt($('productRate').val());
-        //        var y = parseInt($('#productQuantity').val());
-        //        $('#total').val(y * x);
-                
-
-        //    });
-
-        //});
+        
         function sum() {
-            var txtFirstNumberValue = parseInt(document.getElementById('productRate'));
-            var txtSecondNumberValue = document.getElementById('productQuantity');
+            var txtFirstNumberValue = document.getElementById("MainContent_productRate").value;
+            var txtSecondNumberValue = document.getElementById("MainContent_productQuantity").value;
             var result = parseInt(txtFirstNumberValue) * parseInt(txtSecondNumberValue);
             if (!isNaN(result)) {
-                document.getElementById("total").value = result;
+                document.getElementById("MainContent_totalTaka").value = result;
             }
         }
     </script>
@@ -50,7 +41,7 @@
                         </div>
                         <div class="col-sm-1">
                             <br />
-                            <asp:Button ID="searchEmpButton" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="searchEmpButton_Click" /> 
+                            <asp:Button ID="searchEmpButton" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="searchEmpButton_Click" />
                         </div>
                         <div class="col-sm-1">
                         </div>
@@ -61,6 +52,8 @@
                         <div class="col-sm-4">
                             <br />
                             <label id="empName" runat="server" style="background-color: #22FF99"></label>
+                            <asp:TextBox ID="productionIdTextBox" runat="server" Visible="False"></asp:TextBox>
+                            <asp:TextBox ID="previousQtyTextBox" runat="server" Visible="False"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -82,33 +75,96 @@
                         </div>
                         <div class="col-sm-2">
                             <label>Total:</label>
-                            <input type="text" runat="server" class="form-control input-sm" name="total" id="total" />
+                            <input type="text" runat="server" class="form-control input-sm" name="totalTaka" id="totalTaka" />
                         </div>
                         <div class="col-sm-2">
                             <br />
-                            <button id="saveButton" type="button" class="btn btn-success"><strong>Save</strong></button>
+                            <asp:Button ID="saveButton" runat="server" CssClass="btn btn-success" Text="Save" OnClick="saveButton_Click" />
+
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <br />
+                            <span class="label label-warning" style="float: left; font-size: 20px; position: relative; background-color: #f0ad4e" id="failStatusLavel" runat="server"></span>
+                            <span class="label label-success" style="float: left; font-size: 20px; position: relative; background-color: #5cb85c" id="successStatusLavel" runat="server"></span>
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-lg-12">
                     <div class="form-group">
 
                         <div class="col-sm-12" style="width: 100%;">
-                            <asp:GridView ID="productionGridView" runat="server" AutoGenerateColumns="False" CssClass="table  table-bordered" AllowPaging="True" PageSize="2">
+                            <asp:GridView ID="productionGridView" runat="server" OnRowCommand="productionGridView_RowCommand" AutoGenerateColumns="False" CssClass="table table-bordered table table-responsive" AllowPaging="true"
+                                OnPageIndexChanging="OnPageIndexChanging" PageSize="5">
+                                <RowStyle HorizontalAlign="Center"></RowStyle>
                                 <Columns>
                                     <asp:TemplateField HeaderText="SL#">
+                                        
                                         <ItemTemplate>
                                             <%#Container.DataItemIndex+1 %>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Type Name">
+                                    <asp:TemplateField HeaderText="Date">
                                         <ItemTemplate>
-                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("ProductType") %>'></asp:Label>
+                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("ProductionDate","{0:d}") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Product Name">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label6" runat="server" Text='<%# Eval("FullProductName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Product ID" Visible="False">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("ProductId") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Production ID" Visible="False">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label7" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Employee ID" Visible="False">
+                                        <ItemTemplate>
+                                            <asp:Label ID="empIdLabel" runat="server" Text='<%# Eval("EmpId") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Rate">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label3" runat="server" Text='<%# Eval("Rate") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Quantity">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label4" runat="server" Text='<%# Eval("Quantity") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Total">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label5" runat="server" Text='<%# Eval("TotalRate") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Edit">
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnEdit" runat="server" Width="50" CssClass="btn btn-primary" Text="Edit" CommandName="EditButton"
+                                                CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Delete">
+                                            <ItemTemplate>
+                                                <asp:Button ID="btnDelete" runat="server" Width="70" Text="Delete" CssClass="btn btn-danger"  CommandName="DeleteButton" 
+                                                            CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                 </Columns>
 
-                                <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NextPreviousFirstLast" NextPageText="Next" PreviousPageText="Prev" />
+                                <PagerSettings FirstPageText="First " LastPageText="Last " Mode="NextPreviousFirstLast" NextPageText="Next " PreviousPageText="Prev" />
 
                             </asp:GridView>
                         </div>
