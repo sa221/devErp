@@ -58,13 +58,18 @@ namespace DevERP.UI
             decimal balance;
             TransactionGridView.DataSource = _transactionViewManager.GetAllTransaction(transactionView, out isSuccess, out balance);
             TransactionGridView.DataBind();
-            if (isSuccess)
+            
+            if (TransactionGridView.Rows.Count>0)
             {
-                ((Label)TransactionGridView.FooterRow.FindControl("balance")).Text = balance.ToString(CultureInfo.CurrentCulture);
-            }
-            else
-            {
-                ((Label)TransactionGridView.FooterRow.FindControl("balance")).Text = "Error";
+                Label balanceLabel = (Label)TransactionGridView.FooterRow.FindControl("balance");
+                if (isSuccess)
+                {
+                    balanceLabel.Text = balance.ToString(CultureInfo.CurrentCulture);
+                }
+                else
+                {
+                    balanceLabel.Text = "Error";
+                }
             }
             ChangeStatusColor();
         }

@@ -58,6 +58,24 @@ namespace DevERP.UI {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl empName;
         
         /// <summary>
+        /// productionIdTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox productionIdTextBox;
+        
+        /// <summary>
+        /// previousQtyTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox previousQtyTextBox;
+        
+        /// <summary>
         /// productDropDownList control.
         /// </summary>
         /// <remarks>
@@ -85,13 +103,40 @@ namespace DevERP.UI {
         protected global::System.Web.UI.HtmlControls.HtmlInputText productQuantity;
         
         /// <summary>
-        /// total control.
+        /// totalTaka control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText total;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText totalTaka;
+        
+        /// <summary>
+        /// saveButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button saveButton;
+        
+        /// <summary>
+        /// failStatusLavel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl failStatusLavel;
+        
+        /// <summary>
+        /// successStatusLavel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl successStatusLavel;
         
         /// <summary>
         /// productionGridView control.

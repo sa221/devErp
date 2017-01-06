@@ -67,7 +67,11 @@ namespace DevERP.UI
             ChequePassModel chequePassModel = GetChequePassModel();
             bool isSuccess;
             decimal balance = _chequePassManager.GetBalance(chequePassModel, out isSuccess);
-            ((Label) TransactionGridView.FooterRow.FindControl("balance")).Text = isSuccess ? balance.ToString(CultureInfo.CurrentCulture) : "Error";
+            if (TransactionGridView.Rows.Count>0)
+            {
+                ((Label)TransactionGridView.FooterRow.FindControl("balance")).Text = isSuccess ? balance.ToString(CultureInfo.CurrentCulture) : "Error";
+            }
+            
         }
         private ChequePassModel GetChequePassModel()
         {
