@@ -45,15 +45,15 @@ namespace DevERP
     partial void Inserttbl_ProductName(tbl_ProductName instance);
     partial void Updatetbl_ProductName(tbl_ProductName instance);
     partial void Deletetbl_ProductName(tbl_ProductName instance);
-    partial void Inserttbl_ProductSize(tbl_ProductSize instance);
-    partial void Updatetbl_ProductSize(tbl_ProductSize instance);
-    partial void Deletetbl_ProductSize(tbl_ProductSize instance);
     partial void Inserttbl_ProductType(tbl_ProductType instance);
     partial void Updatetbl_ProductType(tbl_ProductType instance);
     partial void Deletetbl_ProductType(tbl_ProductType instance);
     partial void Inserttbl_Stock(tbl_Stock instance);
     partial void Updatetbl_Stock(tbl_Stock instance);
     partial void Deletetbl_Stock(tbl_Stock instance);
+    partial void Inserttbl_ProductSize(tbl_ProductSize instance);
+    partial void Updatetbl_ProductSize(tbl_ProductSize instance);
+    partial void Deletetbl_ProductSize(tbl_ProductSize instance);
     #endregion
 		
 		public DevERPDBDataContext() : 
@@ -126,14 +126,6 @@ namespace DevERP
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_ProductSize> tbl_ProductSizes
-		{
-			get
-			{
-				return this.GetTable<tbl_ProductSize>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbl_ProductType> tbl_ProductTypes
 		{
 			get
@@ -147,6 +139,14 @@ namespace DevERP
 			get
 			{
 				return this.GetTable<tbl_Stock>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_ProductSize> tbl_ProductSizes
+		{
+			get
+			{
+				return this.GetTable<tbl_ProductSize>();
 			}
 		}
 	}
@@ -2261,188 +2261,6 @@ namespace DevERP
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_ProductSize")]
-	public partial class tbl_ProductSize : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _ProductSize;
-		
-		private System.Nullable<decimal> _Rate;
-		
-		private System.Nullable<int> _ProductNameId;
-		
-		private System.Nullable<int> _ProductTypeId;
-		
-		private string _FullProductName;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnProductSizeChanging(string value);
-    partial void OnProductSizeChanged();
-    partial void OnRateChanging(System.Nullable<decimal> value);
-    partial void OnRateChanged();
-    partial void OnProductNameIdChanging(System.Nullable<int> value);
-    partial void OnProductNameIdChanged();
-    partial void OnProductTypeIdChanging(System.Nullable<int> value);
-    partial void OnProductTypeIdChanged();
-    partial void OnFullProductNameChanging(string value);
-    partial void OnFullProductNameChanged();
-    #endregion
-		
-		public tbl_ProductSize()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductSize", DbType="VarChar(50)")]
-		public string ProductSize
-		{
-			get
-			{
-				return this._ProductSize;
-			}
-			set
-			{
-				if ((this._ProductSize != value))
-				{
-					this.OnProductSizeChanging(value);
-					this.SendPropertyChanging();
-					this._ProductSize = value;
-					this.SendPropertyChanged("ProductSize");
-					this.OnProductSizeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rate", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> Rate
-		{
-			get
-			{
-				return this._Rate;
-			}
-			set
-			{
-				if ((this._Rate != value))
-				{
-					this.OnRateChanging(value);
-					this.SendPropertyChanging();
-					this._Rate = value;
-					this.SendPropertyChanged("Rate");
-					this.OnRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductNameId", DbType="Int")]
-		public System.Nullable<int> ProductNameId
-		{
-			get
-			{
-				return this._ProductNameId;
-			}
-			set
-			{
-				if ((this._ProductNameId != value))
-				{
-					this.OnProductNameIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProductNameId = value;
-					this.SendPropertyChanged("ProductNameId");
-					this.OnProductNameIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductTypeId", DbType="Int")]
-		public System.Nullable<int> ProductTypeId
-		{
-			get
-			{
-				return this._ProductTypeId;
-			}
-			set
-			{
-				if ((this._ProductTypeId != value))
-				{
-					this.OnProductTypeIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProductTypeId = value;
-					this.SendPropertyChanged("ProductTypeId");
-					this.OnProductTypeIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FullProductName", DbType="VarChar(100)")]
-		public string FullProductName
-		{
-			get
-			{
-				return this._FullProductName;
-			}
-			set
-			{
-				if ((this._FullProductName != value))
-				{
-					this.OnFullProductNameChanging(value);
-					this.SendPropertyChanging();
-					this._FullProductName = value;
-					this.SendPropertyChanged("FullProductName");
-					this.OnFullProductNameChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_ProductType")]
 	public partial class tbl_ProductType : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2662,6 +2480,212 @@ namespace DevERP
 					this._Location = value;
 					this.SendPropertyChanged("Location");
 					this.OnLocationChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_ProductSize")]
+	public partial class tbl_ProductSize : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _ProductSize;
+		
+		private System.Nullable<decimal> _Rate;
+		
+		private System.Nullable<int> _ProductNameId;
+		
+		private System.Nullable<int> _ProductTypeId;
+		
+		private string _FullProductName;
+		
+		private System.Nullable<decimal> _SalesPrice;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnProductSizeChanging(string value);
+    partial void OnProductSizeChanged();
+    partial void OnRateChanging(System.Nullable<decimal> value);
+    partial void OnRateChanged();
+    partial void OnProductNameIdChanging(System.Nullable<int> value);
+    partial void OnProductNameIdChanged();
+    partial void OnProductTypeIdChanging(System.Nullable<int> value);
+    partial void OnProductTypeIdChanged();
+    partial void OnFullProductNameChanging(string value);
+    partial void OnFullProductNameChanged();
+    partial void OnSalesPriceChanging(System.Nullable<decimal> value);
+    partial void OnSalesPriceChanged();
+    #endregion
+		
+		public tbl_ProductSize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductSize", DbType="VarChar(50)")]
+		public string ProductSize
+		{
+			get
+			{
+				return this._ProductSize;
+			}
+			set
+			{
+				if ((this._ProductSize != value))
+				{
+					this.OnProductSizeChanging(value);
+					this.SendPropertyChanging();
+					this._ProductSize = value;
+					this.SendPropertyChanged("ProductSize");
+					this.OnProductSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rate", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Rate
+		{
+			get
+			{
+				return this._Rate;
+			}
+			set
+			{
+				if ((this._Rate != value))
+				{
+					this.OnRateChanging(value);
+					this.SendPropertyChanging();
+					this._Rate = value;
+					this.SendPropertyChanged("Rate");
+					this.OnRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductNameId", DbType="Int")]
+		public System.Nullable<int> ProductNameId
+		{
+			get
+			{
+				return this._ProductNameId;
+			}
+			set
+			{
+				if ((this._ProductNameId != value))
+				{
+					this.OnProductNameIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProductNameId = value;
+					this.SendPropertyChanged("ProductNameId");
+					this.OnProductNameIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductTypeId", DbType="Int")]
+		public System.Nullable<int> ProductTypeId
+		{
+			get
+			{
+				return this._ProductTypeId;
+			}
+			set
+			{
+				if ((this._ProductTypeId != value))
+				{
+					this.OnProductTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProductTypeId = value;
+					this.SendPropertyChanged("ProductTypeId");
+					this.OnProductTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FullProductName", DbType="VarChar(100)")]
+		public string FullProductName
+		{
+			get
+			{
+				return this._FullProductName;
+			}
+			set
+			{
+				if ((this._FullProductName != value))
+				{
+					this.OnFullProductNameChanging(value);
+					this.SendPropertyChanging();
+					this._FullProductName = value;
+					this.SendPropertyChanged("FullProductName");
+					this.OnFullProductNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesPrice", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> SalesPrice
+		{
+			get
+			{
+				return this._SalesPrice;
+			}
+			set
+			{
+				if ((this._SalesPrice != value))
+				{
+					this.OnSalesPriceChanging(value);
+					this.SendPropertyChanging();
+					this._SalesPrice = value;
+					this.SendPropertyChanged("SalesPrice");
+					this.OnSalesPriceChanged();
 				}
 			}
 		}

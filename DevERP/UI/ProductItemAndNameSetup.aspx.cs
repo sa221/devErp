@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace DevERP.UI
 {
@@ -35,10 +36,6 @@ namespace DevERP.UI
                 
             }
         }
-
-        
-        
-        
         protected void productNameSaveButton_Click(object sender, EventArgs e)
         {
             tbl_ProductName productName = new tbl_ProductName();
@@ -55,25 +52,77 @@ namespace DevERP.UI
                 LoadTypeGrid();
             }
         }
-
         protected void sizeRateSaveButton_Click(object sender, EventArgs e)
         {
-            tbl_ProductSize productSize=new tbl_ProductSize();
+            var checkProduct =
+                db.tbl_ProductSizes.FirstOrDefault(
+                    c => c.ProductNameId == Convert.ToInt32(productNameDropDownList.SelectedValue)
+                         && c.ProductTypeId == Convert.ToInt32(pProductTypeDropDownList.SelectedValue) &&
+                         c.ProductSize == sizeTextBox.Text);
+            if (checkProduct!=null)
+            {
+                checkProduct.Rate = Convert.ToDecimal(rateTextBox.Text);
+                checkProduct.FullProductName = productNameDropDownList.SelectedItem.Text + "" + sizeTextBox.Text.Trim();
+                checkProduct.SalesPrice = Convert.ToDecimal(salesPriceTextBox.Text);
+                db.SubmitChanges();
+                sizeTextBox.Text = String.Empty;
+                rateTextBox.Text = String.Empty;
+                salesPriceTextBox.Text = String.Empty;
+                sizeRateSaveButton.Text = "Save";
+                Span2.InnerText = "Updated Successfully.";
+            }
+            else
+            {
+                tbl_ProductSize productSize = new tbl_ProductSize();
 
-            productSize.ProductTypeId = Convert.ToInt32(pProductTypeDropDownList.SelectedValue);
-            productSize.ProductNameId = Convert.ToInt32(productNameDropDownList.SelectedValue);
-            productSize.ProductSize = sizeTextBox.Text.Trim();
-            productSize.Rate = Convert.ToDecimal(rateTextBox.Text);
-            productSize.FullProductName = productNameDropDownList.SelectedItem.Text + "" + sizeTextBox.Text.Trim();
-
-            db.tbl_ProductSizes.InsertOnSubmit(productSize);
-            db.SubmitChanges();
-            sizeTextBox.Text = String.Empty;
-            rateTextBox.Text = String.Empty;
-            Span2.InnerText = "Insert Successfully.";
+                productSize.ProductTypeId = Convert.ToInt32(pProductTypeDropDownList.SelectedValue);
+                productSize.ProductNameId = Convert.ToInt32(productNameDropDownList.SelectedValue);
+                productSize.ProductSize = sizeTextBox.Text.Trim();
+                productSize.Rate = Convert.ToDecimal(rateTextBox.Text);
+                productSize.FullProductName = productNameDropDownList.SelectedItem.Text + "" + sizeTextBox.Text.Trim();
+                productSize.SalesPrice = Convert.ToDecimal(salesPriceTextBox.Text);
+                db.tbl_ProductSizes.InsertOnSubmit(productSize);
+                db.SubmitChanges();
+                sizeTextBox.Text = String.Empty;
+                rateTextBox.Text = String.Empty;
+                salesPriceTextBox.Text = String.Empty;
+                Span2.InnerText = "Inserted Successfully.";
+            }
+            pProductTypeDropDownList.Enabled = true;
+            productNameDropDownList.Enabled = true;
+            sizeTextBox.Enabled = true;
             LoadProductSizeGrid();
         }
-
+        protected void ProductDetailsOnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(productWithSizeRateGridView, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["style"] = "cursor:pointer";
+            }
+        }
+        //Grid row command retrive value to TextBox
+        protected void productWithSizeRateGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Span2.InnerText = "";
+            int index = productWithSizeRateGridView.SelectedRow.RowIndex;
+            GridViewRow gvRow = productWithSizeRateGridView.Rows[index];
+            string productTyppe = ((Label)gvRow.FindControl("pTypeIdLabel")).Text;
+            string productName = ((Label)gvRow.FindControl("pNameLabel")).Text;
+            string size = ((Label)gvRow.FindControl("Label3")).Text;
+            string rate = ((Label)gvRow.FindControl("Label4")).Text;
+            string salesPrice = ((Label)gvRow.FindControl("Label6")).Text;
+            pProductTypeDropDownList.SelectedValue = productTyppe;
+            productNameDropDownList.SelectedValue = productName;
+            sizeTextBox.Text = size;
+            rateTextBox.Text = rate;
+            salesPriceTextBox.Text = salesPrice;
+            sizeRateSaveButton.Text = "Update";
+            pProductTypeDropDownList.Enabled = false;
+            productNameDropDownList.Enabled = false;
+            sizeTextBox.Enabled = false;
+            //groupId.Attributes.Add("readonly", "readonly");
+        }
         private void LoadProductTypeDdl()
         {
             var b = from p in db.tbl_ProductTypes
@@ -126,7 +175,7 @@ namespace DevERP.UI
                           from s in uGroup.DefaultIfEmpty()
                           join n in db.tbl_ProductNames on c.ProductNameId equals n.Id into nGroup
                           from n in nGroup.DefaultIfEmpty()
-                          select new { c.ProductSize, s.ProductType,n.ProdectName,c.Rate,c.FullProductName };
+                          select new { c.ProductSize, s.ProductType,s.ProductId,n.ProdectName,n.Id,c.Rate,c.FullProductName,c.SalesPrice};
 
             productWithSizeRateGridView.DataSource = getData.AsEnumerable();
             productWithSizeRateGridView.DataBind();

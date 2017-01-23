@@ -193,22 +193,40 @@ namespace DevERP.UI {
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// productTypeDropDownList control.
+        /// paymentTypeDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList productTypeDropDownList;
+        protected global::System.Web.UI.WebControls.DropDownList paymentTypeDropDownList;
         
         /// <summary>
-        /// productNameTextBox control.
+        /// totalAmountTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox productNameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox totalAmountTextBox;
+        
+        /// <summary>
+        /// discountPercentageTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox discountPercentageTextBox;
+        
+        /// <summary>
+        /// discountTakaTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox discountTakaTextBox;
         
         /// <summary>
         /// productNameSaveButton control.

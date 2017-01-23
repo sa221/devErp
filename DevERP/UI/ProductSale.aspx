@@ -58,7 +58,7 @@
                                 <div class="col-lg-12">
                                     <div class="col-sm-4 form-group">
                                         <div class="col-lg-12">
-                                            <b>qty: </b>
+                                            <b>Qty: </b>
                                             <asp:TextBox ID="qtyTextBox" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
@@ -235,21 +235,36 @@
                     <div class="col-lg-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h1 style="font-size: 20px" class="panel-title text-center">Product Name Entry</h1>
+                                <h1 style="font-size: 20px" class="panel-title text-center">Payment Procedure</h1>
                             </div>
 
                             <div class="panel-body">
                                 <div class="col-lg-12 form-group">
-                                    <div class="col-lg-4"><b>Product Type: </b></div>
-                                    <div class="col-lg-8">
-                                        <asp:DropDownList ID="productTypeDropDownList" runat="server" CssClass="form-control"></asp:DropDownList>
+                                   <%-- <div class="col-lg-4"><b>Payment Type: </b></div>--%>
+                                    <div class="col-lg-6">
+                                        <b>Pay.Type: </b>
+                                        <asp:DropDownList ID="paymentTypeDropDownList" runat="server" CssClass="form-control">
+                                            <asp:ListItem Value="1">CASH</asp:ListItem>
+                                            <asp:ListItem Value="2">CHEQUE</asp:ListItem>
+                                            <asp:ListItem Value="3">CASH&amp;CHEQUE</asp:ListItem>
+                                        </asp:DropDownList>
 
+                                    </div>
+                                     <div class="col-lg-6">
+                                        <b>Total Amount: </b>
+                                        <asp:TextBox ID="totalAmountTextBox" runat="server" CssClass="form-control"></asp:TextBox>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-lg-12 form-group">
-                                    <div class="col-lg-4"><b>Product Name: </b></div>
-                                    <div class="col-lg-8">
-                                        <asp:TextBox ID="productNameTextBox" runat="server" CssClass="form-control"></asp:TextBox>
+                                   
+                                    <div class="col-lg-6">
+                                        <b>Discount: </b>
+                                        <asp:TextBox ID="discountPercentageTextBox" runat="server" CssClass="form-control" placeholder="%"></asp:TextBox>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <b>Dis. In Taka </b>
+                                        <asp:TextBox ID="discountTakaTextBox" runat="server" CssClass="form-control" placeholder="TAKA"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 form-group">

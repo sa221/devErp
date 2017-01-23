@@ -148,6 +148,15 @@ namespace DevERP.UI {
         protected global::System.Web.UI.WebControls.TextBox rateTextBox;
         
         /// <summary>
+        /// salesPriceTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox salesPriceTextBox;
+        
+        /// <summary>
         /// sizeRateSaveButton control.
         /// </summary>
         /// <remarks>
@@ -173,15 +182,6 @@ namespace DevERP.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Span2;
-        
-        /// <summary>
-        /// up control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel up;
         
         /// <summary>
         /// productWithSizeRateGridView control.
