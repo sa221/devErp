@@ -48,22 +48,23 @@ namespace DevERP.UI
 
             Session["productInSession"] = dt1;     //Saving Datatable To Session 
         }
-        protected void OnRowDeletingProduct(object sender, GridViewDeleteEventArgs e)
-        {
-            int index = Convert.ToInt32(e.RowIndex);
-            dt1 = Session["productInSession"] as DataTable;
-            if (dt1 != null)
-            {
+        //protected void OnRowDeletingProduct(object sender, GridViewDeleteEventArgs e)
+        //{
+        //    int index = Convert.ToInt32(e.RowIndex);
+        //    dt1 = Session["productInSession"] as DataTable;
+        //    if (dt1 != null)
+        //    {
 
-                //var v=dt1.Rows[index].
-                dt1.Rows[index].Delete();
-                dt1.AcceptChanges();
-                Session["productInSession"] = dt1;
-                salesGridView.DataSource = dt1;
-                GetTotalAmount();
-            }
-            salesGridView.DataBind();
-        }
+        //        //var v=dt1.Rows[index].
+        //        dt1.Rows[index].Delete();
+        //        dt1.AcceptChanges();
+        //        Session["productInSession"] = dt1;
+        //        salesGridView.DataSource = dt1;
+        //        GetTotalAmount();
+        //    }
+        //    salesGridView.DataBind();
+        //}
+       
         private void GetTotalAmount()
         {
             var amount = dt1.AsEnumerable()
@@ -112,8 +113,8 @@ namespace DevERP.UI
                 }
                 else if (contains != null && itemUpdateText.Value != "")
                 {
-                    int index = salesGridView.SelectedRow.RowIndex;
-                    GridViewRow gvrow = salesGridView.Rows[index];
+                    int index = Convert.ToInt32(itemUpdateText.Value);
+                    //GridViewRow gvrow = salesGridView.Rows[index];
                     //int index = Convert.ToInt32(e.RowIndex);
                     dt1 = Session["productInSession"] as DataTable;
                     if (dt1 != null)
@@ -174,34 +175,34 @@ namespace DevERP.UI
             }
         }
         //Grid Row Selected
-        protected void ItemOnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(salesGridView, "Select$" + e.Row.RowIndex);
-                e.Row.Attributes["style"] = "cursor:pointer";
-            }
-        }
+        //protected void ItemOnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(salesGridView, "Select$" + e.Row.RowIndex);
+        //        e.Row.Attributes["style"] = "cursor:pointer";
+        //    }
+        //}
         //Grid row command retrive value to TextBox
-        protected void salesGridView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //ClearText();
-            //itemLiteral.Text = "_";
-            int index = salesGridView.SelectedRow.RowIndex;
-            GridViewRow gvrow = salesGridView.Rows[index];
-            string itemIdLvl = ((Label)gvrow.FindControl("Label2")).Text;
-            string productName = gvrow.Cells[2].Text;
-            string qty = gvrow.Cells[3].Text;
-            string unitPrice = gvrow.Cells[4].Text;
-            string total = gvrow.Cells[5].Text;
+        //protected void salesGridView_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //ClearText();
+        //    //itemLiteral.Text = "_";
+        //    int index = salesGridView.SelectedRow.RowIndex;
+        //    GridViewRow gvrow = salesGridView.Rows[index];
+        //    string itemIdLvl = ((Label)gvrow.FindControl("Label2")).Text;
+        //    string productName = gvrow.Cells[2].Text;
+        //    string qty = gvrow.Cells[3].Text;
+        //    string unitPrice = gvrow.Cells[4].Text;
+        //    string total = gvrow.Cells[5].Text;
 
-            productCodeText.Value = itemIdLvl;
-            productNameDropDownList.SelectedValue = itemIdLvl;
-            itemUpdateText.Value = itemIdLvl;
-            qtyText.Value = qty;
-            priceText.Value = unitPrice;
-            itemTotalTakaText.Value = total;
-        }
+        //    productCodeText.Value = itemIdLvl;
+        //    productNameDropDownList.SelectedValue = itemIdLvl;
+        //    itemUpdateText.Value = itemIdLvl;
+        //    qtyText.Value = qty;
+        //    priceText.Value = unitPrice;
+        //    itemTotalTakaText.Value = total;
+        //}
 
         protected void productNameDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -209,12 +210,70 @@ namespace DevERP.UI
             //itemDiscountTakaText.Value = "";
             var getItemDetails = from x in db.tbl_ProductSizes
                                  where x.Id == Convert.ToInt32(productNameDropDownList.SelectedValue)
-                                 select new { x.SalesPrice};
+                                 select new { x.SalesPrice };
             foreach (var itemDetail in getItemDetails)
             {
                 priceText.Value = itemDetail.SalesPrice.ToString();
             }
             qtyText.Focus();
+        }
+
+        //protected void salesGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        //{
+        //    int index = salesGridView.SelectedRow.RowIndex;
+        //    //int index = Convert.ToInt32(e.NewEditIndex);
+        //    GridViewRow gvrow = salesGridView.Rows[index];
+        //    string itemIdLvl = ((Label)gvrow.FindControl("Label2")).Text;
+        //    string productName = gvrow.Cells[2].Text;
+        //    string qty = gvrow.Cells[3].Text;
+        //    string unitPrice = gvrow.Cells[4].Text;
+        //    string total = gvrow.Cells[5].Text;
+
+        //    productCodeText.Value = itemIdLvl;
+        //    productNameDropDownList.SelectedValue = itemIdLvl;
+        //    itemUpdateText.Value = itemIdLvl;
+        //    qtyText.Value = qty;
+        //    priceText.Value = unitPrice;
+        //    itemTotalTakaText.Value = total;
+        //}
+        protected void salesGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "EditButton")
+            {
+                //DisableFeild();
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow gvrow = salesGridView.Rows[index];
+                string itemIdLvl = ((Label)gvrow.FindControl("Label2")).Text;
+                string productName = gvrow.Cells[2].Text;
+                string qty = gvrow.Cells[3].Text;
+                string unitPrice = gvrow.Cells[4].Text;
+                string total = gvrow.Cells[5].Text;
+
+                productCodeText.Value = itemIdLvl;
+                productNameDropDownList.SelectedValue = itemIdLvl;
+                itemUpdateText.Value = index.ToString();
+                qtyText.Value = qty;
+                priceText.Value = unitPrice;
+                itemTotalTakaText.Value = total;
+                addButton.Text = "Update";
+            }
+            else if (e.CommandName == "DeleteButton")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                //int index = Convert.ToInt32(e.RowIndex);
+                dt1 = Session["productInSession"] as DataTable;
+                if (dt1 != null)
+                {
+
+                    //var v=dt1.Rows[index].
+                    dt1.Rows[index].Delete();
+                    dt1.AcceptChanges();
+                    Session["productInSession"] = dt1;
+                    salesGridView.DataSource = dt1;
+                    GetTotalAmount();
+                }
+                salesGridView.DataBind();
+            }
         }
     }
 }
