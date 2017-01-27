@@ -2525,6 +2525,8 @@ namespace DevERP
 		
 		private System.Nullable<decimal> _SalesPrice;
 		
+		private string _ProductType;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2543,6 +2545,8 @@ namespace DevERP
     partial void OnFullProductNameChanged();
     partial void OnSalesPriceChanging(System.Nullable<decimal> value);
     partial void OnSalesPriceChanged();
+    partial void OnProductTypeChanging(string value);
+    partial void OnProductTypeChanged();
     #endregion
 		
 		public tbl_ProductSize()
@@ -2686,6 +2690,26 @@ namespace DevERP
 					this._SalesPrice = value;
 					this.SendPropertyChanged("SalesPrice");
 					this.OnSalesPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductType", DbType="VarChar(50)")]
+		public string ProductType
+		{
+			get
+			{
+				return this._ProductType;
+			}
+			set
+			{
+				if ((this._ProductType != value))
+				{
+					this.OnProductTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ProductType = value;
+					this.SendPropertyChanged("ProductType");
+					this.OnProductTypeChanged();
 				}
 			}
 		}

@@ -91,6 +91,7 @@
     <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
@@ -1423,6 +1424,7 @@
     <Content Include="UI\ProductItemAndNameSetup.aspx" />
     <Content Include="UI\ProductSale.aspx" />
     <Content Include="UI\Profile.aspx" />
+    <Content Include="UI\Sales.aspx" />
     <Content Include="UI\SubItemSetup.aspx" />
     <Content Include="UI\TransactionEntry.aspx" />
     <Content Include="UI\TransactionVIew.aspx" />
@@ -1643,6 +1645,13 @@
     </Compile>
     <Compile Include="UI\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Sales.aspx.cs">
+      <DependentUpon>Sales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Sales.aspx.designer.cs">
+      <DependentUpon>Sales.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\SubItemSetup.aspx.cs">
       <DependentUpon>SubItemSetup.aspx</DependentUpon>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.125, 11.375" name="DevERPDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.5, 11.375" name="DevERPDB">
   <DataContextMoniker Name="/DevERPDBDataContext" />
   <nestedChildShapes>
     <classShape Id="f989c63b-5639-4919-ae84-fa55eab6c06e" absoluteBounds="0.75, 0.75, 2, 2.1554996744791666">
@@ -44,10 +44,10 @@
         <elementListCompartment Id="6120e332-3b64-41cf-ac19-dd8828cc5f75" absoluteBounds="9.765, 6.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="2a254a7a-9b8c-46c9-b0db-f5c02b06d96a" absoluteBounds="10.875, 1.25, 2, 2.1554996744791666">
+    <classShape Id="9e724f57-cbba-4207-8619-ea438fb167e7" absoluteBounds="10.25, 0.75, 2, 2.3478011067708335">
       <DataClassMoniker Name="/DevERPDBDataContext/tbl_ProductSize" />
       <nestedChildShapes>
-        <elementListCompartment Id="e200f497-1b68-4ab2-832e-46b1ba229082" absoluteBounds="10.89, 1.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8d0903eb-20e7-456d-be49-f7e68e41ec2c" absoluteBounds="10.265, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

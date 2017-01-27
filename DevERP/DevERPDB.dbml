@@ -124,6 +124,7 @@
       <Column Name="ProductTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FullProductName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="SalesPrice" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProductType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
