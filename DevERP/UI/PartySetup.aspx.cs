@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI.WebControls;
 using DevERP.BLL;
 using DevERP.Models;
@@ -9,75 +10,141 @@ namespace DevERP.UI
 {
     public partial class PartySetup : System.Web.UI.Page
     {
-        PartyManager partyManager = new PartyManager();
+        DevERPDBDataContext db = new DevERPDBDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                BindParty();
+                LoadPartyInfoGrid();
             }
         }
-        private void BindParty()
+        protected void saveButton_Click(object sender, EventArgs e)
         {
-            List<Party> parties = partyManager.GetAllParty();
-            PartyGridView.DataSource = parties;
-            PartyGridView.DataBind();
-        }
-        protected void SaveParty_OnClick(object sender, EventArgs e)
-        {
-            Party party = new Party();
-            party.PartyName = partyName.Value;
-            party.PartyMobile = partyMobile.Value;
-            party.PartyAddress = partyAddress.Value;
-            if (partyManager.InsertParty(party))
+            if (organizationNameText.Value != "" && addressText.Value != "" && contactPersonNameText.Value != "" && contactNumber.Value != "" && addressText.Value != "")
             {
-                BindParty();
-                successMessage.InnerHtml = Provider.GetSuccessMassage("Successfully Inserted");
+                var checkParty =
+                    db.tblSuppliers.FirstOrDefault(x => x.OrganizationName == organizationNameText.Value.Trim());
+
+                if (checkParty == null && saveButton.Text == "Save")
+                {
+                    SaveParty();
+                    partyInfoLiteral.Text = "<span style='color:#3C763D;background-color: #DFF0D8'>Party Added Successfully";
+                    ClearText();
+                    LoadPartyInfoGrid();
+                }
+                else if (checkParty != null && saveButton.Text == "Update")
+                {
+                    UpdateParty(checkParty.OrganizationName);
+                    partyInfoLiteral.Text = "<span style='color:#3C763D;background-color: #DFF0D8'>Party Updated Successfully";
+                    saveButton.Text = "Save";
+                    ClearText();
+                    LoadPartyInfoGrid();
+                    organizationNameText.Attributes.Remove("readonly");
+                }
+                else if (checkParty != null && saveButton.Text == "Save")
+                {
+                    partyInfoLiteral.Text = "<span style='color:#3C763D;background-color: #DFF0D8'>Party Already Exist";
+                }
+                else if (checkParty != null && saveButton.Text == "Update")
+                {
+                    partyInfoLiteral.Text = "<span style='color:#3C763D;background-color: #DFF0D8'>Party Not Found";
+                }
             }
             else
             {
-                successMessage.InnerHtml = Provider.GetErrorMassage("Insert Failed");
+                partyInfoLiteral.Text =
+                    "<span style='color:#A94464;background-color: #F2DEDE'>Please Fill All Required Field.";
             }
         }
 
-        protected void PartyGridView_OnRowEditing(object sender, GridViewEditEventArgs e)
+        public void SaveParty()
         {
-            PartyGridView.EditIndex = e.NewEditIndex;
-            BindParty();
-        }
-
-        protected void PartyGridView_OnRowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            Party party = new Party();
-            party.PartyId = Convert.ToInt32(((Label)PartyGridView.Rows[e.RowIndex].FindControl("id")).Text);
-            party.PartyName = ((TextBox)PartyGridView.Rows[e.RowIndex].FindControl("partyNameTextBox")).Text;
-            party.PartyMobile = ((TextBox)PartyGridView.Rows[e.RowIndex].FindControl("partyMobileTextBox")).Text;
-            party.PartyAddress = ((TextBox)PartyGridView.Rows[e.RowIndex].FindControl("partyAddressTextBox")).Text;
-            successMessage.InnerHtml = partyManager.UpdateParty(party) ? Provider.GetSuccessMassage("Successfully Updated") : Provider.GetErrorMassage("Update failed");
-
-            PartyGridView.EditIndex = -1;
-            BindParty();
-        }
-
-        protected void PartyGridView_OnRowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            PartyGridView.EditIndex = -1;
-            BindParty();
-        }
-
-        protected void lnkRemove_OnClick(object sender, EventArgs e)
-        {
-            LinkButton lnkRemove = (LinkButton)sender;
-            int partyId = Convert.ToInt32(lnkRemove.CommandArgument);
-            if (partyManager.DeleteParty(partyId))
+            int maxPartyId = 1;
+            tblSupplier party = new tblSupplier();
+            var p = from u in db.tblSuppliers
+                    select new { u.SupplierId };
+            if (p.FirstOrDefault() != null)
             {
-                BindParty();
-                successMessage.InnerHtml = Provider.GetSuccessMassage("Successfully Deleted");
+                maxPartyId = Convert.ToInt32(p.Max(x => x.SupplierId)) + maxPartyId;
             }
-            else
+            party.SupplierId = maxPartyId.ToString();
+            party.Type = supplierCustomerDropDownList.SelectedValue;
+            party.OrganizationName = organizationNameText.Value;
+            party.ContactPerson = contactPersonNameText.Value;
+            party.Address = addressText.Value;
+            party.ContactNo = contactNumber.Value;
+            party.Email = emailAddressText.Value;
+            party.OpeningBalance = Convert.ToDouble(openingBalanceText.Value);
+            db.tblSuppliers.InsertOnSubmit(party);
+            db.SubmitChanges();
+        }
+        private void UpdateParty(string orgName)
+        {
+            var checkParty =
+                    db.tblSuppliers.FirstOrDefault(x => x.OrganizationName == orgName);
+            if (checkParty != null)
             {
-                successMessage.InnerHtml = Provider.GetErrorMassage("This Sub-Item already in used");
+                checkParty.Type = supplierCustomerDropDownList.SelectedValue;
+                checkParty.Address = addressText.Value;
+                checkParty.ContactPerson = contactPersonNameText.Value;
+                checkParty.ContactNo = contactNumber.Value;
+                checkParty.Email = emailAddressText.Value;
+                openingBalanceText.Value = openingBalanceText.Value;
+                checkParty.OpeningBalance = Convert.ToDouble(openingBalanceText.Value);
+                db.SubmitChanges();
             }
+        }
+        private void LoadPartyInfoGrid()
+        {
+            var getAllPartyInfo = from x in db.tblSuppliers
+                                  orderby x.OrganizationName ascending
+                                  select new { x.SupplierId, x.OrganizationName, x.ContactPerson };
+            partyGridView.DataSource = getAllPartyInfo;
+            partyGridView.DataBind();
+        }
+        protected void PartyOnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(partyGridView, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["style"] = "cursor:pointer";
+            }
+        }
+        //Grid row command retrive value to TextBox
+        protected void partyGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ClearText();
+            partyInfoLiteral.Text = "_";
+            int index = partyGridView.SelectedRow.RowIndex;
+            GridViewRow gvRow = partyGridView.Rows[index];
+            string partyIdLvl = ((Label)gvRow.FindControl("idLabel")).Text;
+            string orgNameLvl = ((Label)gvRow.FindControl("orgNameLabel")).Text;
+            //string contactNameLvl = ((Label)gvRow.FindControl("contactPersonLabel")).Text;
+            var getPartyInfo = db.tblSuppliers.FirstOrDefault(x => x.SupplierId == partyIdLvl && x.OrganizationName == orgNameLvl);
+            if (getPartyInfo != null)
+            {
+                supplierCustomerDropDownList.SelectedValue = getPartyInfo.Type;
+                organizationNameText.Value = getPartyInfo.OrganizationName;
+                contactPersonNameText.Value = getPartyInfo.ContactPerson;
+                addressText.Value = getPartyInfo.Address;
+                contactNumber.Value = getPartyInfo.ContactNo;
+                emailAddressText.Value = getPartyInfo.Email;
+                openingBalanceText.Value = getPartyInfo.OpeningBalance.ToString();
+            }
+
+            organizationNameText.Attributes.Add("readonly", "readonly");
+            saveButton.Text = "Update";
+        }
+
+        private void ClearText()
+        {
+            supplierCustomerDropDownList.SelectedValue = "1";
+            organizationNameText.Value = "";
+            contactPersonNameText.Value = "";
+            contactNumber.Value = "";
+            addressText.Value = "";
+            emailAddressText.Value = "";
+            openingBalanceText.Value = "";
         }
     }
 }

@@ -38,7 +38,7 @@
                                 Transaction<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu MyDropDownMenu">
-                                <li><a runat="server" href="~/UI/TransactionEntry.aspx">Transaction Entry</a></li>
+                                <li><a runat="server" href="~/UI/PurchaseUI.aspx">Purchase Entry</a></li>
                                 <li><a runat="server" href="~/UI/TransactionVIew.aspx">Transaction View</a></li>
                                 <li><a runat="server" href="~/UI/ChequePass.aspx">Cheque Pass</a></li>
                             </ul>
@@ -91,6 +91,7 @@
             <div style="min-height: 600px">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
+                <div class="clearfix"></div>
             </div>
             <hr />
             <footer>

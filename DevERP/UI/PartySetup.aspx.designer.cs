@@ -13,57 +13,102 @@ namespace DevERP.UI {
     public partial class PartySetup {
         
         /// <summary>
-        /// successMessage control.
+        /// supplierCustomerDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl successMessage;
+        protected global::System.Web.UI.WebControls.DropDownList supplierCustomerDropDownList;
         
         /// <summary>
-        /// partyName control.
+        /// partyIdText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText partyName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText partyIdText;
         
         /// <summary>
-        /// partyMobile control.
+        /// organizationNameText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText partyMobile;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText organizationNameText;
         
         /// <summary>
-        /// partyAddress control.
+        /// contactPersonNameText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea partyAddress;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText contactPersonNameText;
         
         /// <summary>
-        /// SaveParty control.
+        /// addressText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveParty;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText addressText;
         
         /// <summary>
-        /// PartyGridView control.
+        /// contactNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView PartyGridView;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText contactNumber;
+        
+        /// <summary>
+        /// emailAddressText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText emailAddressText;
+        
+        /// <summary>
+        /// openingBalanceText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText openingBalanceText;
+        
+        /// <summary>
+        /// saveButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button saveButton;
+        
+        /// <summary>
+        /// partyInfoLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal partyInfoLiteral;
+        
+        /// <summary>
+        /// partyGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView partyGridView;
     }
 }

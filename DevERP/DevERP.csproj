@@ -109,6 +109,7 @@
     <Reference Include="System.Web.Providers">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -1265,6 +1266,51 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\media\css\dataTables.bootstrap.css" />
+    <Content Include="Content\media\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\media\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\media\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\media\css\dataTables.foundation.css" />
+    <Content Include="Content\media\css\dataTables.foundation.min.css" />
+    <Content Include="Content\media\css\dataTables.jqueryui.css" />
+    <Content Include="Content\media\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\media\css\dataTables.material.css" />
+    <Content Include="Content\media\css\dataTables.material.min.css" />
+    <Content Include="Content\media\css\dataTables.semanticui.css" />
+    <Content Include="Content\media\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\media\css\dataTables.uikit.css" />
+    <Content Include="Content\media\css\dataTables.uikit.min.css" />
+    <Content Include="Content\media\css\dataTablesButtonsCSS.css" />
+    <Content Include="Content\media\css\jquery.dataTables.css" />
+    <Content Include="Content\media\css\jquery.dataTables.min.css" />
+    <Content Include="Content\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\media\images\favicon.ico" />
+    <Content Include="Content\media\images\sort_asc.png" />
+    <Content Include="Content\media\images\sort_asc_disabled.png" />
+    <Content Include="Content\media\images\sort_both.png" />
+    <Content Include="Content\media\images\sort_desc.png" />
+    <Content Include="Content\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\media\js\DataTabelsForPrintButton.js" />
+    <Content Include="Content\media\js\dataTables.bootstrap.js" />
+    <Content Include="Content\media\js\dataTables.bootstrap.min.js" />
+    <Content Include="Content\media\js\dataTables.bootstrap4.js" />
+    <Content Include="Content\media\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\media\js\dataTables.foundation.js" />
+    <Content Include="Content\media\js\dataTables.foundation.min.js" />
+    <Content Include="Content\media\js\dataTables.jqueryui.js" />
+    <Content Include="Content\media\js\dataTables.jqueryui.min.js" />
+    <Content Include="Content\media\js\dataTables.material.js" />
+    <Content Include="Content\media\js\dataTables.material.min.js" />
+    <Content Include="Content\media\js\dataTables.semanticui.js" />
+    <Content Include="Content\media\js\dataTables.semanticui.min.js" />
+    <Content Include="Content\media\js\dataTables.uikit.js" />
+    <Content Include="Content\media\js\dataTables.uikit.min.js" />
+    <Content Include="Content\media\js\dataTablesButtonsJs.js" />
+    <Content Include="Content\media\js\jquery.dataTables.js" />
+    <Content Include="Content\media\js\jquery.dataTables.min.js" />
+    <Content Include="Content\media\js\jquery.dataTablesFor3Rows.js" />
+    <Content Include="Content\media\js\jquery.js" />
+    <Content Include="Content\myAutoCompleteStyle.css" />
     <Content Include="Content\myStyle.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1294,9 +1340,16 @@
       <LastGenOutput>DevERPDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\media\images\Sorting icons.psd" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Image\0.jpg" />
     <Content Include="Image\bg.jpg" />
+    <Content Include="ReportUI\SupplierLedger.aspx" />
+    <Content Include="Scripts\MyScript\Payment.js" />
+    <Content Include="Scripts\MyScript\sales.js" />
+    <Content Include="Scripts\MyScript\supplierLedger.js" />
+    <Content Include="UI\PaymentUI.aspx" />
+    <Content Include="UI\PurchaseReturnUI.aspx" />
     <Content Include="ReportUI\DailyProductionStatementUI.aspx" />
     <Content Include="ReportUI\ProductionReceiveReport.aspx" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
@@ -1308,6 +1361,7 @@
     <Content Include="Scripts\jquery-3.1.0.slim.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.searchabledropdown-1.0.8.src.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.ar.min.js" />
@@ -1377,11 +1431,14 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\MyScript\Purchase.js" />
+    <Content Include="Scripts\MyScript\Return.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ScrollableGridViewPlugin_ASP.NetAJAXmin.js" />
+    <Content Include="Scripts\SearchableDropdownMy.js" />
     <Content Include="UI\About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
@@ -1418,15 +1475,14 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="UI\EmployeeEntry.aspx" />
-    <Content Include="UI\ItemSetup.aspx" />
+    <Content Include="UI\PartsEntryUI.aspx" />
     <Content Include="UI\PartySetup.aspx" />
     <Content Include="UI\ProductionEntry.aspx" />
     <Content Include="UI\ProductItemAndNameSetup.aspx" />
     <Content Include="UI\ProductSale.aspx" />
     <Content Include="UI\Profile.aspx" />
+    <Content Include="UI\PurchaseUI.aspx" />
     <Content Include="UI\Sales.aspx" />
-    <Content Include="UI\SubItemSetup.aspx" />
-    <Content Include="UI\TransactionEntry.aspx" />
     <Content Include="UI\TransactionVIew.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -1483,20 +1539,42 @@
     </Compile>
     <Compile Include="Account\UserInfo.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Base\CustomMethod.cs" />
+    <Compile Include="BLL\PartsItemManager.cs" />
     <Compile Include="BLL\PartyManager.cs" />
     <Compile Include="BLL\ChequePassManager.cs" />
+    <Compile Include="BLL\PaymentManager.cs" />
+    <Compile Include="BLL\PurchaseDetailsManager.cs" />
+    <Compile Include="BLL\PurchaseManager.cs" />
+    <Compile Include="BLL\ReturnDetailsManager.cs" />
+    <Compile Include="BLL\ReturnManager.cs" />
+    <Compile Include="BLL\StockManager.cs" />
+    <Compile Include="BLL\SupplierManager.cs" />
     <Compile Include="BLL\TransactionViewManager.cs" />
     <Compile Include="BLL\TransactionManager.cs" />
     <Compile Include="BLL\SubItemManager.cs" />
     <Compile Include="BLL\ItemManager.cs" />
     <Compile Include="BLL\BankManager.cs" />
+    <Compile Include="DAL\DBConnection.cs" />
+    <Compile Include="DAL\ItemGateway.cs" />
+    <Compile Include="DAL\PartsItemGateway.cs" />
     <Compile Include="DAL\PartyGatway.cs" />
     <Compile Include="DAL\ChequePassGatway.cs" />
+    <Compile Include="DAL\PaymentGateway.cs" />
+    <Compile Include="DAL\PurchaseDetailsGateway.cs" />
+    <Compile Include="DAL\PurchaseGateway.cs" />
+    <Compile Include="DAL\ReturnDetailsGateway.cs" />
+    <Compile Include="DAL\ReturnGateway.cs" />
+    <Compile Include="DAL\StockGateway.cs" />
+    <Compile Include="DAL\SupplierGateway.cs" />
     <Compile Include="DAL\TransactionVIewGatway.cs" />
     <Compile Include="DAL\TransactionGatway.cs" />
     <Compile Include="DAL\SubItemGatway.cs" />
     <Compile Include="DAL\ItemGatway.cs" />
     <Compile Include="DAL\BankGatway.cs" />
+    <Compile Include="DevERPDB.cs">
+      <DependentUpon>DevERPDB.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DevERPDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1509,10 +1587,40 @@
     <Compile Include="Models\SubItem.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Bank.cs" />
-    <Compile Include="Others\ConnectionGateway.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\Payment.cs" />
+    <Compile Include="Model\Purchase.cs" />
+    <Compile Include="Model\PurchaseDetails.cs" />
+    <Compile Include="Model\PurchaseItem.cs" />
+    <Compile Include="Model\StockData.cs" />
+    <Compile Include="Model\Supplier.cs" />
+    <Compile Include="Others\ConnectionGateway.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Others\MyImage.cs" />
     <Compile Include="Others\Provider.cs" />
     <Compile Include="Others\ReportConection.cs" />
+    <Compile Include="ReportUI\SupplierLedger.aspx.cs">
+      <DependentUpon>SupplierLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportUI\SupplierLedger.aspx.designer.cs">
+      <DependentUpon>SupplierLedger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PaymentUI.aspx.cs">
+      <DependentUpon>PaymentUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PaymentUI.aspx.designer.cs">
+      <DependentUpon>PaymentUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PurchaseReturnUI.aspx.cs">
+      <DependentUpon>PurchaseReturnUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PurchaseReturnUI.aspx.designer.cs">
+      <DependentUpon>PurchaseReturnUI.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reports\DailyProductionStatement.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1604,12 +1712,12 @@
     <Compile Include="UI\EmployeeEntry.aspx.designer.cs">
       <DependentUpon>EmployeeEntry.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\ItemSetup.aspx.cs">
-      <DependentUpon>ItemSetup.aspx</DependentUpon>
+    <Compile Include="UI\PartsEntryUI.aspx.cs">
+      <DependentUpon>PartsEntryUI.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\ItemSetup.aspx.designer.cs">
-      <DependentUpon>ItemSetup.aspx</DependentUpon>
+    <Compile Include="UI\PartsEntryUI.aspx.designer.cs">
+      <DependentUpon>PartsEntryUI.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\PartySetup.aspx.cs">
       <DependentUpon>PartySetup.aspx</DependentUpon>
@@ -1646,26 +1754,19 @@
     <Compile Include="UI\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\PurchaseUI.aspx.cs">
+      <DependentUpon>PurchaseUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PurchaseUI.aspx.designer.cs">
+      <DependentUpon>PurchaseUI.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Sales.aspx.cs">
       <DependentUpon>Sales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\Sales.aspx.designer.cs">
       <DependentUpon>Sales.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UI\SubItemSetup.aspx.cs">
-      <DependentUpon>SubItemSetup.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UI\SubItemSetup.aspx.designer.cs">
-      <DependentUpon>SubItemSetup.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UI\TransactionEntry.aspx.cs">
-      <DependentUpon>TransactionEntry.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UI\TransactionEntry.aspx.designer.cs">
-      <DependentUpon>TransactionEntry.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\TransactionVIew.aspx.cs">
       <DependentUpon>TransactionVIew.aspx</DependentUpon>

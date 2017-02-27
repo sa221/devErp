@@ -3,22 +3,40 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using DevERP.Models;
 
 namespace DevERP.UI
 {
     public partial class Sales : System.Web.UI.Page
     {
-        DevERPDBDataContext db = new DevERPDBDataContext();
+        static DevERPDBDataContext db = new DevERPDBDataContext();
         DataTable dt1 = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 LoadProduct();
+                Bank();
+                LoadInvoNo();
                 Session.Remove("productInSession");
+                dateText.Value = DateTime.Now.Date.ToString("dd/MM/yyyy");
             }
+            
+        }
+        private void LoadInvoNo()
+        {
+            var getAllInvo = from x in db.ItemSales
+                                select new {x.VarSalesInvoNo };
+            invoiceNumberDropdownList.DataSource = getAllInvo;
+            invoiceNumberDropdownList.DataValueField = "VarSalesInvoNo";
+            invoiceNumberDropdownList.DataTextField = "VarSalesInvoNo";
+            invoiceNumberDropdownList.DataBind();
+            invoiceNumberDropdownList.Items.Insert(0, new ListItem("--Select--", ""));
+
         }
         private void LoadProduct()
         {
@@ -31,6 +49,22 @@ namespace DevERP.UI
             productNameDropDownList.DataBind();
             productNameDropDownList.Items.Insert(0, new ListItem("--Select--", ""));
 
+        }
+        private void Bank()
+        {
+            var getBank = from x in db.BankInformation_tbls
+                           select new { x.VarBankid, x.VarBankName };
+
+            cardChequeBankDropDownList.DataSource = getBank;
+            cardChequeBankDropDownList.DataValueField = "VarBankid";
+            cardChequeBankDropDownList.DataTextField = "VarBankName";
+            cardChequeBankDropDownList.DataBind();
+            cardChequeBankDropDownList.Items.Insert(0, new ListItem("--Select--", ""));
+            dipositBankDropDownList.DataSource = getBank;
+            dipositBankDropDownList.DataValueField = "VarBankid";
+            dipositBankDropDownList.DataTextField = "VarBankName";
+            dipositBankDropDownList.DataBind();
+            dipositBankDropDownList.Items.Insert(0, new ListItem("--Select--", ""));
         }
         private void ProductGridViewData()
         {
@@ -73,10 +107,14 @@ namespace DevERP.UI
                     .Sum(x => Convert.ToDecimal(x["Qty"]));
             allItemTotalTakaText.Value = amount.ToString();
             totalQtyText.Value = qty.ToString();
+            netPaybleText.Value = amount.ToString();
+            
         }
 
         protected void addButton_Click(object sender, EventArgs e)
         {
+            netPaybleText.Value = String.Empty;
+            discountAgainstInvoiceTaka.Value = String.Empty;
             if (productCodeText.Value != "" && productNameDropDownList.SelectedValue != "" && qtyText.Value != "" &&
                 priceText.Value != "" && itemTotalTakaText.Value != "")
             {
@@ -204,18 +242,29 @@ namespace DevERP.UI
         //    itemTotalTakaText.Value = total;
         //}
 
-        protected void productNameDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        //protected void productNameDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    qtyText.Value = "";
+        //    //itemDiscountTakaText.Value = "";
+        //    var getItemDetails = from x in db.tbl_ProductSizes
+        //                         where x.Id == Convert.ToInt32(productNameDropDownList.SelectedValue)
+        //                         select new { x.SalesPrice };
+        //    foreach (var itemDetail in getItemDetails)
+        //    {
+        //        priceText.Value = itemDetail.SalesPrice.ToString();
+        //    }
+        //    qtyText.Focus();
+        //}
+        [WebMethod]
+        public static object GetProductDetails(string productId)
         {
-            qtyText.Value = "";
-            //itemDiscountTakaText.Value = "";
+            //var getItemDetails = from x in db.Item_tbls
+            //                     where x.VarItemCode == productId
+            //                     select new { x.FltAmount, x.FltVat, x.FltDiscount, x.FltDisCountActive };
             var getItemDetails = from x in db.tbl_ProductSizes
-                                 where x.Id == Convert.ToInt32(productNameDropDownList.SelectedValue)
+                                 where x.Id == Convert.ToInt32(productId)
                                  select new { x.SalesPrice };
-            foreach (var itemDetail in getItemDetails)
-            {
-                priceText.Value = itemDetail.SalesPrice.ToString();
-            }
-            qtyText.Focus();
+            return getItemDetails;
         }
 
         //protected void salesGridView_RowEditing(object sender, GridViewEditEventArgs e)
@@ -273,6 +322,130 @@ namespace DevERP.UI
                     GetTotalAmount();
                 }
                 salesGridView.DataBind();
+            }
+        }
+
+        //protected void customerSearch_Click(object sender, EventArgs e)
+        //{
+        //    var getCustomerInfo =
+        //        db.Party_tbls.FirstOrDefault(c => c.PartyType == "1" && c.ContactNo == cellNumberText.Value);
+        //    if (getCustomerInfo!=null)
+        //    {
+        //        customerNameText.Value = getCustomerInfo.OrganizationName;
+        //        addressText.Text = getCustomerInfo.Address;
+        //        partIdTextBox.Text = getCustomerInfo.PartyId;
+        //    }
+            
+        //}
+
+        protected void salesTypeDropdownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (salesTypeDropdownList.SelectedValue=="1")
+            {
+                cardChequeNumberText.Attributes.Add("readonly", "readonly");
+                cardChequeDateText.Attributes.Add("readonly", "readonly");
+                chequeAmount.Attributes.Add("readonly", "readonly");
+                cardChequeBankDropDownList.Enabled = false;
+                dipositBankDropDownList.Enabled = false;
+                cardChequeNumberText.Value = String.Empty;
+                cardChequeDateText.Value = String.Empty;
+                chequeAmount.Value = String.Empty;
+                cardChequeBankDropDownList.SelectedValue = "";
+                dipositBankDropDownList.SelectedValue = "";
+            }
+            else
+            {
+                cardChequeNumberText.Attributes.Remove("readonly");
+                cardChequeDateText.Attributes.Remove("readonly");
+                chequeAmount.Attributes.Remove("readonly");
+                cardChequeBankDropDownList.Enabled = true;
+                dipositBankDropDownList.Enabled = true;
+            }
+        }
+        
+        private string GenarateInvoiceNo()
+        {
+            int year = DateTime.Now.Year;
+            int seedNums = 1;
+            char pads = '0';
+            var getInvoId = from u in db.ItemSales
+                                   where u.VarSalesInvoNo.Substring(5, 4) == year.ToString()
+                            select new { u.VarSalesInvoNo };
+            string result = getInvoId.Max(element => element.VarSalesInvoNo);
+            if (result != null)
+            {
+                string subs = result.Substring(10);
+                seedNums = Convert.ToInt32(subs);
+                seedNums = seedNums + 1;
+                return ("INVO-" + DateTime.Now.Year + "-" + seedNums.ToString().PadLeft(6, pads));
+            }
+            return ("INVO-" + DateTime.Now.Year + "-" + seedNums.ToString().PadLeft(6, pads));
+
+        }
+        [WebMethod]
+        public static object GetCardDetails(string cellNumberOrId)
+        {
+            var getData = db.tblSuppliers.FirstOrDefault(x =>x.Type=="1" && (x.ContactNo == cellNumberOrId || x.SupplierId==cellNumberOrId));
+            if (getData != null)
+            {
+                var getInfo = from x in db.tblSuppliers
+
+                              where x.ContactNo == cellNumberOrId || x.SupplierId==cellNumberOrId
+                              select new { x.SupplierId, x.OrganizationName, x.Address, x.ContactNo };
+
+                return getInfo;
+            }
+            return "Invalid Discount Card.";
+        }
+        private string GenarateCollectionId()
+        {
+            int year = DateTime.Now.Year;
+            int seedNums = 1;
+            char pads = '0';
+            var getInvoId = from u in db.ItemSalesCollections
+                            where u.VarCollectionNo.Substring(3, 4) == year.ToString()
+                            select new { u.VarCollectionNo };
+            string result = getInvoId.Max(element => element.VarCollectionNo);
+            if (result != null)
+            {
+                string subs = result.Substring(8);
+                seedNums = Convert.ToInt32(subs);
+                seedNums = seedNums + 1;
+                return ("CL-" + DateTime.Now.Year + "-" + seedNums.ToString().PadLeft(6, pads));
+            }
+            return ("CL-" + DateTime.Now.Year + "-" + seedNums.ToString().PadLeft(6, pads));
+
+        }
+
+        private void Save()
+        {
+            ItemSale itemSale=new ItemSale();
+            ItemSalesDetail itemSalesDetail=new ItemSalesDetail();
+            ItemSalesCollection itemSalesCollection=new ItemSalesCollection();
+            DailyWait dailyWait=new DailyWait();
+            Voucher voucher=new Voucher();
+            tbl_Stock stock=new tbl_Stock();
+            string invoNo = GenarateInvoiceNo();
+            string collection= GenarateCollectionId();
+            DateTime date;
+            if (!String.IsNullOrWhiteSpace(dateText.Value))
+            {
+                DateTime saleDate = DateTime.ParseExact(dateText.Value, "dd/MM/yyyy", null);
+               date=saleDate;
+            }
+            string customerMob = cellNumberText.Value;
+            itemSale.VarSalesInvoNo = invoNo;
+            db.ItemSales.InsertOnSubmit(itemSale);
+            db.SubmitChanges();
+            messageLiteral.Text = "Save Successfully";
+            LoadInvoNo();
+        }
+
+        protected void saveButton_Click(object sender, EventArgs e)
+        {
+            if (invoiceNumberDropdownList.SelectedValue=="")
+            {
+                Save();
             }
         }
     }

@@ -13,13 +13,13 @@ namespace DevERP.UI {
     public partial class BankSetup {
         
         /// <summary>
-        /// successMessage control.
+        /// bankId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl successMessage;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText bankId;
         
         /// <summary>
         /// bankName control.
@@ -31,21 +31,75 @@ namespace DevERP.UI {
         protected global::System.Web.UI.HtmlControls.HtmlInputText bankName;
         
         /// <summary>
-        /// SaveBank control.
+        /// contactNameText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveBank;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText contactNameText;
         
         /// <summary>
-        /// BankGridView control.
+        /// addressText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView BankGridView;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText addressText;
+        
+        /// <summary>
+        /// contactNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText contactNumber;
+        
+        /// <summary>
+        /// emailAddressText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText emailAddressText;
+        
+        /// <summary>
+        /// cardCommisionText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText cardCommisionText;
+        
+        /// <summary>
+        /// saveButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button saveButton;
+        
+        /// <summary>
+        /// bankInfoLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal bankInfoLiteral;
+        
+        /// <summary>
+        /// bankGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView bankGridView;
     }
 }

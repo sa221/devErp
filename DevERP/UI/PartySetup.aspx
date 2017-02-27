@@ -1,9 +1,130 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PartySetup.aspx.cs" Inherits="DevERP.UI.PartySetup" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PartySetup.aspx.cs" Inherits="DevERP.UI.PartySetup" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style>
+        .myButtonTopMargin {
+        }
+
+        .panelMargin {
+            margin-top: 0%;
+        }
+
+        .panel-primary > .panel-heading {
+            color: #ffffff;
+            background-color: #428bca;
+            border-color: #428bca;
+            text-align: center;
+        }
+
+        .button, html input[type="button"],
+        input[type="reset"], input[type="submit"] {
+            height: 100% !important;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 0px !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container">
+    <div class="col-sm-10 col-sm-offset-1">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Party Information</div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-4">
+
+                                    <label>Supplier/Customer</label>
+                                    <asp:DropDownList runat="server" CssClass="form-control input-sm" ID="supplierCustomerDropDownList">
+                                        <asp:ListItem Value="1">Customer</asp:ListItem>
+                                        <asp:ListItem Value="2">Supplier</asp:ListItem>
+                                    </asp:DropDownList>
+
+                                    <%--<label>Party Id</label>--%>
+                                    <input runat="server" type="text" class="form-control input-sm" id="partyIdText" Visible="False"/>
+
+                                    <label>Organization Name</label>
+                                    <input runat="server" type="text" class="form-control input-sm" id="organizationNameText" />
+
+                                    <label>Conatct Person Name</label>
+                                    <input runat="server" type="text" class="form-control input-sm" id="contactPersonNameText" />
+
+                                    <label>Address</label>
+                                    <input runat="server" type="text" class="form-control input-sm" id="addressText" />
+
+                                    <label>Contact Number</label>
+                                    <input runat="server" type="text" class="form-control input-sm" id="contactNumber" />
+
+                                    <label>Email Address</label>
+                                    <input runat="server" class="form-control input-sm" type="text" id="emailAddressText" />
+
+                                    <label>Opening Balance</label>
+                                    <input runat="server" type="text" class="form-control input-sm" id="openingBalanceText" />
+                                    <br/>
+                                    <asp:Button ID="saveButton" runat="server" class="btn btn-success myButtonTopMargin" Text="Save" OnClick="saveButton_Click" />
+                                    <br />
+                                    <asp:Literal ID="partyInfoLiteral" runat="server" Text="_"> </asp:Literal>
+                                </div>
+                           
+                                <div class="col-sm-8">
+                                    <div style="border: 1px solid #ededed; padding: 5px; height: 455px;">
+                                        <div class="col-lg-12">
+                                            <%--OnSelectedIndexChanged="itemGridView_SelectedIndexChanged" OnRowDataBound="ItemOnRowDataBound"--%>
+                                            <asp:GridView ID="partyGridView" runat="server" UseAccessibleHeader="true"
+                                                OnSelectedIndexChanged="partyGridView_SelectedIndexChanged" OnRowDataBound="PartyOnRowDataBound"
+                                                CssClass="table-hover table-striped table table-bordered" GridLines="None"
+                                                AutoGenerateColumns="False">
+                                                <Columns>
+                                                    <asp:TemplateField HeaderText="SL">
+                                                        <ItemTemplate>
+                                                            <%#Container.DataItemIndex+1 %>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Bank ID" Visible="False">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="idLabel" runat="server" Text='<%# Eval("SupplierId") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Org. Name">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="orgNameLabel" runat="server" Text='<%# Eval("OrganizationName") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Contact Person">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="contactPersonLabel" runat="server" Text='<%# Eval("ContactPerson") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                   
+                                                </Columns>
+                                                <HeaderStyle CssClass="GridviewScrollHeader" />
+                                                <RowStyle CssClass="GridviewScrollItem" />
+                                                <PagerStyle CssClass="GridviewScrollPager" />
+                                            </asp:GridView>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../Scripts/ScrollableGridViewPlugin_ASP.NetAJAXmin.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%=partyGridView.ClientID %>').Scrollable({
+                ScrollHeight: 320,
+                IsInUpdatePanel: true
+            });
+        });
+    </script>
+   <%-- <div class="container">
         <div class="col-lg-12">
             <div class="row main panel panel-primary">
                 <div class="panel-heading">
@@ -121,5 +242,5 @@
         </div>
         <!-- col-sm-12-->
     </div>
-    <!-- Container-->
+    <!-- Container-->--%>
 </asp:Content>
