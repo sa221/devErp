@@ -79,11 +79,11 @@ namespace DevERP.UI
             TransactionViewModel transactionView = new TransactionViewModel();
             if (string.IsNullOrEmpty(fromDate.Value))
             {
-                transactionView.FromDate = Provider.GetMinDate();
+                //transactionView.FromDate = Provider.GetMinDate();
             }
             else
             {
-                transactionView.FromDate = Provider.StringToDateTime(fromDate.Value);
+                //transactionView.FromDate = Provider.StringToDateTime(fromDate.Value);
             }
             if (string.IsNullOrEmpty(toDate.Value))
             {
@@ -91,7 +91,7 @@ namespace DevERP.UI
             }
             else
             {
-                transactionView.ToDate = Provider.StringToDateTime(toDate.Value);
+                //transactionView.ToDate = Provider.StringToDateTime(toDate.Value);
             }
             transactionView.PartyId = Convert.ToInt32(partyDropDown.SelectedValue);
             transactionView.TransactionCatagory = CatagoryDropDown.SelectedValue;

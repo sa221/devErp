@@ -1341,9 +1341,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\media\images\Sorting icons.psd" />
+    <None Include="Properties\PublishProfiles\DevErp.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Image\0.jpg" />
     <Content Include="Image\bg.jpg" />
+    <Content Include="Image\expedia.jpg" />
     <Content Include="ReportUI\SupplierLedger.aspx" />
     <Content Include="Scripts\MyScript\Payment.js" />
     <Content Include="Scripts\MyScript\sales.js" />
@@ -1582,6 +1584,7 @@
     </Compile>
     <Compile Include="Models\Party.cs" />
     <Compile Include="Models\ChequePassModel.cs" />
+    <Compile Include="Models\provider.cs" />
     <Compile Include="Models\TransactionViewModel.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\SubItem.cs" />

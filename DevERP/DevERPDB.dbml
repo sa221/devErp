@@ -158,33 +158,6 @@
       <Column Name="Location" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ItemSales" Member="ItemSales">
-    <Type Name="ItemSale">
-      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="VarSalesInvoNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="DatSalesDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="VarCustomerId" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="VarSalesType" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="VarChequeNo" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
-      <Column Name="DatChequeDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="ChequeAmt" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="VarChequeBankid" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="VarDepositBankId" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="InvTotal" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="InvDisAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="NetPayAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="CashRcvAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="DuesAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="VarRemarks" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="SoldBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="VarApproval" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
-      <Column Name="VarApprovalBay" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="DateApprovalDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DateApprovalTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TR" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
-      <Column Name="Location" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.ItemSalesDetails" Member="ItemSalesDetails">
     <Type Name="ItemSalesDetail">
       <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -194,29 +167,6 @@
       <Column Name="ItemPrice" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="Total" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="ATR" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="Location" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ItemSalesCollection" Member="ItemSalesCollections">
-    <Type Name="ItemSalesCollection">
-      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="VarCollectionNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="VarCustomeId" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="varSalesOrderNo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="DatCollectiondate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FltCollectionAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="FltCollectionType" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="VarBankid" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="VarBankAccountNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="VarChequeNo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="DatChequeDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="VarBankIdFrom" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="CollectionBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="AppCollection" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Column Name="AppCollectionBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="DatAppCollectionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DatAppCollectionTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Location" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
     </Type>
   </Table>
@@ -396,6 +346,78 @@
       <Column Name="FDebit" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="FCredit" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="FBalance" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DailyExp" Member="DailyExps">
+    <Type Name="DailyExp">
+      <Column Name="ExpID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RefNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ExpHeadName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ExpDescription" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DbAMT" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CrAMT" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="VarUser" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ETime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="Mrk" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblSalesType" Member="tblSalesTypes">
+    <Type Name="tblSalesType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemSales" Member="ItemSales">
+    <Type Name="ItemSale">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VarSalesInvoNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DatSalesDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="VarCustomerId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VarSalesType" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="VarChequeNo" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="DatChequeDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ChequeAmt" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="VarChequeBankid" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="VarDepositBankId" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="InvTotal" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="InvDisAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NetPayAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CashRcvAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="DuesAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="VarRemarks" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SoldBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VarApproval" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="VarApprovalBay" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DateApprovalDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateApprovalTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TR" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemSalesCollection" Member="ItemSalesCollections">
+    <Type Name="ItemSalesCollection">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VarCollectionNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="VarCustomeId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="varSalesOrderNo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DatCollectiondate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FltCollectionAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="FltCollectionType" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="VarBankid" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="VarBankAccountNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VarChequeNo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DatChequeDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="VarBankIdFrom" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CollectionBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="AppCollection" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="AppCollectionBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DatAppCollectionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DatAppCollectionTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

@@ -58,6 +58,15 @@ namespace DevERP.UI {
         protected global::System.Web.UI.WebControls.DropDownList productNameDropDownList;
         
         /// <summary>
+        /// stockQtyText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText stockQtyText;
+        
+        /// <summary>
         /// qtyText control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,33 @@ namespace DevERP.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView salesGridView;
+        
+        /// <summary>
+        /// partIdTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox partIdTextBox;
+        
+        /// <summary>
+        /// totalQtyText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText totalQtyText;
+        
+        /// <summary>
+        /// allItemTotalTakaText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText allItemTotalTakaText;
         
         /// <summary>
         /// salesTypeDropdownList control.
@@ -184,49 +220,13 @@ namespace DevERP.UI {
         protected global::System.Web.UI.HtmlControls.HtmlInputText cashReceivedText;
         
         /// <summary>
-        /// exchangeTakaText control.
+        /// duesAmountText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText exchangeTakaText;
-        
-        /// <summary>
-        /// collectedTakaText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText collectedTakaText;
-        
-        /// <summary>
-        /// partIdTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox partIdTextBox;
-        
-        /// <summary>
-        /// totalQtyText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText totalQtyText;
-        
-        /// <summary>
-        /// allItemTotalTakaText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText allItemTotalTakaText;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText duesAmountText;
         
         /// <summary>
         /// cellNumberText control.
@@ -238,40 +238,31 @@ namespace DevERP.UI {
         protected global::System.Web.UI.HtmlControls.HtmlInputText cellNumberText;
         
         /// <summary>
-        /// partyIdLabel control.
+        /// nameText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label partyIdLabel;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText nameText;
         
         /// <summary>
-        /// nameLabel control.
+        /// addressText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nameLabel;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText addressText;
         
         /// <summary>
-        /// addressLabel control.
+        /// contactPersonText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label addressLabel;
-        
-        /// <summary>
-        /// cellNoLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cellNoLabel;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText contactPersonText;
         
         /// <summary>
         /// saveButton control.
@@ -283,12 +274,12 @@ namespace DevERP.UI {
         protected global::System.Web.UI.WebControls.Button saveButton;
         
         /// <summary>
-        /// messageLiteral control.
+        /// messageLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal messageLiteral;
+        protected global::System.Web.UI.WebControls.Label messageLabel;
     }
 }

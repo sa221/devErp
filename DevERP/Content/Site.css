@@ -26,3 +26,8 @@ input[type="password"] {
         padding: 0;
     }
 }
+.header-shadow{
+    background-image: url('../image/expedia.jpg');
+    background-repeat: repeat-y; /* for vertical repeat */
+    background-repeat: repeat-x; /* for horizontal repeat */
+}

@@ -28,22 +28,22 @@ namespace DevERP.UI
 
         protected void PassButton_OnClick(object sender, EventArgs e)
         {
-            LinkButton lnkRemove = (LinkButton)sender;
-            int transactionId = Convert.ToInt32(lnkRemove.CommandArgument);
-            successMessage.InnerHtml = _chequePassManager.UpdateChequeStatus(transactionId, "Pass")
-                ? Provider.GetSuccessMassage("Successfully Pass the Cheque")
-                : Provider.GetSuccessMassage("Successfully Pass the Cheque");
-            BindGridView();
+            //LinkButton lnkRemove = (LinkButton)sender;
+            //int transactionId = Convert.ToInt32(lnkRemove.CommandArgument);
+            //successMessage.InnerHtml = _chequePassManager.UpdateChequeStatus(transactionId, "Pass")
+            //    ? Provider.GetSuccessMassage("Successfully Pass the Cheque")
+            //    : Provider.GetSuccessMassage("Successfully Pass the Cheque");
+            //BindGridView();
         }
 
         protected void CancelButton_OnClick(object sender, EventArgs e)
         {
-            LinkButton lnkRemove = (LinkButton)sender;
-            int transactionId = Convert.ToInt32(lnkRemove.CommandArgument);
-            successMessage.InnerHtml = _chequePassManager.UpdateChequeStatus(transactionId, "Cancel")
-                ? Provider.GetSuccessMassage("Successfully Cancel the Cheque")
-                : Provider.GetSuccessMassage("Successfully Cancel the Cheque");
-            BindGridView();
+            //LinkButton lnkRemove = (LinkButton)sender;
+            //int transactionId = Convert.ToInt32(lnkRemove.CommandArgument);
+            //successMessage.InnerHtml = _chequePassManager.UpdateChequeStatus(transactionId, "Cancel")
+            //    ? Provider.GetSuccessMassage("Successfully Cancel the Cheque")
+            //    : Provider.GetSuccessMassage("Successfully Cancel the Cheque");
+            //BindGridView();
         }
         private void BindGridView()
         {
@@ -78,11 +78,11 @@ namespace DevERP.UI
             ChequePassModel chequePassModel = new ChequePassModel();
             if (string.IsNullOrEmpty(fromDate.Value))
             {
-                chequePassModel.FromDate = Provider.GetMinDate();
+                //chequePassModel.FromDate = Provider.GetMinDate();
             }
             else
             {
-                chequePassModel.FromDate = Provider.StringToDateTime(fromDate.Value);
+                //chequePassModel.FromDate = Provider.StringToDateTime(fromDate.Value);
             }
             if (string.IsNullOrEmpty(toDate.Value))
             {
@@ -90,7 +90,7 @@ namespace DevERP.UI
             }
             else
             {
-                chequePassModel.ToDate = Provider.StringToDateTime(toDate.Value);
+                //chequePassModel.ToDate = Provider.StringToDateTime(toDate.Value);
             }
             chequePassModel.ChequeStatus = StatusDropDown.SelectedValue;
             return chequePassModel;

@@ -14,10 +14,10 @@ $('#MainContent_partyIdText').keypress(function (e) {
     }
 });
 
-$('#MainContent_discountAgainstInvoicePercentage').keypress(function (e) {
+$('#MainContent_cashReceivedText').keypress(function (e) {
     if (e.which == 13) // Enter key = keycode 13
     {
-        $('#MainContent_cashReceivedText').focus();  //Use whatever selector necessary to focus the 'next' input
+        $('#MainContent_cellNumberText').focus();  //Use whatever selector necessary to focus the 'next' input
         return false;
     }
 });
@@ -89,6 +89,28 @@ $("#MainContent_discountAgainstInvoiceTaka").change(function () {
     }
     //$("#MainContent_partyNameDropDownList").val(partyId);
 });
+//-----Cash Recive on-change----
+$("#MainContent_cashReceivedText").change(function () {
+    var netAmount = $("#MainContent_netPaybleText").val();
+    var cashAmount = $("#MainContent_cashReceivedText").val();
+    
+
+    var dusAmount = 0;
+    if (netAmount != "" && $.trim(netAmount) != "" && parseFloat(netAmount)>0) {
+        dusAmount = parseFloat(netAmount) - parseFloat(cashAmount);
+        if (dusAmount > -1) {
+            $("#MainContent_duesAmountText").val(dusAmount);
+        } else {
+            $("#MainContent_duesAmountText").val("0");
+        }
+        $('#MainContent_cellNumberText').focus();
+    }
+    else {
+        $("#MainContent_cashReceivedText").val("0");
+        $("#MainContent_duesAmountText").val("0");
+    }
+    //$("#MainContent_partyNameDropDownList").val(partyId);
+});
 $("#MainContent_cellNumberText").change(function () {
     var cellNumberOrId = $("#MainContent_cellNumberText").val();
     $.ajax({
@@ -133,13 +155,16 @@ function loadItemDetails(productId) {
         data: JSON.stringify({ productId: productId }),
         async: false,
         success: function (response) {
+            if (response.d.length > 0) {
+                $("#MainContent_stockQtyText").val(response.d[0].Quantity);
+                $("#MainContent_priceText").val(response.d[0].SalesPrice);
+                $('#MainContent_qtyText').focus();
+            } else {
+                alert("Invalid Product Code");
+                $('#MainContent_productCodeText').val("").focus();
+                $("#MainContent_productNameDropDownList").val("");
+            }
 
-            $("#MainContent_priceText").val(response.d[0].SalesPrice);
-            //$("#MainContent_vatText").val(response.d[0].FltVat);
-            //if ((response.d[0].FltDisCountActive) == 1) {
-            //    $("#MainContent_itemDiscountPercentageText").val(response.d[0].FltDiscount);
-            //}
-            $('#MainContent_qtyText').focus();
             //$("#MainContent_messageLabel").addClass('label-success');
         },
         error: function () {
